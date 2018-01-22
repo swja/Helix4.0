@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HelixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ciudad" Type="nvarchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ciudad_ID" />
+            <PropertyRef Name="descripcion_producto_ID" />
+            <PropertyRef Name="tipo_industria_ID" />
+            <PropertyRef Name="forma_pago_ID" />
+            <PropertyRef Name="flujo_ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="45" />
+          <Property Name="apellido" Type="nvarchar" MaxLength="45" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="responsable" Type="nvarchar" MaxLength="45" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="13" />
+          <Property Name="email" Type="nvarchar" MaxLength="45" />
+          <Property Name="fecha_Maxima_entrega_Factura" Type="date" />
+          <Property Name="fecha_Maxima_realizacion" Type="date" />
+          <Property Name="ciudad_ID" Type="int" Nullable="false" />
+          <Property Name="descripcion_producto_ID" Type="int" Nullable="false" />
+          <Property Name="tipo_industria_ID" Type="int" Nullable="false" />
+          <Property Name="forma_pago_ID" Type="int" Nullable="false" />
+          <Property Name="flujo_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="comentario">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="cliente_ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="comentario" Type="nvarchar" MaxLength="200" />
+          <Property Name="adjunto" Type="nvarchar" MaxLength="250" />
+          <Property Name="cliente_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="descripcion_producto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="etapa_flujo">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="flujo_ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="etapa" Type="nvarchar" MaxLength="50" />
+          <Property Name="flujo_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="flujo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="nombre_Flujo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="forma_pago">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="froma_pago" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="rol" Type="nvarchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="tipo_industria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="tipo_industria" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="rol_ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="45" />
+          <Property Name="apellido" Type="nvarchar" MaxLength="45" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="45" />
+          <Property Name="password" Type="nvarchar" MaxLength="45" />
+          <Property Name="mail" Type="nvarchar" MaxLength="45" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="13" />
+          <Property Name="cargo" Type="nvarchar" MaxLength="45" />
+          <Property Name="rol_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__cliente__ciudad___48CFD27E">
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="ciudad_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cliente__descrip__49C3F6B7">
+          <End Role="descripcion_producto" Type="Self.descripcion_producto" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="descripcion_producto">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="descripcion_producto_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cliente__flujo_I__4AB81AF0">
+          <End Role="flujo" Type="Self.flujo" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="flujo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="flujo_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cliente__forma_p__4BAC3F29">
+          <End Role="forma_pago" Type="Self.forma_pago" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="forma_pago">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="forma_pago_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cliente__tipo_in__4CA06362">
+          <End Role="tipo_industria" Type="Self.tipo_industria" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_industria">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="tipo_industria_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HelixModelStoreContainer">
+          <EntitySet Name="ciudad" EntityType="Self.ciudad" Schema="helix" store:Type="Tables" />
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="helix" store:Type="Tables" />
+          <EntitySet Name="comentario" EntityType="Self.comentario" Schema="helix" store:Type="Tables" />
+          <EntitySet Name="descripcion_producto" EntityType="Self.descripcion_producto" Schema="helix" store:Type="Tables" />
+          <EntitySet Name="etapa_flujo" EntityType="Self.etapa_flujo" Schema="helix" store:Type="Tables" />
+          <EntitySet Name="flujo" EntityType="Self.flujo" Schema="helix" store:Type="Tables" />
+          <EntitySet Name="forma_pago" EntityType="Self.forma_pago" Schema="helix" store:Type="Tables" />
+          <EntitySet Name="rol" EntityType="Self.rol" Schema="helix" store:Type="Tables" />
+          <EntitySet Name="tipo_industria" EntityType="Self.tipo_industria" Schema="helix" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="helix" store:Type="Tables" />
+          <AssociationSet Name="FK__cliente__ciudad___48CFD27E" Association="Self.FK__cliente__ciudad___48CFD27E">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cliente__descrip__49C3F6B7" Association="Self.FK__cliente__descrip__49C3F6B7">
+            <End Role="descripcion_producto" EntitySet="descripcion_producto" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cliente__flujo_I__4AB81AF0" Association="Self.FK__cliente__flujo_I__4AB81AF0">
+            <End Role="flujo" EntitySet="flujo" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cliente__forma_p__4BAC3F29" Association="Self.FK__cliente__forma_p__4BAC3F29">
+            <End Role="forma_pago" EntitySet="forma_pago" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cliente__tipo_in__4CA06362" Association="Self.FK__cliente__tipo_in__4CA06362">
+            <End Role="tipo_industria" EntitySet="tipo_industria" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HelixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ciudad1" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cliente" Relationship="Self.FK__cliente__ciudad___48CFD27E" FromRole="ciudad" ToRole="cliente" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ciudad_ID" />
+            <PropertyRef Name="descripcion_producto_ID" />
+            <PropertyRef Name="tipo_industria_ID" />
+            <PropertyRef Name="forma_pago_ID" />
+            <PropertyRef Name="flujo_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="apellido" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="responsable" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_Maxima_entrega_Factura" Type="DateTime" Precision="0" />
+          <Property Name="fecha_Maxima_realizacion" Type="DateTime" Precision="0" />
+          <Property Name="ciudad_ID" Type="Int32" Nullable="false" />
+          <Property Name="descripcion_producto_ID" Type="Int32" Nullable="false" />
+          <Property Name="tipo_industria_ID" Type="Int32" Nullable="false" />
+          <Property Name="forma_pago_ID" Type="Int32" Nullable="false" />
+          <Property Name="flujo_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ciudad" Relationship="Self.FK__cliente__ciudad___48CFD27E" FromRole="cliente" ToRole="ciudad" />
+          <NavigationProperty Name="descripcion_producto" Relationship="Self.FK__cliente__descrip__49C3F6B7" FromRole="cliente" ToRole="descripcion_producto" />
+          <NavigationProperty Name="flujo" Relationship="Self.FK__cliente__flujo_I__4AB81AF0" FromRole="cliente" ToRole="flujo" />
+          <NavigationProperty Name="forma_pago" Relationship="Self.FK__cliente__forma_p__4BAC3F29" FromRole="cliente" ToRole="forma_pago" />
+          <NavigationProperty Name="tipo_industria" Relationship="Self.FK__cliente__tipo_in__4CA06362" FromRole="cliente" ToRole="tipo_industria" />
+        </EntityType>
+        <EntityType Name="comentario">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="cliente_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="comentario1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="adjunto" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="cliente_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="descripcion_producto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cliente" Relationship="Self.FK__cliente__descrip__49C3F6B7" FromRole="descripcion_producto" ToRole="cliente" />
+        </EntityType>
+        <EntityType Name="etapa_flujo">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="flujo_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="etapa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="flujo_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="flujo" Relationship="HelixModel.flujoetapa_flujo" FromRole="etapa_flujo" ToRole="flujo" />
+          <Property Name="flujoID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="flujo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="nombre_Flujo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cliente" Relationship="Self.FK__cliente__flujo_I__4AB81AF0" FromRole="flujo" ToRole="cliente" />
+          <NavigationProperty Name="etapa_flujo" Relationship="HelixModel.flujoetapa_flujo" FromRole="flujo" ToRole="etapa_flujo" />
+        </EntityType>
+        <EntityType Name="forma_pago">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="froma_pago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cliente" Relationship="Self.FK__cliente__forma_p__4BAC3F29" FromRole="forma_pago" ToRole="cliente" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="rol1" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="usuario" Relationship="HelixModel.rolusuario" FromRole="rol" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="tipo_industria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="tipo_industria1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cliente" Relationship="Self.FK__cliente__tipo_in__4CA06362" FromRole="tipo_industria" ToRole="cliente" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="rol_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="apellido" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="usuario1" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="mail" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="cargo" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="rol_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="rol" Relationship="HelixModel.rolusuario" FromRole="usuario" ToRole="rol" />
+        </EntityType>
+        <Association Name="FK__cliente__ciudad___48CFD27E">
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="ciudad_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cliente__descrip__49C3F6B7">
+          <End Role="descripcion_producto" Type="Self.descripcion_producto" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="descripcion_producto">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="descripcion_producto_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cliente__flujo_I__4AB81AF0">
+          <End Role="flujo" Type="Self.flujo" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="flujo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="flujo_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cliente__forma_p__4BAC3F29">
+          <End Role="forma_pago" Type="Self.forma_pago" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="forma_pago">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="forma_pago_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cliente__tipo_in__4CA06362">
+          <End Role="tipo_industria" Type="Self.tipo_industria" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_industria">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="tipo_industria_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HelixEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ciudad" EntityType="Self.ciudad" />
+          <EntitySet Name="cliente" EntityType="Self.cliente" />
+          <EntitySet Name="comentario" EntityType="Self.comentario" />
+          <EntitySet Name="descripcion_producto" EntityType="Self.descripcion_producto" />
+          <EntitySet Name="etapa_flujo" EntityType="Self.etapa_flujo" />
+          <EntitySet Name="flujo" EntityType="Self.flujo" />
+          <EntitySet Name="forma_pago" EntityType="Self.forma_pago" />
+          <EntitySet Name="rol" EntityType="Self.rol" />
+          <EntitySet Name="tipo_industria" EntityType="Self.tipo_industria" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="FK__cliente__ciudad___48CFD27E" Association="Self.FK__cliente__ciudad___48CFD27E">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cliente__descrip__49C3F6B7" Association="Self.FK__cliente__descrip__49C3F6B7">
+            <End Role="descripcion_producto" EntitySet="descripcion_producto" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cliente__flujo_I__4AB81AF0" Association="Self.FK__cliente__flujo_I__4AB81AF0">
+            <End Role="flujo" EntitySet="flujo" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cliente__forma_p__4BAC3F29" Association="Self.FK__cliente__forma_p__4BAC3F29">
+            <End Role="forma_pago" EntitySet="forma_pago" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cliente__tipo_in__4CA06362" Association="Self.FK__cliente__tipo_in__4CA06362">
+            <End Role="tipo_industria" EntitySet="tipo_industria" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="rolusuario" Association="HelixModel.rolusuario">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="flujoetapa_flujo" Association="HelixModel.flujoetapa_flujo">
+            <End Role="flujo" EntitySet="flujo" />
+            <End Role="etapa_flujo" EntitySet="etapa_flujo" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="rolusuario">
+          <End Type="HelixModel.rol" Role="rol" Multiplicity="1" />
+          <End Type="HelixModel.usuario" Role="usuario" Multiplicity="1" />
+        </Association>
+        <Association Name="flujoetapa_flujo">
+          <End Type="HelixModel.flujo" Role="flujo" Multiplicity="1" />
+          <End Type="HelixModel.etapa_flujo" Role="etapa_flujo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="flujo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="etapa_flujo">
+              <PropertyRef Name="flujoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HelixModelStoreContainer" CdmEntityContainer="HelixEntities">
+          <EntitySetMapping Name="ciudad">
+            <EntityTypeMapping TypeName="HelixModel.ciudad">
+              <MappingFragment StoreEntitySet="ciudad">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ciudad1" ColumnName="ciudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cliente">
+            <EntityTypeMapping TypeName="HelixModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fecha_Maxima_entrega_Factura" ColumnName="fecha_Maxima_entrega_Factura" />
+                <ScalarProperty Name="fecha_Maxima_realizacion" ColumnName="fecha_Maxima_realizacion" />
+                <ScalarProperty Name="ciudad_ID" ColumnName="ciudad_ID" />
+                <ScalarProperty Name="descripcion_producto_ID" ColumnName="descripcion_producto_ID" />
+                <ScalarProperty Name="tipo_industria_ID" ColumnName="tipo_industria_ID" />
+                <ScalarProperty Name="forma_pago_ID" ColumnName="forma_pago_ID" />
+                <ScalarProperty Name="flujo_ID" ColumnName="flujo_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comentario">
+            <EntityTypeMapping TypeName="HelixModel.comentario">
+              <MappingFragment StoreEntitySet="comentario">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="comentario1" ColumnName="comentario" />
+                <ScalarProperty Name="adjunto" ColumnName="adjunto" />
+                <ScalarProperty Name="cliente_ID" ColumnName="cliente_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="descripcion_producto">
+            <EntityTypeMapping TypeName="HelixModel.descripcion_producto">
+              <MappingFragment StoreEntitySet="descripcion_producto">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="etapa_flujo">
+            <EntityTypeMapping TypeName="HelixModel.etapa_flujo">
+              <MappingFragment StoreEntitySet="etapa_flujo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="etapa" ColumnName="etapa" />
+                <ScalarProperty Name="flujo_ID" ColumnName="flujo_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="flujo">
+            <EntityTypeMapping TypeName="HelixModel.flujo">
+              <MappingFragment StoreEntitySet="flujo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="nombre_Flujo" ColumnName="nombre_Flujo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="forma_pago">
+            <EntityTypeMapping TypeName="HelixModel.forma_pago">
+              <MappingFragment StoreEntitySet="forma_pago">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="froma_pago" ColumnName="froma_pago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol">
+            <EntityTypeMapping TypeName="HelixModel.rol">
+              <MappingFragment StoreEntitySet="rol">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="rol1" ColumnName="rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_industria">
+            <EntityTypeMapping TypeName="HelixModel.tipo_industria">
+              <MappingFragment StoreEntitySet="tipo_industria">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="tipo_industria1" ColumnName="tipo_industria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="HelixModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="cargo" ColumnName="cargo" />
+                <ScalarProperty Name="rol_ID" ColumnName="rol_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

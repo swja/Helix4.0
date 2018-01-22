@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c0b3297ec7a1462fa17cdddb66944ec2" Name="Diagram1">
+        <EntityTypeShape EntityType="HelixModel.ciudad" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.cliente" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.comentario" Width="1.5" PointX="10.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.descripcion_producto" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.etapa_flujo" Width="1.5" PointX="10" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.flujo" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.forma_pago" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.rol" Width="1.5" PointX="9.375" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.tipo_industria" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.usuario" Width="1.75" PointX="12" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="HelixModel.FK__cliente__ciudad___48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="HelixModel.FK__cliente__descrip__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="HelixModel.FK__cliente__flujo_I__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="HelixModel.FK__cliente__forma_p__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="HelixModel.FK__cliente__tipo_in__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="HelixModel.rolusuario" />
+        <AssociationConnector Association="HelixModel.flujoetapa_flujo" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

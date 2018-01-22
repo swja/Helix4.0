@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helix2.0", "Helix2.0\Helix2.0.csproj", "{60A7672F-3DD2-42D3-B034-02A317258FAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60A7672F-3DD2-42D3-B034-02A317258FAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60A7672F-3DD2-42D3-B034-02A317258FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60A7672F-3DD2-42D3-B034-02A317258FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60A7672F-3DD2-42D3-B034-02A317258FAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB16CDDB-8475-4019-827A-6D91EDE09046}
+	EndGlobalSection
+EndGlobal
