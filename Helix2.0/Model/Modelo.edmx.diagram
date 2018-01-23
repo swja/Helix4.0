@@ -7,14 +7,14 @@
       <Diagram DiagramId="c0b3297ec7a1462fa17cdddb66944ec2" Name="Diagram1">
         <EntityTypeShape EntityType="HelixModel.ciudad" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="HelixModel.cliente" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HelixModel.comentario" Width="1.5" PointX="10.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.comentario" Width="1.5" PointX="3.375" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HelixModel.descripcion_producto" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HelixModel.etapa_flujo" Width="1.5" PointX="10" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HelixModel.flujo" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HelixModel.forma_pago" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="HelixModel.rol" Width="1.5" PointX="9.375" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="HelixModel.tipo_industria" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HelixModel.usuario" Width="1.75" PointX="12" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.usuario" Width="1.75" PointX="11.625" PointY="8.375" IsExpanded="true" />
         <AssociationConnector Association="HelixModel.FK__cliente__ciudad___48CFD27E" ManuallyRouted="false" />
         <AssociationConnector Association="HelixModel.FK__cliente__descrip__49C3F6B7" ManuallyRouted="false" />
         <AssociationConnector Association="HelixModel.FK__cliente__flujo_I__4AB81AF0" ManuallyRouted="false" />
