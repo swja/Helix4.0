@@ -41,10 +41,12 @@
               </asp:TemplateField>
           </Columns>
       </asp:GridView>
+         
       <br />
         <asp:SqlDataSource ID="Rol" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT helix.rol.* FROM helix.rol"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID, nombre, apellido, usuario, password, mail, telefono, cargo, rol_ID FROM helix.usuario"></asp:SqlDataSource>
       <asp:SqlDataSource ID="SqlDataSourceUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT helix.usuario.nombre AS Nombre, helix.usuario.apellido, helix.usuario.usuario, helix.usuario.password, helix.usuario.mail, helix.usuario.telefono, helix.usuario.cargo, helix.rol.rol FROM helix.rol INNER JOIN helix.usuario ON helix.rol.ID = helix.usuario.rol_ID"></asp:SqlDataSource>
+          <asp:SqlDataSource ID="SqlDataSourceFlujos" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID, nombre_Flujo FROM helix.flujo"></asp:SqlDataSource>
   </div>
   <div id="menu1" class="tab-pane fade">
     <h3 class="col-md-12 col-sm-12 col-xs-12 text-center">Listado de Usuarios</h3>
@@ -74,12 +76,30 @@
   </div>
   <div id="menu2" class="tab-pane fade">
         <h3 class="col-md-12 col-sm-12 col-xs-12 text-center">Listado de Flujos</h3>
-    <p>Some content in menu 2.</p>
+     <br />
+      <div class="row">
+           <h5 class="col-md-2 col-sm-2">Filtro Flujos</h5>
+           <asp:TextBox ID="TextBox3" runat="server" CssClass="col-md-3 col-sm-3"></asp:TextBox>
+      </div>
+      <div align="center">
+         <asp:GridView ID="GridView4" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSourceFlujos" Width="100%">
+              <Columns>
+                  <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
+                  <asp:BoundField DataField="nombre_Flujo" HeaderText="nombre_Flujo" SortExpression="nombre_Flujo" />
+                  <asp:TemplateField ShowHeader="False">
+                      <ItemTemplate>
+                          <asp:Button ID="Button1" runat="server" CausesValidation="false" CommandName="" Text="Seleccionar" />
+                      </ItemTemplate>
+                  </asp:TemplateField>
+              </Columns>
+          </asp:GridView>
+        </div>
   </div>
     <div id="menu3" class="tab-pane fade">
-        <h3 class="col-md-12 col-sm-12 col-xs-12 text-center">Reportes</h3>
-    <p>Algo de contenido</p>
-        <img alt="" src="../Images/image_thumb825.png" />
-  </div>
+        <h3 class="col-md-12 col-sm-12 col-xs-12 text-center">Reporte General</h3>
+            <div align="center">
+                <iframe width="100%" height="700" src="https://app.powerbi.com/view?r=eyJrIjoiYjllNmJjNDctNDE5NS00YjdlLWEwMzgtZTcyYjg5YjA4NjY3IiwidCI6Ijc1MGE4ZThiLWNlZDItNGU3Ni1iMmY3LTRhZTlhNTZkNjU1NyIsImMiOjR9" frameborder="1" allowFullScreen="true"></iframe>
+            </div>
+        </div>
 </div>
 </asp:Content>
