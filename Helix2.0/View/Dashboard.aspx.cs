@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Helix2._0
 {
@@ -30,12 +31,18 @@ namespace Helix2._0
             Panel1.Visible = true;
             txt_nombre.Text = GridView3.SelectedRow.Cells[2].Text;
         }
-
-        protected void busqueda(object sender)
+        protected void busqueda(object sender, EventArgs e)
         {
             using (SqlConnection conexion = MiClase.ObtenerConexion())
             {
+                string query = "select * from helix.usuario where nombre ='" + TextBox1.Text+"'";
+                SqlCommand cmd = new SqlCommand(query, conexion);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
+                GridView3.DataSource = dt;
+                GridView3.DataBind();
             }
         }
     }
