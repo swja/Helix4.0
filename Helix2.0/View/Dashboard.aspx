@@ -22,7 +22,7 @@
       <br />
       <div class="row">
       <h5 class="col-md-2 col-sm-2"> Texto de busqueda</h5>
-      <asp:TextBox ID="TextBox1" runat="server" CssClass="col-md-3 col-sm-3"></asp:TextBox>
+      <asp:TextBox ID="TextBox1" runat="server" CssClass="col-md-3 col-sm-3" OnTextChanged="busqueda"></asp:TextBox>
        <h5 class="col-md-2 col-sm-2"> Filtro de flujos</h5>
       <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="Rol" DataTextField="rol" DataValueField="ID" CssClass="col-md-3 col-sm-3">
         </asp:DropDownList>
@@ -47,6 +47,7 @@
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID, nombre, apellido, usuario, password, mail, telefono, cargo, rol_ID FROM helix.usuario"></asp:SqlDataSource>
       <asp:SqlDataSource ID="SqlDataSourceUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT helix.usuario.nombre AS Nombre, helix.usuario.apellido, helix.usuario.usuario, helix.usuario.password, helix.usuario.mail, helix.usuario.telefono, helix.usuario.cargo, helix.rol.rol FROM helix.rol INNER JOIN helix.usuario ON helix.rol.ID = helix.usuario.rol_ID"></asp:SqlDataSource>
           <asp:SqlDataSource ID="SqlDataSourceFlujos" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID, nombre_Flujo FROM helix.flujo"></asp:SqlDataSource>
+      <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT nombre, apellido, usuario, password, mail, telefono, cargo FROM helix.usuario WHERE (nombre = '@nombre') OR (apellido = '@apellido')"></asp:SqlDataSource>
   </div>
   <div id="menu1" class="tab-pane fade">
      <div class="row" style="text-align:  center;">
