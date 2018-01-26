@@ -27,9 +27,9 @@ namespace Helix2._0
 
         protected void paso_Parametros(object sender, EventArgs e)
         {
-            Label17.Visible = false;
-            Panel1.Visible = true;
-            txt_nombre.Text = GridView3.SelectedRow.Cells[2].Text;
+            //Label17.Visible = false;
+            //Panel1.Visible = true;
+            //txt_nombre.Text = GridView3.SelectedRow.Cells[2].Text;
         }
         protected void busqueda(object sender, EventArgs e)
         {
@@ -41,8 +41,13 @@ namespace Helix2._0
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                GridView3.DataSource = dt;
-                GridView3.DataBind();
+                GridView5.DataSource = dt;
+                GridView5.DataBind();
+                GridView3.Visible = false;
+                if(TextBox1.Text == "")
+                {
+                    GridView3.Visible = true;
+                }
             }
         }
     }
