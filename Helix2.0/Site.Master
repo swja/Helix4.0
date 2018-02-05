@@ -53,10 +53,15 @@
                     <a class="navbar-brand" runat="server" href="~/View/Dashboard">HELIX</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/View/Dashboard">Inicio</a></li>
-                        <li><a runat="server" href="~/View/About">Acerca de</a></li>
-                        <li><a runat="server" href="~/View/Contact">Contacto</a></li>
+                    <ul class="nav navbar-nav" id="menu">
+                        <li><a runat="server" href="~/View/Dashboard">Tickets</a></li>
+                        <li><a runat="server" href="~/View/About">Usuarios</a></li>
+                        <li><a runat="server" href="~/View/Contact">Flujos</a>
+                            <ul>
+                                <li><a runat="server" href="~/View/Contact">Estados</a></li>
+                            </ul>
+                        </li>
+                        <li><a runat="server" href="~/View/Contact">Reportes</a></li>
                     </ul>
                 </div>
             </div>
