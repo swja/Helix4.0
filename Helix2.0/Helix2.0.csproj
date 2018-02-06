@@ -51,6 +51,10 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EO.Web, Version=18.0.70.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Essential Objects\EO.Total 2018\EO.Web.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -172,12 +176,21 @@
     <Content Include="Content\assets\js\placeholder.js" />
     <Content Include="Content\assets\js\scripts.js" />
     <Content Include="Login.aspx" />
-    <Content Include="View\About.aspx" />
-    <Content Include="View\Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="View\Dashboard.aspx" />
+    <Content Include="View\Add\Agregar-estado.aspx" />
+    <Content Include="View\Add\Agregar-flujo.aspx" />
+    <Content Include="View\Add\Agregar-ticket.aspx" />
+    <Content Include="View\Add\Agregar-usuario.aspx" />
+    <Content Include="View\Edit\Editar-estado.aspx" />
+    <Content Include="View\Edit\Editar-flujo.aspx" />
+    <Content Include="View\Edit\Editar-ticket.aspx" />
+    <Content Include="View\Edit\Editar-usuario.aspx" />
+    <Content Include="View\Estados.aspx" />
+    <Content Include="View\Flujos.aspx" />
+    <Content Include="View\Reportes.aspx" />
+    <Content Include="View\Tickets.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -327,27 +340,90 @@
     <Compile Include="Model\usuario.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="View\About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="View\Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="View\Add\Agregar-estado.aspx.cs">
+      <DependentUpon>Agregar-estado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="View\Add\Agregar-estado.aspx.designer.cs">
+      <DependentUpon>Agregar-estado.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Dashboard.aspx.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
+    <Compile Include="View\Add\Agregar-flujo.aspx.cs">
+      <DependentUpon>Agregar-flujo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Dashboard.aspx.designer.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
+    <Compile Include="View\Add\Agregar-flujo.aspx.designer.cs">
+      <DependentUpon>Agregar-flujo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Add\Agregar-ticket.aspx.cs">
+      <DependentUpon>Agregar-ticket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Add\Agregar-ticket.aspx.designer.cs">
+      <DependentUpon>Agregar-ticket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Add\Agregar-usuario.aspx.cs">
+      <DependentUpon>Agregar-usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Add\Agregar-usuario.aspx.designer.cs">
+      <DependentUpon>Agregar-usuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Edit\Editar-estado.aspx.cs">
+      <DependentUpon>Editar-estado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Edit\Editar-estado.aspx.designer.cs">
+      <DependentUpon>Editar-estado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Edit\Editar-flujo.aspx.cs">
+      <DependentUpon>Editar-flujo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Edit\Editar-flujo.aspx.designer.cs">
+      <DependentUpon>Editar-flujo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Edit\Editar-ticket.aspx.cs">
+      <DependentUpon>Editar-ticket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Edit\Editar-ticket.aspx.designer.cs">
+      <DependentUpon>Editar-ticket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Edit\Editar-usuario.aspx.cs">
+      <DependentUpon>Editar-usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Edit\Editar-usuario.aspx.designer.cs">
+      <DependentUpon>Editar-usuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Estados.aspx.cs">
+      <DependentUpon>Estados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Estados.aspx.designer.cs">
+      <DependentUpon>Estados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Flujos.aspx.cs">
+      <DependentUpon>Flujos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Flujos.aspx.designer.cs">
+      <DependentUpon>Flujos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tickets.aspx.cs">
+      <DependentUpon>Tickets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Tickets.aspx.designer.cs">
+      <DependentUpon>Tickets.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

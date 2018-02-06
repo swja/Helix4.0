@@ -1,17 +1,7 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Helix2._0._Default" %>
+﻿<%@ Page Title="Tickets" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Tickets.aspx.cs" Inherits="Helix2._0._Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-    <p>
-        tabs</p>
-    <p>
-
-        <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#home">Tickets</a></li>
-  <li><a data-toggle="tab" href="#menu1">Usuarios</a></li>
-  <li><a data-toggle="tab" href="#menu2">Flujos</a></li>
-  <li><a data-toggle="tab" href="#menu3">Reportes</a></li>
-</ul>
-
+    
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
       <br />

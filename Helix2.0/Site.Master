@@ -50,22 +50,24 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/View/Dashboard">HELIX</a>
+                    <a class="navbar-brand" runat="server" href="~/View/Tickets">HELIX</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" id="menu">
-                        <li><a runat="server" href="~/View/Dashboard">Tickets</a></li>
-                        <li><a runat="server" href="~/View/About">Usuarios</a></li>
-                        <li><a runat="server" href="~/View/Contact">Flujos</a>
+                        <li><a runat="server" href="~/View/Tickets">Tickets</a></li>
+                        <li><a runat="server" href="~/View/Usuarios">Usuarios</a></li>
+                        <li><a runat="server" href="~/View/Flujos">Flujos</a>
                             <ul>
-                                <li><a runat="server" href="~/View/Contact">Estados</a></li>
+                                <li><a runat="server" href="~/View/Estados">Estados</a></li>
                             </ul>
                         </li>
-                        <li><a runat="server" href="~/View/Contact">Reportes</a></li>
+                        <li><a runat="server" href="~/View/Reportes">Reportes</a></li>
                     </ul>
                 </div>
             </div>
         </div>
+        <br />
+        <br />
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>

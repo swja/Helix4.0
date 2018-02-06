@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Helix2._0
+namespace Helix2._0.View
 {
-    public partial class Contact : Page
+    public partial class Flujos : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
