@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Agregar-estado.aspx.cs" Inherits="Helix2._0.View.Add.Agregar_estado" %>
+﻿<%@ Page Title="Agregar Estado" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Agregar-estado.aspx.cs" Inherits="Helix2._0.View.Add.Agregar_estado" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
             <br />
     <div class="row" style="text-align:  center;">

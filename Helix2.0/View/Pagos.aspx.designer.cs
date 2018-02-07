@@ -10,7 +10,7 @@
 namespace Helix2._0.View {
     
     
-    public partial class Estados {
+    public partial class Pagos {
         
         /// <summary>
         /// Control Label1.

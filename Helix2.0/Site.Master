@@ -56,6 +56,13 @@
                     <ul class="nav navbar-nav" id="menu">
                         <li><a runat="server" href="~/View/Tickets">Tickets</a></li>
                         <li><a runat="server" href="~/View/Usuarios">Usuarios</a></li>
+                        <li><a runat="server" href="~/View/Clientes">Clientes</a>
+                            <ul>
+                                <li><a runat="server" href="~/View/Ciudades">Ciudades</a></li>
+                                <li><a runat="server" href="~/View/Industrias">Tipo Industria</a></li>
+                                <li><a runat="server" href="~/View/Pagos">Formas de pago</a></li>
+                            </ul>
+                        </li>
                         <li><a runat="server" href="~/View/Flujos">Flujos</a>
                             <ul>
                                 <li><a runat="server" href="~/View/Estados">Estados</a></li>

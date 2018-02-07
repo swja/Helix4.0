@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Agregar-flujo.aspx.cs" Inherits="Helix2._0.View.Add.Agregar_Flujo" %>
+﻿<%@ Page Title="Agregar Flujo" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Agregar-flujo.aspx.cs" Inherits="Helix2._0.View.Add.Agregar_Flujo" %>
 <%@ Register assembly="EO.Web" namespace="EO.Web" tagprefix="eo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <br />

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Agregar-Usuario" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Agregar-usuario.aspx.cs" Inherits="Helix2._0.View.Add.Agregar_Usuario" %>
+﻿<%@ Page Title="Agregar Usuario" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Agregar-usuario.aspx.cs" Inherits="Helix2._0.View.Add.Agregar_Usuario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <br />
     <div class="row" style="text-align:  center;">

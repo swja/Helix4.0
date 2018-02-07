@@ -7,13 +7,11 @@
     
       <br />
       <div class="row">
-           <h5 class="col-md-2 col-sm-2 col-lg-3">Filtro de estados </h5>
-               <asp:TextBox ID="TextBox1" runat="server" CssClass="col-md-3 col-sm-3 col-lg-2"></asp:TextBox>
-            <h5 class="col-md-2 col-sm-2 col-lg-3">Filtro de estados por flujo </h5>
-          <asp:DropDownList ID="DropDownList1" runat="server" CssClass="col-md-3 col-sm-3 col-lg-2"></asp:DropDownList>
+           <h5 class="col-md-2 col-sm-2 col-lg-2">Filtro de estados </h5>
+               <asp:TextBox ID="TextBox1" runat="server" CssClass="col-md-2 col-sm-3 col-lg-2"></asp:TextBox>
+                <asp:Button ID="Button1" runat="server" CssClass="col-md-2 col-sm-2 col-lg-6" Text="Nuevo" style="left:40%; width: 11%;" />
       </div>
     <br />
-    <asp:Button ID="Button1" runat="server" CssClass="col-md-2 col-sm-2 col-lg-6" Text="Nuevo" style="left:1%; width: 11%;" />
       <br />
      <asp:GridView ID="GridView1" runat="server">
      </asp:GridView>

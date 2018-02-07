@@ -10,7 +10,7 @@
 namespace Helix2._0.View {
     
     
-    public partial class Estados {
+    public partial class Ciudades {
         
         /// <summary>
         /// Control Label1.

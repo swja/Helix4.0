@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Agregar-Ticket" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Agregar-ticket.aspx.cs" Inherits="Helix2._0.View.Add.Agregar_ticket" %>
+﻿<%@ Page Title="Agregar Ticket" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Agregar-ticket.aspx.cs" Inherits="Helix2._0.View.Add.Agregar_ticket" %>
 <%@ Register assembly="EO.Web" namespace="EO.Web" tagprefix="eo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <div class="row" style="text-align:  center;">

@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Helix2._0.View {
+namespace Helix2._0.View.Edit {
     
     
-    public partial class Estados {
+    public partial class Editar_pagos {
         
         /// <summary>
         /// Control Label1.
@@ -20,6 +20,15 @@ namespace Helix2._0.View {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// Control Label2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
         /// Control TextBox1.
@@ -40,12 +49,12 @@ namespace Helix2._0.View {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// Control GridView1.
+        /// Control Button2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Button Button2;
     }
 }
