@@ -860,6 +860,10 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+    top: -32px;
+    left: 27px;
+    height: 25px;
+    width: 688px;
 }
 
 .col-xs-1,
@@ -1407,10 +1411,11 @@ pre code {
 table {
   max-width: 100%;
   background-color: transparent;
+    margin-top: 0px;
 }
 
 th {
-  text-align: left;
+  text-align: center;
 }
 
 .table {
@@ -4276,6 +4281,65 @@ textarea.input-group-sm > .input-group-btn > .btn {
     float: left;
     margin: 0;
   }
+
+  /*CSS para el menu desplegable*/
+    ul#menu {
+        background: #222;
+        width: 80%;
+       padding-left:7%;
+    }
+
+        ul#menu li {
+            color: #fff;
+            float: left;
+            list-style: none;
+            margin: 0% 4%;
+        }
+
+            ul#menu li:hover {
+                color: #aaa073;
+                cursor: pointer;
+            }
+
+        ul#menu ul {
+            display: none;
+            position: absolute;
+            top: 49px;
+            background: #222;
+            color: #fff;
+            padding: 5px 0px 5px 5px;
+            margin: 0;
+            width:150%;
+        }
+
+            ul#menu ul li {
+                float: left;
+                color: #428bca;
+                width: 100%;
+                margin: 2% 0%;
+            }
+
+
+                ul#menu ul li a {
+                    color: #8f8f8f;
+                }
+
+                    ul#menu ul li a:hover {
+                        color: #ebebeb;
+                        cursor: pointer;
+                    }
+
+        ul#menu li:hover ul ul, ul#menu li:hover ul ul ul, ul#menu li.iehover ul ul, ul#menu li.iehover ul ul ul {
+            display: none;
+            cursor: pointer;
+        }
+
+        ul#menu li:hover ul, ul#menu ul li:hover ul, ul#menu ul ul li:hover ul, ul#menu li.iehover ul, ul#menu ul li.iehover ul, ul#menu ul ul li.iehover ul {
+            display: block;
+            cursor: pointer;
+        }
+
+  /*Fin CSS menu desplegable*/
   .navbar-nav > li {
     float: left;
   }

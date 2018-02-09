@@ -266,7 +266,7 @@
           <Property Name="etapa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="flujo_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="flujo" Relationship="HelixModel.flujoetapa_flujo" FromRole="etapa_flujo" ToRole="flujo" />
-          <Property Name="flujoID" Type="Int32" Nullable="false" />
+          <Property Name="flujoID" Nullable="false" Type="Int32" />
         </EntityType>
         <EntityType Name="flujo">
           <Key>
@@ -541,6 +541,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="rolusuario" TypeName="HelixModel.rolusuario" StoreEntitySet="rol">
+            <EndProperty Name="usuario">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="rol">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
