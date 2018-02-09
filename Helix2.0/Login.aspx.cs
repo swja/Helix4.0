@@ -39,6 +39,7 @@ namespace Helix2._0
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Bienvenido');", true);
                         perfil = Convert.ToString(Reader1.GetValue(1));
+                        Response.Redirect("/View/Tickets.aspx", true);
                     }
                 }
                 else

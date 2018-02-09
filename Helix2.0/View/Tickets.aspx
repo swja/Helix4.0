@@ -14,7 +14,7 @@
        <h5 class="col-md-2 col-sm-2"> Filtro de flujos</h5>
      <asp:DropDownList runat="server"></asp:DropDownList>
           </div>
-      <asp:GridView ID="GridView3" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ID,rol_ID" Width="100%" OnSelectedIndexChanged="paso_Parametros">
+      <asp:GridView ID="GridView3" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ID,rol_ID" Width="100%" OnSelectedIndexChanged="Paso_Parametros">
           <Columns>
               <asp:CommandField ShowSelectButton="True" />
               <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
