@@ -15,7 +15,7 @@ namespace Helix2._0
         {
 
         }
-        public class MiClase
+        public class Conexion
         {
             public static SqlConnection ObtenerConexion()
             {
@@ -25,7 +25,7 @@ namespace Helix2._0
 
         // ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Hola desde el grid');", true);
 
-        protected void paso_Parametros(object sender, EventArgs e)
+        protected void Paso_Parametros(object sender, EventArgs e)
         {
             //Label17.Visible = false;
             //Panel1.Visible = true;
@@ -33,7 +33,7 @@ namespace Helix2._0
         }
         protected void busqueda(object sender, EventArgs e)
         {
-            using (SqlConnection conexion = MiClase.ObtenerConexion())
+            using (SqlConnection conexion = Conexion.ObtenerConexion())
             {
                 string query = "select * from helix.usuario where nombre ='" + TextBox1.Text+"'";
                 SqlCommand cmd = new SqlCommand(query, conexion);

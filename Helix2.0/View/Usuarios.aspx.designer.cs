@@ -13,24 +13,6 @@ namespace Helix2._0.View {
     public partial class Usuarios {
         
         /// <summary>
-        /// Control Rol.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Rol;
-        
-        /// <summary>
-        /// Control SqlDataSourceUsuarios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUsuarios;
-        
-        /// <summary>
         /// Control Label1.
         /// </summary>
         /// <remarks>
