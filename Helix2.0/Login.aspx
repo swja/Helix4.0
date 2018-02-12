@@ -52,7 +52,9 @@
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Contraseña</label>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo obligatorio" ControlToValidate="txt_user">Campo obligatorio</asp:RequiredFieldValidator>
                                         <asp:TextBox ID="txt_pass" runat="server" name="form-password" placeholder="Contraseña..." class="form-password form-control" TextMode="Password"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo obligatorio" ControlToValidate="txt_pass">Campo obligatorio</asp:RequiredFieldValidator>
 			                        </div>
                                     <asp:button ID="button" runat="server" Text="Ingresar!" class="btn1" Width="100%" OnClick="button_Click" />
 			                    </form>

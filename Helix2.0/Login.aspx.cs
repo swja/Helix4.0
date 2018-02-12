@@ -13,10 +13,6 @@ namespace Helix2._0
     public partial class Login : System.Web.UI.Page
     {
         string password;
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
     public class Encriptar
         {
             public static string GetMD5(string str)
@@ -52,8 +48,6 @@ namespace Helix2._0
                     //getInt32 para obtener los valores numericos para comparacion y getValue para obtener el valor de la celda y no comparar
                     if (Reader1.GetInt32(0) == 1)
                     {
-                        //perfil = Convert.ToString(Reader1.GetValue(1));
-                        //nombres = Convert.ToString(Reader1.GetValue(2));
                         Session["Perfil"] = Convert.ToString(Reader1.GetValue(1));
                         Session["Nombres"] = Convert.ToString(Reader1.GetValue(2));
                         Response.Redirect("/View/Tickets.aspx", true);
@@ -61,7 +55,7 @@ namespace Helix2._0
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Incorrecto');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Alerta", "alert('Usuario o Contraseña incorrecto');", true);
                 }
                 conexion.Close();
             }
