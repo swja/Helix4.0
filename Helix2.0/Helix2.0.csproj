@@ -71,11 +71,29 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -179,6 +197,21 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Model\Helix.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Helix.edmx</DependentUpon>
+      <LastGenOutput>Helix.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Helix.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Helix.edmx</DependentUpon>
+      <LastGenOutput>Helix.cs</LastGenOutput>
+    </Content>
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="View\Add\Agregar-ciudad.aspx" />
     <Content Include="View\Add\Agregar-cliente.aspx" />
     <Content Include="View\Add\Agregar-estado.aspx" />
@@ -211,13 +244,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Model\Modelo.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Modelo.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model\Modelo.edmx.diagram">
-      <DependentUpon>Modelo.edmx</DependentUpon>
     </Content>
     <Content Include="Content\assets\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="Content\assets\bootstrap\css\bootstrap.css.map" />
@@ -256,17 +282,14 @@
     <Content Include="Content\assets\font-awesome\scss\_rotated-flipped.scss" />
     <Content Include="Content\assets\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\assets\font-awesome\scss\_variables.scss" />
+    <EntityDeploy Include="Model\Helix.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Helix.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\Helix.edmx.diagram">
+      <DependentUpon>Helix.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Model\Modelo.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Modelo.Context.cs</LastGenOutput>
-      <DependentUpon>Modelo.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model\Modelo.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Modelo.edmx</DependentUpon>
-      <LastGenOutput>Modelo.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -305,16 +328,16 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controller\ciudadController.cs" />
-    <Compile Include="Controller\clienteController.cs" />
-    <Compile Include="Controller\comentarioController.cs" />
-    <Compile Include="Controller\descripcion_productoController.cs" />
-    <Compile Include="Controller\etapa_flujoController.cs" />
-    <Compile Include="Controller\flujoController.cs" />
-    <Compile Include="Controller\forma_pagoController.cs" />
-    <Compile Include="Controller\rolController.cs" />
-    <Compile Include="Controller\tipo_industriaController.cs" />
-    <Compile Include="Controller\usuarioController.cs" />
+    <Compile Include="Controller\HELIX_CIUDAD_Controller.cs" />
+    <Compile Include="Controller\HELIX_CLIENTE_Controller.cs" />
+    <Compile Include="Controller\HELIX_COMENTARIO_Controller.cs" />
+    <Compile Include="Controller\HELIX_ETAPA_FLUJO_Controller.cs" />
+    <Compile Include="Controller\HELIX_FLUJO_Controller.cs" />
+    <Compile Include="Controller\HELIX_FORMA_PAGO_Controller.cs" />
+    <Compile Include="Controller\HELIX_ROL_Controller.cs" />
+    <Compile Include="Controller\HELIX_TICKET_Controller.cs" />
+    <Compile Include="Controller\HELIX_TIPO_INDUSTRIA_Controller.cs" />
+    <Compile Include="Controller\HELIX_USUARIO_Controller.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -322,37 +345,52 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Model\ciudad.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\cliente.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\comentario.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\descripcion_producto.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\etapa_flujo.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\flujo.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\forma_pago.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\rol.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\tipo_industria.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\usuario.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Model\Helix.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Helix.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Helix.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Helix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Helix.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Helix.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HELIX_CIUDAD.cs">
+      <DependentUpon>Helix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HELIX_CLIENTE.cs">
+      <DependentUpon>Helix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HELIX_COMENTARIO.cs">
+      <DependentUpon>Helix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HELIX_ETAPA_FLUJO.cs">
+      <DependentUpon>Helix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HELIX_FLUJO.cs">
+      <DependentUpon>Helix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HELIX_FORMA_PAGO.cs">
+      <DependentUpon>Helix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HELIX_ROL.cs">
+      <DependentUpon>Helix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HELIX_TICKET.cs">
+      <DependentUpon>Helix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HELIX_TIPO_INDUSTRIA.cs">
+      <DependentUpon>Helix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HELIX_USUARIO.cs">
+      <DependentUpon>Helix.tt</DependentUpon>
+    </Compile>
     <Compile Include="View\Add\Agregar-ciudad.aspx.cs">
       <DependentUpon>Agregar-ciudad.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -524,21 +562,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Model\Modelo.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Modelo.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Modelo.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Modelo.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Modelo.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -571,6 +594,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

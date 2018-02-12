@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9178abe369474edba3e2b0de2d3afd1a" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="HelixModel.HELIX_CIUDAD" Width="1.5" PointX="14" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.HELIX_CLIENTE" Width="1.5" PointX="11.125" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.HELIX_COMENTARIO" Width="1.5" PointX="7.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.HELIX_ETAPA_FLUJO" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.HELIX_FLUJO" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.HELIX_FORMA_PAGO" Width="1.5" PointX="6.875" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.HELIX_ROL" Width="1.5" PointX="4.625" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.HELIX_TICKET" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.HELIX_TIPO_INDUSTRIA" Width="1.5" PointX="13.875" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelixModel.HELIX_USUARIO" Width="1.5" PointX="6.875" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="HelixModel.FK_HELIX_CL_RELATIONS_HELIX_CI" ManuallyRouted="false" />
+        <AssociationConnector Association="HelixModel.FK_HELIX_CL_RELATIONS_HELIX_TI" ManuallyRouted="false" />
+        <AssociationConnector Association="HelixModel.FK_HELIX_TI_RELATIONS_HELIX_CL" ManuallyRouted="false" />
+        <AssociationConnector Association="HelixModel.FK_HELIX_CO_RELATIONS_HELIX_TI" ManuallyRouted="false" />
+        <AssociationConnector Association="HelixModel.FK_HELIX_ET_RELATIONS_HELIX_FL" ManuallyRouted="false" />
+        <AssociationConnector Association="HelixModel.FK_HELIX_TI_RELATIONS_HELIX_ET" ManuallyRouted="false" />
+        <AssociationConnector Association="HelixModel.FK_HELIX_TI_RELATIONS_HELIX_FL" ManuallyRouted="false" />
+        <AssociationConnector Association="HelixModel.FK_HELIX_TI_RELATIONS_HELIX_FO" ManuallyRouted="false" />
+        <AssociationConnector Association="HelixModel.FK_HELIX_US_REFERENCE_HELIX_RO" ManuallyRouted="false" />
+        <AssociationConnector Association="HelixModel.FK_HELIX_TI_RELATIONS_HELIX_US" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

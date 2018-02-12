@@ -12,44 +12,44 @@ using Helix2._0.Model;
 
 namespace Helix2._0.Controller
 {
-    public class rolController : ApiController
+    public class HELIX_FLUJO_Controller : ApiController
     {
         private HelixEntities db = new HelixEntities();
 
-        // GET: api/rol
-        public IQueryable<rol> Getrol()
+        // GET: api/HELIX_FLUJO_
+        public IQueryable<HELIX_FLUJO> GetHELIX_FLUJO()
         {
-            return db.rol;
+            return db.HELIX_FLUJO;
         }
 
-        // GET: api/rol/5
-        [ResponseType(typeof(rol))]
-        public IHttpActionResult Getrol(int id)
+        // GET: api/HELIX_FLUJO_/5
+        [ResponseType(typeof(HELIX_FLUJO))]
+        public IHttpActionResult GetHELIX_FLUJO(int id)
         {
-            rol rol = db.rol.Find(id);
-            if (rol == null)
+            HELIX_FLUJO hELIX_FLUJO = db.HELIX_FLUJO.Find(id);
+            if (hELIX_FLUJO == null)
             {
                 return NotFound();
             }
 
-            return Ok(rol);
+            return Ok(hELIX_FLUJO);
         }
 
-        // PUT: api/rol/5
+        // PUT: api/HELIX_FLUJO_/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult Putrol(int id, rol rol)
+        public IHttpActionResult PutHELIX_FLUJO(int id, HELIX_FLUJO hELIX_FLUJO)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != rol.ID)
+            if (id != hELIX_FLUJO.ID_FLUJO)
             {
                 return BadRequest();
             }
 
-            db.Entry(rol).State = EntityState.Modified;
+            db.Entry(hELIX_FLUJO).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace Helix2._0.Controller
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!rolExists(id))
+                if (!HELIX_FLUJOExists(id))
                 {
                     return NotFound();
                 }
@@ -70,50 +70,35 @@ namespace Helix2._0.Controller
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/rol
-        [ResponseType(typeof(rol))]
-        public IHttpActionResult Postrol(rol rol)
+        // POST: api/HELIX_FLUJO_
+        [ResponseType(typeof(HELIX_FLUJO))]
+        public IHttpActionResult PostHELIX_FLUJO(HELIX_FLUJO hELIX_FLUJO)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.rol.Add(rol);
+            db.HELIX_FLUJO.Add(hELIX_FLUJO);
+            db.SaveChanges();
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (rolExists(rol.ID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = rol.ID }, rol);
+            return CreatedAtRoute("DefaultApi", new { id = hELIX_FLUJO.ID_FLUJO }, hELIX_FLUJO);
         }
 
-        // DELETE: api/rol/5
-        [ResponseType(typeof(rol))]
-        public IHttpActionResult Deleterol(int id)
+        // DELETE: api/HELIX_FLUJO_/5
+        [ResponseType(typeof(HELIX_FLUJO))]
+        public IHttpActionResult DeleteHELIX_FLUJO(int id)
         {
-            rol rol = db.rol.Find(id);
-            if (rol == null)
+            HELIX_FLUJO hELIX_FLUJO = db.HELIX_FLUJO.Find(id);
+            if (hELIX_FLUJO == null)
             {
                 return NotFound();
             }
 
-            db.rol.Remove(rol);
+            db.HELIX_FLUJO.Remove(hELIX_FLUJO);
             db.SaveChanges();
 
-            return Ok(rol);
+            return Ok(hELIX_FLUJO);
         }
 
         protected override void Dispose(bool disposing)
@@ -125,9 +110,9 @@ namespace Helix2._0.Controller
             base.Dispose(disposing);
         }
 
-        private bool rolExists(int id)
+        private bool HELIX_FLUJOExists(int id)
         {
-            return db.rol.Count(e => e.ID == id) > 0;
+            return db.HELIX_FLUJO.Count(e => e.ID_FLUJO == id) > 0;
         }
     }
 }

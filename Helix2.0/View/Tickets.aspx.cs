@@ -43,10 +43,10 @@ namespace Helix2._0
 
                 GridView5.DataSource = dt;
                 GridView5.DataBind();
-                GridView3.Visible = false;
+               // GridView3.Visible = false;
                 if(TextBox1.Text == "")
                 {
-                    GridView3.Visible = true;
+                //    GridView3.Visible = true;
                 }
             }
         }

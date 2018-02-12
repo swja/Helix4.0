@@ -12,44 +12,44 @@ using Helix2._0.Model;
 
 namespace Helix2._0.Controller
 {
-    public class forma_pagoController : ApiController
+    public class HELIX_COMENTARIO_Controller : ApiController
     {
         private HelixEntities db = new HelixEntities();
 
-        // GET: api/forma_pago
-        public IQueryable<forma_pago> Getforma_pago()
+        // GET: api/HELIX_COMENTARIO_
+        public IQueryable<HELIX_COMENTARIO> GetHELIX_COMENTARIO()
         {
-            return db.forma_pago;
+            return db.HELIX_COMENTARIO;
         }
 
-        // GET: api/forma_pago/5
-        [ResponseType(typeof(forma_pago))]
-        public IHttpActionResult Getforma_pago(int id)
+        // GET: api/HELIX_COMENTARIO_/5
+        [ResponseType(typeof(HELIX_COMENTARIO))]
+        public IHttpActionResult GetHELIX_COMENTARIO(int id)
         {
-            forma_pago forma_pago = db.forma_pago.Find(id);
-            if (forma_pago == null)
+            HELIX_COMENTARIO hELIX_COMENTARIO = db.HELIX_COMENTARIO.Find(id);
+            if (hELIX_COMENTARIO == null)
             {
                 return NotFound();
             }
 
-            return Ok(forma_pago);
+            return Ok(hELIX_COMENTARIO);
         }
 
-        // PUT: api/forma_pago/5
+        // PUT: api/HELIX_COMENTARIO_/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult Putforma_pago(int id, forma_pago forma_pago)
+        public IHttpActionResult PutHELIX_COMENTARIO(int id, HELIX_COMENTARIO hELIX_COMENTARIO)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != forma_pago.ID)
+            if (id != hELIX_COMENTARIO.ID_USUARIO)
             {
                 return BadRequest();
             }
 
-            db.Entry(forma_pago).State = EntityState.Modified;
+            db.Entry(hELIX_COMENTARIO).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace Helix2._0.Controller
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!forma_pagoExists(id))
+                if (!HELIX_COMENTARIOExists(id))
                 {
                     return NotFound();
                 }
@@ -70,16 +70,16 @@ namespace Helix2._0.Controller
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/forma_pago
-        [ResponseType(typeof(forma_pago))]
-        public IHttpActionResult Postforma_pago(forma_pago forma_pago)
+        // POST: api/HELIX_COMENTARIO_
+        [ResponseType(typeof(HELIX_COMENTARIO))]
+        public IHttpActionResult PostHELIX_COMENTARIO(HELIX_COMENTARIO hELIX_COMENTARIO)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.forma_pago.Add(forma_pago);
+            db.HELIX_COMENTARIO.Add(hELIX_COMENTARIO);
 
             try
             {
@@ -87,7 +87,7 @@ namespace Helix2._0.Controller
             }
             catch (DbUpdateException)
             {
-                if (forma_pagoExists(forma_pago.ID))
+                if (HELIX_COMENTARIOExists(hELIX_COMENTARIO.ID_USUARIO))
                 {
                     return Conflict();
                 }
@@ -97,23 +97,23 @@ namespace Helix2._0.Controller
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = forma_pago.ID }, forma_pago);
+            return CreatedAtRoute("DefaultApi", new { id = hELIX_COMENTARIO.ID_USUARIO }, hELIX_COMENTARIO);
         }
 
-        // DELETE: api/forma_pago/5
-        [ResponseType(typeof(forma_pago))]
-        public IHttpActionResult Deleteforma_pago(int id)
+        // DELETE: api/HELIX_COMENTARIO_/5
+        [ResponseType(typeof(HELIX_COMENTARIO))]
+        public IHttpActionResult DeleteHELIX_COMENTARIO(int id)
         {
-            forma_pago forma_pago = db.forma_pago.Find(id);
-            if (forma_pago == null)
+            HELIX_COMENTARIO hELIX_COMENTARIO = db.HELIX_COMENTARIO.Find(id);
+            if (hELIX_COMENTARIO == null)
             {
                 return NotFound();
             }
 
-            db.forma_pago.Remove(forma_pago);
+            db.HELIX_COMENTARIO.Remove(hELIX_COMENTARIO);
             db.SaveChanges();
 
-            return Ok(forma_pago);
+            return Ok(hELIX_COMENTARIO);
         }
 
         protected override void Dispose(bool disposing)
@@ -125,9 +125,9 @@ namespace Helix2._0.Controller
             base.Dispose(disposing);
         }
 
-        private bool forma_pagoExists(int id)
+        private bool HELIX_COMENTARIOExists(int id)
         {
-            return db.forma_pago.Count(e => e.ID == id) > 0;
+            return db.HELIX_COMENTARIO.Count(e => e.ID_USUARIO == id) > 0;
         }
     }
 }

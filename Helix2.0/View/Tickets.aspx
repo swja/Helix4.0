@@ -12,27 +12,25 @@
       <h5 class="col-md-2 col-sm-2"> Texto de busqueda</h5>
       <asp:TextBox ID="TextBox1" runat="server" CssClass="col-md-3 col-sm-3" OnTextChanged="busqueda" AutoPostBack="True"></asp:TextBox>
        <h5 class="col-md-2 col-sm-2"> Filtro de flujos</h5>
-     <asp:DropDownList runat="server"></asp:DropDownList>
+     <asp:DropDownList runat="server"  CssClass="col-md-3 col-sm-3"></asp:DropDownList>
           </div>
-      <asp:GridView ID="GridView3" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ID,rol_ID" Width="100%" OnSelectedIndexChanged="Paso_Parametros">
-          <Columns>
-              <asp:CommandField ShowSelectButton="True" />
-              <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
-              <asp:BoundField DataField="nombre" HeaderText="nombre" SortExpression="nombre" />
-              <asp:BoundField DataField="apellido" HeaderText="apellido" SortExpression="apellido" />
-              <asp:BoundField DataField="usuario" HeaderText="usuario" SortExpression="usuario" />
-              <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" />
-              <asp:BoundField DataField="mail" HeaderText="mail" SortExpression="mail" />
-              <asp:BoundField DataField="telefono" HeaderText="telefono" SortExpression="telefono" />
-              <asp:BoundField DataField="cargo" HeaderText="cargo" SortExpression="cargo" />
-              <asp:BoundField DataField="rol_ID" HeaderText="rol_ID" ReadOnly="True" SortExpression="rol_ID" />
-          </Columns>
-      </asp:GridView>
-         
       <br />
        
-        <asp:GridView ID="GridView5" runat="server">
+        <asp:GridView ID="GridView5" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_CLIENTE,ID_USUARIO,ID_TICKET" DataSourceID="Ticket">
+            <Columns>
+                <asp:BoundField DataField="ID_CLIENTE" HeaderText="ID_CLIENTE" ReadOnly="True" SortExpression="ID_CLIENTE" />
+                <asp:BoundField DataField="ID_USUARIO" HeaderText="ID_USUARIO" ReadOnly="True" SortExpression="ID_USUARIO" />
+                <asp:BoundField DataField="ID_TICKET" HeaderText="ID_TICKET" InsertVisible="False" ReadOnly="True" SortExpression="ID_TICKET" />
+                <asp:BoundField DataField="ID_FLUJO" HeaderText="ID_FLUJO" SortExpression="ID_FLUJO" />
+                <asp:BoundField DataField="ID_FORMAPAGO" HeaderText="ID_FORMAPAGO" SortExpression="ID_FORMAPAGO" />
+                <asp:BoundField DataField="ID_ETAPAFLUJO" HeaderText="ID_ETAPAFLUJO" SortExpression="ID_ETAPAFLUJO" />
+                <asp:BoundField DataField="NOMBRE_TICKET" HeaderText="NOMBRE_TICKET" SortExpression="NOMBRE_TICKET" />
+                <asp:BoundField DataField="DESCRIPCION_TICKET" HeaderText="DESCRIPCION_TICKET" SortExpression="DESCRIPCION_TICKET" />
+                <asp:BoundField DataField="FECHA_ENTREGA" HeaderText="FECHA_ENTREGA" SortExpression="FECHA_ENTREGA" />
+                <asp:BoundField DataField="FECHA_FACTURA" HeaderText="FECHA_FACTURA" SortExpression="FECHA_FACTURA" />
+            </Columns>
       </asp:GridView>
-          </div>
+  
+      <asp:SqlDataSource ID="Ticket" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT HELIX_TICKET.* FROM HELIX_TICKET"></asp:SqlDataSource>
   
 </asp:Content>

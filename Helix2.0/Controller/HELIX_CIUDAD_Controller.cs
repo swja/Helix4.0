@@ -12,44 +12,44 @@ using Helix2._0.Model;
 
 namespace Helix2._0.Controller
 {
-    public class flujoController : ApiController
+    public class HELIX_CIUDAD_Controller : ApiController
     {
         private HelixEntities db = new HelixEntities();
 
-        // GET: api/flujo
-        public IQueryable<flujo> Getflujo()
+        // GET: api/HELIX_CIUDAD_
+        public IQueryable<HELIX_CIUDAD> GetHELIX_CIUDAD()
         {
-            return db.flujo;
+            return db.HELIX_CIUDAD;
         }
 
-        // GET: api/flujo/5
-        [ResponseType(typeof(flujo))]
-        public IHttpActionResult Getflujo(int id)
+        // GET: api/HELIX_CIUDAD_/5
+        [ResponseType(typeof(HELIX_CIUDAD))]
+        public IHttpActionResult GetHELIX_CIUDAD(int id)
         {
-            flujo flujo = db.flujo.Find(id);
-            if (flujo == null)
+            HELIX_CIUDAD hELIX_CIUDAD = db.HELIX_CIUDAD.Find(id);
+            if (hELIX_CIUDAD == null)
             {
                 return NotFound();
             }
 
-            return Ok(flujo);
+            return Ok(hELIX_CIUDAD);
         }
 
-        // PUT: api/flujo/5
+        // PUT: api/HELIX_CIUDAD_/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult Putflujo(int id, flujo flujo)
+        public IHttpActionResult PutHELIX_CIUDAD(int id, HELIX_CIUDAD hELIX_CIUDAD)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != flujo.ID)
+            if (id != hELIX_CIUDAD.ID_CIUDAD)
             {
                 return BadRequest();
             }
 
-            db.Entry(flujo).State = EntityState.Modified;
+            db.Entry(hELIX_CIUDAD).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace Helix2._0.Controller
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!flujoExists(id))
+                if (!HELIX_CIUDADExists(id))
                 {
                     return NotFound();
                 }
@@ -70,50 +70,35 @@ namespace Helix2._0.Controller
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/flujo
-        [ResponseType(typeof(flujo))]
-        public IHttpActionResult Postflujo(flujo flujo)
+        // POST: api/HELIX_CIUDAD_
+        [ResponseType(typeof(HELIX_CIUDAD))]
+        public IHttpActionResult PostHELIX_CIUDAD(HELIX_CIUDAD hELIX_CIUDAD)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.flujo.Add(flujo);
+            db.HELIX_CIUDAD.Add(hELIX_CIUDAD);
+            db.SaveChanges();
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (flujoExists(flujo.ID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = flujo.ID }, flujo);
+            return CreatedAtRoute("DefaultApi", new { id = hELIX_CIUDAD.ID_CIUDAD }, hELIX_CIUDAD);
         }
 
-        // DELETE: api/flujo/5
-        [ResponseType(typeof(flujo))]
-        public IHttpActionResult Deleteflujo(int id)
+        // DELETE: api/HELIX_CIUDAD_/5
+        [ResponseType(typeof(HELIX_CIUDAD))]
+        public IHttpActionResult DeleteHELIX_CIUDAD(int id)
         {
-            flujo flujo = db.flujo.Find(id);
-            if (flujo == null)
+            HELIX_CIUDAD hELIX_CIUDAD = db.HELIX_CIUDAD.Find(id);
+            if (hELIX_CIUDAD == null)
             {
                 return NotFound();
             }
 
-            db.flujo.Remove(flujo);
+            db.HELIX_CIUDAD.Remove(hELIX_CIUDAD);
             db.SaveChanges();
 
-            return Ok(flujo);
+            return Ok(hELIX_CIUDAD);
         }
 
         protected override void Dispose(bool disposing)
@@ -125,9 +110,9 @@ namespace Helix2._0.Controller
             base.Dispose(disposing);
         }
 
-        private bool flujoExists(int id)
+        private bool HELIX_CIUDADExists(int id)
         {
-            return db.flujo.Count(e => e.ID == id) > 0;
+            return db.HELIX_CIUDAD.Count(e => e.ID_CIUDAD == id) > 0;
         }
     }
 }

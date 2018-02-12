@@ -18,6 +18,7 @@
      <!-- CSS -->
     <link href="Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="Content/Site.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form runat="server">
@@ -70,6 +71,11 @@
                         </li>
                         <li><a runat="server" href="~/View/Reportes">Reportes</a></li>
                     </ul>
+                    <div class="datos">
+                        <asp:Label ID="Nombre" runat="server" Text="Label"></asp:Label>
+                        <br />
+                        <asp:Label ID="Perfil" runat="server" Text="Label"></asp:Label>
+                    </div>
                 </div>
             </div>
         </div>

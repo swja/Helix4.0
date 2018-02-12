@@ -12,44 +12,44 @@ using Helix2._0.Model;
 
 namespace Helix2._0.Controller
 {
-    public class descripcion_productoController : ApiController
+    public class HELIX_TICKET_Controller : ApiController
     {
         private HelixEntities db = new HelixEntities();
 
-        // GET: api/descripcion_producto
-        public IQueryable<descripcion_producto> Getdescripcion_producto()
+        // GET: api/HELIX_TICKET_
+        public IQueryable<HELIX_TICKET> GetHELIX_TICKET()
         {
-            return db.descripcion_producto;
+            return db.HELIX_TICKET;
         }
 
-        // GET: api/descripcion_producto/5
-        [ResponseType(typeof(descripcion_producto))]
-        public IHttpActionResult Getdescripcion_producto(int id)
+        // GET: api/HELIX_TICKET_/5
+        [ResponseType(typeof(HELIX_TICKET))]
+        public IHttpActionResult GetHELIX_TICKET(int id)
         {
-            descripcion_producto descripcion_producto = db.descripcion_producto.Find(id);
-            if (descripcion_producto == null)
+            HELIX_TICKET hELIX_TICKET = db.HELIX_TICKET.Find(id);
+            if (hELIX_TICKET == null)
             {
                 return NotFound();
             }
 
-            return Ok(descripcion_producto);
+            return Ok(hELIX_TICKET);
         }
 
-        // PUT: api/descripcion_producto/5
+        // PUT: api/HELIX_TICKET_/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult Putdescripcion_producto(int id, descripcion_producto descripcion_producto)
+        public IHttpActionResult PutHELIX_TICKET(int id, HELIX_TICKET hELIX_TICKET)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != descripcion_producto.ID)
+            if (id != hELIX_TICKET.ID_CLIENTE)
             {
                 return BadRequest();
             }
 
-            db.Entry(descripcion_producto).State = EntityState.Modified;
+            db.Entry(hELIX_TICKET).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace Helix2._0.Controller
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!descripcion_productoExists(id))
+                if (!HELIX_TICKETExists(id))
                 {
                     return NotFound();
                 }
@@ -70,16 +70,16 @@ namespace Helix2._0.Controller
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/descripcion_producto
-        [ResponseType(typeof(descripcion_producto))]
-        public IHttpActionResult Postdescripcion_producto(descripcion_producto descripcion_producto)
+        // POST: api/HELIX_TICKET_
+        [ResponseType(typeof(HELIX_TICKET))]
+        public IHttpActionResult PostHELIX_TICKET(HELIX_TICKET hELIX_TICKET)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.descripcion_producto.Add(descripcion_producto);
+            db.HELIX_TICKET.Add(hELIX_TICKET);
 
             try
             {
@@ -87,7 +87,7 @@ namespace Helix2._0.Controller
             }
             catch (DbUpdateException)
             {
-                if (descripcion_productoExists(descripcion_producto.ID))
+                if (HELIX_TICKETExists(hELIX_TICKET.ID_CLIENTE))
                 {
                     return Conflict();
                 }
@@ -97,23 +97,23 @@ namespace Helix2._0.Controller
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = descripcion_producto.ID }, descripcion_producto);
+            return CreatedAtRoute("DefaultApi", new { id = hELIX_TICKET.ID_CLIENTE }, hELIX_TICKET);
         }
 
-        // DELETE: api/descripcion_producto/5
-        [ResponseType(typeof(descripcion_producto))]
-        public IHttpActionResult Deletedescripcion_producto(int id)
+        // DELETE: api/HELIX_TICKET_/5
+        [ResponseType(typeof(HELIX_TICKET))]
+        public IHttpActionResult DeleteHELIX_TICKET(int id)
         {
-            descripcion_producto descripcion_producto = db.descripcion_producto.Find(id);
-            if (descripcion_producto == null)
+            HELIX_TICKET hELIX_TICKET = db.HELIX_TICKET.Find(id);
+            if (hELIX_TICKET == null)
             {
                 return NotFound();
             }
 
-            db.descripcion_producto.Remove(descripcion_producto);
+            db.HELIX_TICKET.Remove(hELIX_TICKET);
             db.SaveChanges();
 
-            return Ok(descripcion_producto);
+            return Ok(hELIX_TICKET);
         }
 
         protected override void Dispose(bool disposing)
@@ -125,9 +125,9 @@ namespace Helix2._0.Controller
             base.Dispose(disposing);
         }
 
-        private bool descripcion_productoExists(int id)
+        private bool HELIX_TICKETExists(int id)
         {
-            return db.descripcion_producto.Count(e => e.ID == id) > 0;
+            return db.HELIX_TICKET.Count(e => e.ID_CLIENTE == id) > 0;
         }
     }
 }

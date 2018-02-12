@@ -1,0 +1,724 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HelixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="HELIX_CIUDAD">
+          <Key>
+            <PropertyRef Name="ID_CIUDAD" />
+          </Key>
+          <Property Name="ID_CIUDAD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CIUDAD" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="HELIX_CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CIUDAD" Type="int" />
+          <Property Name="ID_TIPOINDUSTRIA" Type="int" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="45" />
+          <Property Name="APELLIDO" Type="varchar" MaxLength="45" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="100" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="13" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="HELIX_COMENTARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="ID_TICKET" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="int" />
+          <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+          <Property Name="ID_TICKET" Type="int" Nullable="false" />
+          <Property Name="ID_COMENTARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COMENTARIO" Type="varchar" MaxLength="200" />
+          <Property Name="FECHA_COMENTARIO" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HELIX_ETAPA_FLUJO">
+          <Key>
+            <PropertyRef Name="ID_ETAPAFLUJO" />
+          </Key>
+          <Property Name="ID_ETAPAFLUJO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_FLUJO" Type="int" />
+          <Property Name="DESCRIPCION_ETAPA" Type="varchar" MaxLength="50" />
+          <Property Name="NOMBRE_ETAPA" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HELIX_FLUJO">
+          <Key>
+            <PropertyRef Name="ID_FLUJO" />
+          </Key>
+          <Property Name="ID_FLUJO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPCION_FLUJO" Type="varchar" MaxLength="50" />
+          <Property Name="NOMBRE_FLUJO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HELIX_FORMA_PAGO">
+          <Key>
+            <PropertyRef Name="ID_FORMAPAGO" />
+          </Key>
+          <Property Name="ID_FORMAPAGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FORMA_PAGO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HELIX_ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROL" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="HELIX_TICKET">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="ID_TICKET" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="int" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+          <Property Name="ID_TICKET" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_FLUJO" Type="int" />
+          <Property Name="ID_FORMAPAGO" Type="int" />
+          <Property Name="ID_ETAPAFLUJO" Type="int" />
+          <Property Name="NOMBRE_TICKET" Type="varchar" MaxLength="100" />
+          <Property Name="DESCRIPCION_TICKET" Type="varchar" MaxLength="300" />
+          <Property Name="FECHA_ENTREGA" Type="datetime" />
+          <Property Name="FECHA_FACTURA" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HELIX_TIPO_INDUSTRIA">
+          <Key>
+            <PropertyRef Name="ID_TIPOINDUSTRIA" />
+          </Key>
+          <Property Name="ID_TIPOINDUSTRIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIPO_INDUSTRIA" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="HELIX_USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ROL" Type="int" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="45" />
+          <Property Name="APELLIDO" Type="varchar" MaxLength="45" />
+          <Property Name="NOMBRE_USUARIO" Type="varchar" MaxLength="45" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="45" />
+          <Property Name="MAIL" Type="varchar" MaxLength="45" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="13" />
+          <Property Name="CARGO" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <Association Name="FK_HELIX_CL_RELATIONS_HELIX_CI">
+          <End Role="HELIX_CIUDAD" Type="Self.HELIX_CIUDAD" Multiplicity="0..1" />
+          <End Role="HELIX_CLIENTE" Type="Self.HELIX_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_CIUDAD">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Principal>
+            <Dependent Role="HELIX_CLIENTE">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_CL_RELATIONS_HELIX_TI">
+          <End Role="HELIX_TIPO_INDUSTRIA" Type="Self.HELIX_TIPO_INDUSTRIA" Multiplicity="0..1" />
+          <End Role="HELIX_CLIENTE" Type="Self.HELIX_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_TIPO_INDUSTRIA">
+              <PropertyRef Name="ID_TIPOINDUSTRIA" />
+            </Principal>
+            <Dependent Role="HELIX_CLIENTE">
+              <PropertyRef Name="ID_TIPOINDUSTRIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_CO_RELATIONS_HELIX_TI">
+          <End Role="HELIX_TICKET" Type="Self.HELIX_TICKET" Multiplicity="0..1" />
+          <End Role="HELIX_COMENTARIO" Type="Self.HELIX_COMENTARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_TICKET">
+              <PropertyRef Name="ID_CLIENTE" />
+              <PropertyRef Name="ID_USUARIO" />
+              <PropertyRef Name="ID_TICKET" />
+            </Principal>
+            <Dependent Role="HELIX_COMENTARIO">
+              <PropertyRef Name="ID_CLIENTE" />
+              <PropertyRef Name="ID_USUARIO" />
+              <PropertyRef Name="ID_TICKET" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_ET_RELATIONS_HELIX_FL">
+          <End Role="HELIX_FLUJO" Type="Self.HELIX_FLUJO" Multiplicity="0..1" />
+          <End Role="HELIX_ETAPA_FLUJO" Type="Self.HELIX_ETAPA_FLUJO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_FLUJO">
+              <PropertyRef Name="ID_FLUJO" />
+            </Principal>
+            <Dependent Role="HELIX_ETAPA_FLUJO">
+              <PropertyRef Name="ID_FLUJO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_TI_RELATIONS_HELIX_CL">
+          <End Role="HELIX_CLIENTE" Type="Self.HELIX_CLIENTE" Multiplicity="1" />
+          <End Role="HELIX_TICKET" Type="Self.HELIX_TICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_CLIENTE">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="HELIX_TICKET">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_TI_RELATIONS_HELIX_ET">
+          <End Role="HELIX_ETAPA_FLUJO" Type="Self.HELIX_ETAPA_FLUJO" Multiplicity="0..1" />
+          <End Role="HELIX_TICKET" Type="Self.HELIX_TICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_ETAPA_FLUJO">
+              <PropertyRef Name="ID_ETAPAFLUJO" />
+            </Principal>
+            <Dependent Role="HELIX_TICKET">
+              <PropertyRef Name="ID_ETAPAFLUJO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_TI_RELATIONS_HELIX_FL">
+          <End Role="HELIX_FLUJO" Type="Self.HELIX_FLUJO" Multiplicity="0..1" />
+          <End Role="HELIX_TICKET" Type="Self.HELIX_TICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_FLUJO">
+              <PropertyRef Name="ID_FLUJO" />
+            </Principal>
+            <Dependent Role="HELIX_TICKET">
+              <PropertyRef Name="ID_FLUJO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_TI_RELATIONS_HELIX_FO">
+          <End Role="HELIX_FORMA_PAGO" Type="Self.HELIX_FORMA_PAGO" Multiplicity="0..1" />
+          <End Role="HELIX_TICKET" Type="Self.HELIX_TICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_FORMA_PAGO">
+              <PropertyRef Name="ID_FORMAPAGO" />
+            </Principal>
+            <Dependent Role="HELIX_TICKET">
+              <PropertyRef Name="ID_FORMAPAGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_TI_RELATIONS_HELIX_US">
+          <End Role="HELIX_USUARIO" Type="Self.HELIX_USUARIO" Multiplicity="1" />
+          <End Role="HELIX_TICKET" Type="Self.HELIX_TICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="HELIX_TICKET">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_US_REFERENCE_HELIX_RO">
+          <End Role="HELIX_ROL" Type="Self.HELIX_ROL" Multiplicity="0..1" />
+          <End Role="HELIX_USUARIO" Type="Self.HELIX_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="HELIX_USUARIO">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HelixModelStoreContainer">
+          <EntitySet Name="HELIX_CIUDAD" EntityType="Self.HELIX_CIUDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HELIX_CLIENTE" EntityType="Self.HELIX_CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HELIX_COMENTARIO" EntityType="Self.HELIX_COMENTARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HELIX_ETAPA_FLUJO" EntityType="Self.HELIX_ETAPA_FLUJO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HELIX_FLUJO" EntityType="Self.HELIX_FLUJO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HELIX_FORMA_PAGO" EntityType="Self.HELIX_FORMA_PAGO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HELIX_ROL" EntityType="Self.HELIX_ROL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HELIX_TICKET" EntityType="Self.HELIX_TICKET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HELIX_TIPO_INDUSTRIA" EntityType="Self.HELIX_TIPO_INDUSTRIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HELIX_USUARIO" EntityType="Self.HELIX_USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_HELIX_CL_RELATIONS_HELIX_CI" Association="Self.FK_HELIX_CL_RELATIONS_HELIX_CI">
+            <End Role="HELIX_CIUDAD" EntitySet="HELIX_CIUDAD" />
+            <End Role="HELIX_CLIENTE" EntitySet="HELIX_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_CL_RELATIONS_HELIX_TI" Association="Self.FK_HELIX_CL_RELATIONS_HELIX_TI">
+            <End Role="HELIX_TIPO_INDUSTRIA" EntitySet="HELIX_TIPO_INDUSTRIA" />
+            <End Role="HELIX_CLIENTE" EntitySet="HELIX_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_CO_RELATIONS_HELIX_TI" Association="Self.FK_HELIX_CO_RELATIONS_HELIX_TI">
+            <End Role="HELIX_TICKET" EntitySet="HELIX_TICKET" />
+            <End Role="HELIX_COMENTARIO" EntitySet="HELIX_COMENTARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_ET_RELATIONS_HELIX_FL" Association="Self.FK_HELIX_ET_RELATIONS_HELIX_FL">
+            <End Role="HELIX_FLUJO" EntitySet="HELIX_FLUJO" />
+            <End Role="HELIX_ETAPA_FLUJO" EntitySet="HELIX_ETAPA_FLUJO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_TI_RELATIONS_HELIX_CL" Association="Self.FK_HELIX_TI_RELATIONS_HELIX_CL">
+            <End Role="HELIX_CLIENTE" EntitySet="HELIX_CLIENTE" />
+            <End Role="HELIX_TICKET" EntitySet="HELIX_TICKET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_TI_RELATIONS_HELIX_ET" Association="Self.FK_HELIX_TI_RELATIONS_HELIX_ET">
+            <End Role="HELIX_ETAPA_FLUJO" EntitySet="HELIX_ETAPA_FLUJO" />
+            <End Role="HELIX_TICKET" EntitySet="HELIX_TICKET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_TI_RELATIONS_HELIX_FL" Association="Self.FK_HELIX_TI_RELATIONS_HELIX_FL">
+            <End Role="HELIX_FLUJO" EntitySet="HELIX_FLUJO" />
+            <End Role="HELIX_TICKET" EntitySet="HELIX_TICKET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_TI_RELATIONS_HELIX_FO" Association="Self.FK_HELIX_TI_RELATIONS_HELIX_FO">
+            <End Role="HELIX_FORMA_PAGO" EntitySet="HELIX_FORMA_PAGO" />
+            <End Role="HELIX_TICKET" EntitySet="HELIX_TICKET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_TI_RELATIONS_HELIX_US" Association="Self.FK_HELIX_TI_RELATIONS_HELIX_US">
+            <End Role="HELIX_USUARIO" EntitySet="HELIX_USUARIO" />
+            <End Role="HELIX_TICKET" EntitySet="HELIX_TICKET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_US_REFERENCE_HELIX_RO" Association="Self.FK_HELIX_US_REFERENCE_HELIX_RO">
+            <End Role="HELIX_ROL" EntitySet="HELIX_ROL" />
+            <End Role="HELIX_USUARIO" EntitySet="HELIX_USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HelixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="HELIX_CIUDAD">
+          <Key>
+            <PropertyRef Name="ID_CIUDAD" />
+          </Key>
+          <Property Name="ID_CIUDAD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CIUDAD" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HELIX_CLIENTE" Relationship="Self.FK_HELIX_CL_RELATIONS_HELIX_CI" FromRole="HELIX_CIUDAD" ToRole="HELIX_CLIENTE" />
+        </EntityType>
+        <EntityType Name="HELIX_CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CIUDAD" Type="Int32" />
+          <Property Name="ID_TIPOINDUSTRIA" Type="Int32" />
+          <Property Name="NOMBRE" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HELIX_CIUDAD" Relationship="Self.FK_HELIX_CL_RELATIONS_HELIX_CI" FromRole="HELIX_CLIENTE" ToRole="HELIX_CIUDAD" />
+          <NavigationProperty Name="HELIX_TIPO_INDUSTRIA" Relationship="Self.FK_HELIX_CL_RELATIONS_HELIX_TI" FromRole="HELIX_CLIENTE" ToRole="HELIX_TIPO_INDUSTRIA" />
+          <NavigationProperty Name="HELIX_TICKET" Relationship="Self.FK_HELIX_TI_RELATIONS_HELIX_CL" FromRole="HELIX_CLIENTE" ToRole="HELIX_TICKET" />
+        </EntityType>
+        <EntityType Name="HELIX_COMENTARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="ID_TICKET" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="Int32" />
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_TICKET" Type="Int32" Nullable="false" />
+          <Property Name="ID_COMENTARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COMENTARIO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_COMENTARIO" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="HELIX_TICKET" Relationship="Self.FK_HELIX_CO_RELATIONS_HELIX_TI" FromRole="HELIX_COMENTARIO" ToRole="HELIX_TICKET" />
+        </EntityType>
+        <EntityType Name="HELIX_ETAPA_FLUJO">
+          <Key>
+            <PropertyRef Name="ID_ETAPAFLUJO" />
+          </Key>
+          <Property Name="ID_ETAPAFLUJO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_FLUJO" Type="Int32" />
+          <Property Name="DESCRIPCION_ETAPA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE_ETAPA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HELIX_FLUJO" Relationship="Self.FK_HELIX_ET_RELATIONS_HELIX_FL" FromRole="HELIX_ETAPA_FLUJO" ToRole="HELIX_FLUJO" />
+          <NavigationProperty Name="HELIX_TICKET" Relationship="Self.FK_HELIX_TI_RELATIONS_HELIX_ET" FromRole="HELIX_ETAPA_FLUJO" ToRole="HELIX_TICKET" />
+        </EntityType>
+        <EntityType Name="HELIX_FLUJO">
+          <Key>
+            <PropertyRef Name="ID_FLUJO" />
+          </Key>
+          <Property Name="ID_FLUJO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION_FLUJO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE_FLUJO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HELIX_ETAPA_FLUJO" Relationship="Self.FK_HELIX_ET_RELATIONS_HELIX_FL" FromRole="HELIX_FLUJO" ToRole="HELIX_ETAPA_FLUJO" />
+          <NavigationProperty Name="HELIX_TICKET" Relationship="Self.FK_HELIX_TI_RELATIONS_HELIX_FL" FromRole="HELIX_FLUJO" ToRole="HELIX_TICKET" />
+        </EntityType>
+        <EntityType Name="HELIX_FORMA_PAGO">
+          <Key>
+            <PropertyRef Name="ID_FORMAPAGO" />
+          </Key>
+          <Property Name="ID_FORMAPAGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FORMA_PAGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HELIX_TICKET" Relationship="Self.FK_HELIX_TI_RELATIONS_HELIX_FO" FromRole="HELIX_FORMA_PAGO" ToRole="HELIX_TICKET" />
+        </EntityType>
+        <EntityType Name="HELIX_ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROL" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HELIX_USUARIO" Relationship="Self.FK_HELIX_US_REFERENCE_HELIX_RO" FromRole="HELIX_ROL" ToRole="HELIX_USUARIO" />
+        </EntityType>
+        <EntityType Name="HELIX_TICKET">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="ID_TICKET" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_TICKET" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_FLUJO" Type="Int32" />
+          <Property Name="ID_FORMAPAGO" Type="Int32" />
+          <Property Name="ID_ETAPAFLUJO" Type="Int32" />
+          <Property Name="NOMBRE_TICKET" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION_TICKET" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_ENTREGA" Type="DateTime" Precision="3" />
+          <Property Name="FECHA_FACTURA" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="HELIX_CLIENTE" Relationship="Self.FK_HELIX_TI_RELATIONS_HELIX_CL" FromRole="HELIX_TICKET" ToRole="HELIX_CLIENTE" />
+          <NavigationProperty Name="HELIX_COMENTARIO" Relationship="Self.FK_HELIX_CO_RELATIONS_HELIX_TI" FromRole="HELIX_TICKET" ToRole="HELIX_COMENTARIO" />
+          <NavigationProperty Name="HELIX_ETAPA_FLUJO" Relationship="Self.FK_HELIX_TI_RELATIONS_HELIX_ET" FromRole="HELIX_TICKET" ToRole="HELIX_ETAPA_FLUJO" />
+          <NavigationProperty Name="HELIX_FLUJO" Relationship="Self.FK_HELIX_TI_RELATIONS_HELIX_FL" FromRole="HELIX_TICKET" ToRole="HELIX_FLUJO" />
+          <NavigationProperty Name="HELIX_FORMA_PAGO" Relationship="Self.FK_HELIX_TI_RELATIONS_HELIX_FO" FromRole="HELIX_TICKET" ToRole="HELIX_FORMA_PAGO" />
+          <NavigationProperty Name="HELIX_USUARIO" Relationship="Self.FK_HELIX_TI_RELATIONS_HELIX_US" FromRole="HELIX_TICKET" ToRole="HELIX_USUARIO" />
+        </EntityType>
+        <EntityType Name="HELIX_TIPO_INDUSTRIA">
+          <Key>
+            <PropertyRef Name="ID_TIPOINDUSTRIA" />
+          </Key>
+          <Property Name="ID_TIPOINDUSTRIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO_INDUSTRIA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HELIX_CLIENTE" Relationship="Self.FK_HELIX_CL_RELATIONS_HELIX_TI" FromRole="HELIX_TIPO_INDUSTRIA" ToRole="HELIX_CLIENTE" />
+        </EntityType>
+        <EntityType Name="HELIX_USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ROL" Type="Int32" />
+          <Property Name="NOMBRE" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE_USUARIO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="MAIL" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="CARGO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HELIX_ROL" Relationship="Self.FK_HELIX_US_REFERENCE_HELIX_RO" FromRole="HELIX_USUARIO" ToRole="HELIX_ROL" />
+          <NavigationProperty Name="HELIX_TICKET" Relationship="Self.FK_HELIX_TI_RELATIONS_HELIX_US" FromRole="HELIX_USUARIO" ToRole="HELIX_TICKET" />
+        </EntityType>
+        <Association Name="FK_HELIX_CL_RELATIONS_HELIX_CI">
+          <End Role="HELIX_CIUDAD" Type="Self.HELIX_CIUDAD" Multiplicity="0..1" />
+          <End Role="HELIX_CLIENTE" Type="Self.HELIX_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_CIUDAD">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Principal>
+            <Dependent Role="HELIX_CLIENTE">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_CL_RELATIONS_HELIX_TI">
+          <End Role="HELIX_TIPO_INDUSTRIA" Type="Self.HELIX_TIPO_INDUSTRIA" Multiplicity="0..1" />
+          <End Role="HELIX_CLIENTE" Type="Self.HELIX_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_TIPO_INDUSTRIA">
+              <PropertyRef Name="ID_TIPOINDUSTRIA" />
+            </Principal>
+            <Dependent Role="HELIX_CLIENTE">
+              <PropertyRef Name="ID_TIPOINDUSTRIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_TI_RELATIONS_HELIX_CL">
+          <End Role="HELIX_CLIENTE" Type="Self.HELIX_CLIENTE" Multiplicity="1" />
+          <End Role="HELIX_TICKET" Type="Self.HELIX_TICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_CLIENTE">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="HELIX_TICKET">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_CO_RELATIONS_HELIX_TI">
+          <End Role="HELIX_TICKET" Type="Self.HELIX_TICKET" Multiplicity="0..1" />
+          <End Role="HELIX_COMENTARIO" Type="Self.HELIX_COMENTARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_TICKET">
+              <PropertyRef Name="ID_CLIENTE" />
+              <PropertyRef Name="ID_USUARIO" />
+              <PropertyRef Name="ID_TICKET" />
+            </Principal>
+            <Dependent Role="HELIX_COMENTARIO">
+              <PropertyRef Name="ID_CLIENTE" />
+              <PropertyRef Name="ID_USUARIO" />
+              <PropertyRef Name="ID_TICKET" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_ET_RELATIONS_HELIX_FL">
+          <End Role="HELIX_FLUJO" Type="Self.HELIX_FLUJO" Multiplicity="0..1" />
+          <End Role="HELIX_ETAPA_FLUJO" Type="Self.HELIX_ETAPA_FLUJO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_FLUJO">
+              <PropertyRef Name="ID_FLUJO" />
+            </Principal>
+            <Dependent Role="HELIX_ETAPA_FLUJO">
+              <PropertyRef Name="ID_FLUJO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_TI_RELATIONS_HELIX_ET">
+          <End Role="HELIX_ETAPA_FLUJO" Type="Self.HELIX_ETAPA_FLUJO" Multiplicity="0..1" />
+          <End Role="HELIX_TICKET" Type="Self.HELIX_TICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_ETAPA_FLUJO">
+              <PropertyRef Name="ID_ETAPAFLUJO" />
+            </Principal>
+            <Dependent Role="HELIX_TICKET">
+              <PropertyRef Name="ID_ETAPAFLUJO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_TI_RELATIONS_HELIX_FL">
+          <End Role="HELIX_FLUJO" Type="Self.HELIX_FLUJO" Multiplicity="0..1" />
+          <End Role="HELIX_TICKET" Type="Self.HELIX_TICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_FLUJO">
+              <PropertyRef Name="ID_FLUJO" />
+            </Principal>
+            <Dependent Role="HELIX_TICKET">
+              <PropertyRef Name="ID_FLUJO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_TI_RELATIONS_HELIX_FO">
+          <End Role="HELIX_FORMA_PAGO" Type="Self.HELIX_FORMA_PAGO" Multiplicity="0..1" />
+          <End Role="HELIX_TICKET" Type="Self.HELIX_TICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_FORMA_PAGO">
+              <PropertyRef Name="ID_FORMAPAGO" />
+            </Principal>
+            <Dependent Role="HELIX_TICKET">
+              <PropertyRef Name="ID_FORMAPAGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_US_REFERENCE_HELIX_RO">
+          <End Role="HELIX_ROL" Type="Self.HELIX_ROL" Multiplicity="0..1" />
+          <End Role="HELIX_USUARIO" Type="Self.HELIX_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="HELIX_USUARIO">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HELIX_TI_RELATIONS_HELIX_US">
+          <End Role="HELIX_USUARIO" Type="Self.HELIX_USUARIO" Multiplicity="1" />
+          <End Role="HELIX_TICKET" Type="Self.HELIX_TICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HELIX_USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="HELIX_TICKET">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HelixEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HELIX_CIUDAD" EntityType="Self.HELIX_CIUDAD" />
+          <EntitySet Name="HELIX_CLIENTE" EntityType="Self.HELIX_CLIENTE" />
+          <EntitySet Name="HELIX_COMENTARIO" EntityType="Self.HELIX_COMENTARIO" />
+          <EntitySet Name="HELIX_ETAPA_FLUJO" EntityType="Self.HELIX_ETAPA_FLUJO" />
+          <EntitySet Name="HELIX_FLUJO" EntityType="Self.HELIX_FLUJO" />
+          <EntitySet Name="HELIX_FORMA_PAGO" EntityType="Self.HELIX_FORMA_PAGO" />
+          <EntitySet Name="HELIX_ROL" EntityType="Self.HELIX_ROL" />
+          <EntitySet Name="HELIX_TICKET" EntityType="Self.HELIX_TICKET" />
+          <EntitySet Name="HELIX_TIPO_INDUSTRIA" EntityType="Self.HELIX_TIPO_INDUSTRIA" />
+          <EntitySet Name="HELIX_USUARIO" EntityType="Self.HELIX_USUARIO" />
+          <AssociationSet Name="FK_HELIX_CL_RELATIONS_HELIX_CI" Association="Self.FK_HELIX_CL_RELATIONS_HELIX_CI">
+            <End Role="HELIX_CIUDAD" EntitySet="HELIX_CIUDAD" />
+            <End Role="HELIX_CLIENTE" EntitySet="HELIX_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_CL_RELATIONS_HELIX_TI" Association="Self.FK_HELIX_CL_RELATIONS_HELIX_TI">
+            <End Role="HELIX_TIPO_INDUSTRIA" EntitySet="HELIX_TIPO_INDUSTRIA" />
+            <End Role="HELIX_CLIENTE" EntitySet="HELIX_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_TI_RELATIONS_HELIX_CL" Association="Self.FK_HELIX_TI_RELATIONS_HELIX_CL">
+            <End Role="HELIX_CLIENTE" EntitySet="HELIX_CLIENTE" />
+            <End Role="HELIX_TICKET" EntitySet="HELIX_TICKET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_CO_RELATIONS_HELIX_TI" Association="Self.FK_HELIX_CO_RELATIONS_HELIX_TI">
+            <End Role="HELIX_TICKET" EntitySet="HELIX_TICKET" />
+            <End Role="HELIX_COMENTARIO" EntitySet="HELIX_COMENTARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_ET_RELATIONS_HELIX_FL" Association="Self.FK_HELIX_ET_RELATIONS_HELIX_FL">
+            <End Role="HELIX_FLUJO" EntitySet="HELIX_FLUJO" />
+            <End Role="HELIX_ETAPA_FLUJO" EntitySet="HELIX_ETAPA_FLUJO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_TI_RELATIONS_HELIX_ET" Association="Self.FK_HELIX_TI_RELATIONS_HELIX_ET">
+            <End Role="HELIX_ETAPA_FLUJO" EntitySet="HELIX_ETAPA_FLUJO" />
+            <End Role="HELIX_TICKET" EntitySet="HELIX_TICKET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_TI_RELATIONS_HELIX_FL" Association="Self.FK_HELIX_TI_RELATIONS_HELIX_FL">
+            <End Role="HELIX_FLUJO" EntitySet="HELIX_FLUJO" />
+            <End Role="HELIX_TICKET" EntitySet="HELIX_TICKET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_TI_RELATIONS_HELIX_FO" Association="Self.FK_HELIX_TI_RELATIONS_HELIX_FO">
+            <End Role="HELIX_FORMA_PAGO" EntitySet="HELIX_FORMA_PAGO" />
+            <End Role="HELIX_TICKET" EntitySet="HELIX_TICKET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_US_REFERENCE_HELIX_RO" Association="Self.FK_HELIX_US_REFERENCE_HELIX_RO">
+            <End Role="HELIX_ROL" EntitySet="HELIX_ROL" />
+            <End Role="HELIX_USUARIO" EntitySet="HELIX_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HELIX_TI_RELATIONS_HELIX_US" Association="Self.FK_HELIX_TI_RELATIONS_HELIX_US">
+            <End Role="HELIX_USUARIO" EntitySet="HELIX_USUARIO" />
+            <End Role="HELIX_TICKET" EntitySet="HELIX_TICKET" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HelixModelStoreContainer" CdmEntityContainer="HelixEntities">
+          <EntitySetMapping Name="HELIX_CIUDAD">
+            <EntityTypeMapping TypeName="HelixModel.HELIX_CIUDAD">
+              <MappingFragment StoreEntitySet="HELIX_CIUDAD">
+                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+                <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HELIX_CLIENTE">
+            <EntityTypeMapping TypeName="HelixModel.HELIX_CLIENTE">
+              <MappingFragment StoreEntitySet="HELIX_CLIENTE">
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+                <ScalarProperty Name="ID_TIPOINDUSTRIA" ColumnName="ID_TIPOINDUSTRIA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HELIX_COMENTARIO">
+            <EntityTypeMapping TypeName="HelixModel.HELIX_COMENTARIO">
+              <MappingFragment StoreEntitySet="HELIX_COMENTARIO">
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_TICKET" ColumnName="ID_TICKET" />
+                <ScalarProperty Name="ID_COMENTARIO" ColumnName="ID_COMENTARIO" />
+                <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+                <ScalarProperty Name="FECHA_COMENTARIO" ColumnName="FECHA_COMENTARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HELIX_ETAPA_FLUJO">
+            <EntityTypeMapping TypeName="HelixModel.HELIX_ETAPA_FLUJO">
+              <MappingFragment StoreEntitySet="HELIX_ETAPA_FLUJO">
+                <ScalarProperty Name="ID_ETAPAFLUJO" ColumnName="ID_ETAPAFLUJO" />
+                <ScalarProperty Name="ID_FLUJO" ColumnName="ID_FLUJO" />
+                <ScalarProperty Name="DESCRIPCION_ETAPA" ColumnName="DESCRIPCION_ETAPA" />
+                <ScalarProperty Name="NOMBRE_ETAPA" ColumnName="NOMBRE_ETAPA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HELIX_FLUJO">
+            <EntityTypeMapping TypeName="HelixModel.HELIX_FLUJO">
+              <MappingFragment StoreEntitySet="HELIX_FLUJO">
+                <ScalarProperty Name="ID_FLUJO" ColumnName="ID_FLUJO" />
+                <ScalarProperty Name="DESCRIPCION_FLUJO" ColumnName="DESCRIPCION_FLUJO" />
+                <ScalarProperty Name="NOMBRE_FLUJO" ColumnName="NOMBRE_FLUJO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HELIX_FORMA_PAGO">
+            <EntityTypeMapping TypeName="HelixModel.HELIX_FORMA_PAGO">
+              <MappingFragment StoreEntitySet="HELIX_FORMA_PAGO">
+                <ScalarProperty Name="ID_FORMAPAGO" ColumnName="ID_FORMAPAGO" />
+                <ScalarProperty Name="FORMA_PAGO" ColumnName="FORMA_PAGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HELIX_ROL">
+            <EntityTypeMapping TypeName="HelixModel.HELIX_ROL">
+              <MappingFragment StoreEntitySet="HELIX_ROL">
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="ROL" ColumnName="ROL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HELIX_TICKET">
+            <EntityTypeMapping TypeName="HelixModel.HELIX_TICKET">
+              <MappingFragment StoreEntitySet="HELIX_TICKET">
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_TICKET" ColumnName="ID_TICKET" />
+                <ScalarProperty Name="ID_FLUJO" ColumnName="ID_FLUJO" />
+                <ScalarProperty Name="ID_FORMAPAGO" ColumnName="ID_FORMAPAGO" />
+                <ScalarProperty Name="ID_ETAPAFLUJO" ColumnName="ID_ETAPAFLUJO" />
+                <ScalarProperty Name="NOMBRE_TICKET" ColumnName="NOMBRE_TICKET" />
+                <ScalarProperty Name="DESCRIPCION_TICKET" ColumnName="DESCRIPCION_TICKET" />
+                <ScalarProperty Name="FECHA_ENTREGA" ColumnName="FECHA_ENTREGA" />
+                <ScalarProperty Name="FECHA_FACTURA" ColumnName="FECHA_FACTURA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HELIX_TIPO_INDUSTRIA">
+            <EntityTypeMapping TypeName="HelixModel.HELIX_TIPO_INDUSTRIA">
+              <MappingFragment StoreEntitySet="HELIX_TIPO_INDUSTRIA">
+                <ScalarProperty Name="ID_TIPOINDUSTRIA" ColumnName="ID_TIPOINDUSTRIA" />
+                <ScalarProperty Name="TIPO_INDUSTRIA" ColumnName="TIPO_INDUSTRIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HELIX_USUARIO">
+            <EntityTypeMapping TypeName="HelixModel.HELIX_USUARIO">
+              <MappingFragment StoreEntitySet="HELIX_USUARIO">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
