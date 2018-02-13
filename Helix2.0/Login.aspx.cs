@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Helix2._0
 {
@@ -39,7 +34,7 @@ namespace Helix2._0
             using (SqlConnection conexion = Conexion.ObtenerConexion())
             {
                 conexion.Open();
-                string query = "SELECT HELIX_USUARIO.ID_ROL,HELIX_ROL.ROL, concat(NOMBRE,' ',APELLIDO) as Nombres from HELIX_USUARIO INNER JOIN HELIX_ROL on HELIX_USUARIO.ID_ROL = HELIX_ROL.ID_ROL WHERE NOMBRE_USUARIO = '" + txt_user.Text + "' and PASSWORD ='" + password +"'";
+                string query = "SELECT HELIX_USUARIO.ID_ROL,HELIX_ROL.ROL, concat(NOMBRE,' ',APELLIDO) as Nombres,ID_USUARIO from HELIX_USUARIO INNER JOIN HELIX_ROL on HELIX_USUARIO.ID_ROL = HELIX_ROL.ID_ROL WHERE NOMBRE_USUARIO = '" + txt_user.Text + "' and PASSWORD ='" + password +"'";
                 SqlCommand cmd = new SqlCommand(query, conexion);
                 SqlDataReader Reader1;
                 Reader1 = cmd.ExecuteReader();
@@ -50,6 +45,7 @@ namespace Helix2._0
                     {
                         Session["Perfil"] = Convert.ToString(Reader1.GetValue(1));
                         Session["Nombres"] = Convert.ToString(Reader1.GetValue(2));
+                        Session["Id"] = Convert.ToString(Reader1.GetValue(3));
                         Response.Redirect("/View/Tickets.aspx", true);
                     }
                 }

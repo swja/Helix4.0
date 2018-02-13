@@ -23,7 +23,7 @@
     <br />
     <br />
     <div class="row">
-        <asp:Button ID="Button1" runat="server" Text="Editar Estado" CssClass="col-lg-3 col-md-3" style="left:20%"/>
+        <asp:Button ID="Button1" runat="server" Text="Editar Estado" CssClass="col-lg-3 col-md-3" style="left:20%" OnClick="Button1_Click"/>
         <asp:Button ID="Button2" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" />
     </div>
 </asp:Content>

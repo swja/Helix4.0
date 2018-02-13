@@ -17,7 +17,7 @@ namespace Helix2._0
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Hay algo');", true);
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Hay algo');", true);
                 Perfil.Text = Convert.ToString(Session["Perfil"]);
                 Nombre.Text = Convert.ToString(Session["Nombres"]);
             }
