@@ -36,16 +36,16 @@ namespace Helix2._0
                 conexion.Open();
                 string query = "SELECT HELIX_USUARIO.ID_ROL,HELIX_ROL.ROL, concat(NOMBRE,' ',APELLIDO) as Nombres,ID_USUARIO from HELIX_USUARIO INNER JOIN HELIX_ROL on HELIX_USUARIO.ID_ROL = HELIX_ROL.ID_ROL WHERE NOMBRE_USUARIO = '" + txt_user.Text + "' and PASSWORD ='" + password +"'";
                 SqlCommand cmd = new SqlCommand(query, conexion);
-                SqlDataReader Reader1;
-                Reader1 = cmd.ExecuteReader();
-                if (Reader1.Read())
+                SqlDataReader Reader;
+                Reader = cmd.ExecuteReader();
+                if (Reader.Read())
                 {
                     //getInt32 para obtener los valores numericos para comparacion y getValue para obtener el valor de la celda y no comparar
-                    if (Reader1.GetInt32(0) == 1)
+                    if (Reader.GetInt32(0) == 1)
                     {
-                        Session["Perfil"] = Convert.ToString(Reader1.GetValue(1));
-                        Session["Nombres"] = Convert.ToString(Reader1.GetValue(2));
-                        Session["Id"] = Convert.ToString(Reader1.GetValue(3));
+                        Session["Perfil"] = Convert.ToString(Reader.GetValue(1));
+                        Session["Nombres"] = Convert.ToString(Reader.GetValue(2));
+                        Session["Id"] = Convert.ToString(Reader.GetValue(3));
                         Response.Redirect("/View/Tickets.aspx", true);
                     }
                 }

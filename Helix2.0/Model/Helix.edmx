@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HelixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HelixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="HELIX_CIUDAD">
           <Key>
             <PropertyRef Name="ID_CIUDAD" />
@@ -19,8 +19,7 @@
           <Property Name="ID_CLIENTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_CIUDAD" Type="int" />
           <Property Name="ID_TIPOINDUSTRIA" Type="int" />
-          <Property Name="NOMBRE" Type="varchar" MaxLength="45" />
-          <Property Name="APELLIDO" Type="varchar" MaxLength="45" />
+          <Property Name="NOMBRES" Type="varchar" MaxLength="100" />
           <Property Name="DIRECCION" Type="varchar" MaxLength="100" />
           <Property Name="TELEFONO" Type="varchar" MaxLength="13" />
           <Property Name="EMAIL" Type="varchar" MaxLength="45" />
@@ -282,8 +281,7 @@
             <End Role="HELIX_USUARIO" EntitySet="HELIX_USUARIO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HelixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -302,14 +300,13 @@
           <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_CIUDAD" Type="Int32" />
           <Property Name="ID_TIPOINDUSTRIA" Type="Int32" />
-          <Property Name="NOMBRE" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="APELLIDO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="DIRECCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="TELEFONO" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
           <Property Name="EMAIL" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="HELIX_CIUDAD" Relationship="Self.FK_HELIX_CL_RELATIONS_HELIX_CI" FromRole="HELIX_CLIENTE" ToRole="HELIX_CIUDAD" />
           <NavigationProperty Name="HELIX_TIPO_INDUSTRIA" Relationship="Self.FK_HELIX_CL_RELATIONS_HELIX_TI" FromRole="HELIX_CLIENTE" ToRole="HELIX_TIPO_INDUSTRIA" />
           <NavigationProperty Name="HELIX_TICKET" Relationship="Self.FK_HELIX_TI_RELATIONS_HELIX_CL" FromRole="HELIX_CLIENTE" ToRole="HELIX_TICKET" />
+          <Property Name="NOMBRES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="HELIX_COMENTARIO">
           <Key>
@@ -601,11 +598,10 @@
           <EntitySetMapping Name="HELIX_CLIENTE">
             <EntityTypeMapping TypeName="HelixModel.HELIX_CLIENTE">
               <MappingFragment StoreEntitySet="HELIX_CLIENTE">
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
                 <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
                 <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
                 <ScalarProperty Name="ID_TIPOINDUSTRIA" ColumnName="ID_TIPOINDUSTRIA" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
                 <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
                 <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />

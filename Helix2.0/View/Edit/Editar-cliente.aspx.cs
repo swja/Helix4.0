@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,14 +10,60 @@ namespace Helix2._0.View.Edit
 {
     public partial class Editar_cliente : System.Web.UI.Page
     {
+        public string identificador;
+        public class Conexion
+        {
+            public static SqlConnection ObtenerConexion()
+            {
+                return new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["HelixConnectionString"].ConnectionString);
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
+            identificador = Request.QueryString["id"];
+            if (IsPostBack == false)
+            {
+                txt_nombres.Text = Request.QueryString["nom"];
+                txt_direccion.Text = Request.QueryString["dir"];
+                txt_email.Text = Request.QueryString["mail"];
+                txt_telefono.Text = Request.QueryString["tele"];
+                lb_Ciudad.Text = Request.QueryString["ciu"];
+                lb_Industria.Text = Request.QueryString["indus"];
+            }
 
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Bt_cancelar_Click(object sender, EventArgs e)
         {
+            Response.Redirect("/View/Clientes.aspx", true);
+        }
 
+        protected void Bt_editar_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conexion = Conexion.ObtenerConexion())
+            {
+                string query = "UPDATE HELIX_CLIENTE SET ID_CIUDAD = @ciudad,ID_TIPOINDUSTRIA = @industria,NOMBRES = @nombres,DIRECCION = @direccion,TELEFONO = @telefono,EMAIL = @email WHERE ID_CLIENTE = @id";
+                SqlCommand modificar = new SqlCommand(query, conexion);
+                modificar.Parameters.AddWithValue("@id", Convert.ToInt32(identificador));
+                modificar.Parameters.AddWithValue("@ciudad", drop_ciudad.SelectedValue);
+                modificar.Parameters.AddWithValue("@industria", drop_industria.SelectedValue);
+                modificar.Parameters.AddWithValue("@nombres", txt_nombres.Text);
+                modificar.Parameters.AddWithValue("@direccion", txt_direccion.Text);
+                modificar.Parameters.AddWithValue("@telefono", txt_telefono.Text);
+                modificar.Parameters.AddWithValue("@email", txt_email.Text);
+                conexion.Open();
+                try
+                {
+                    modificar.ExecuteNonQuery();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Registro ingresado correctamente.');", true);
+                    Response.Redirect("/View/Clientes.aspx", true);
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Ocurrio un error:')" + ex.Message, true);
+                    conexion.Close();
+                }
+                conexion.Close();
+            }
         }
     }
 }

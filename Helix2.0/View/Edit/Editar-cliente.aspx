@@ -7,45 +7,40 @@
     <br />
     <br />
     <div class="row">
-        <asp:Label ID="Label2" runat="server" Text="Nombre" CssClass="col-lg-2 col-md-2"></asp:Label>
-        <asp:TextBox ID="TextBox1" runat="server" CssClass="col-lg-3 col-md-2"></asp:TextBox>
-
-         <asp:Label ID="Label3" runat="server" Text="Apellido" CssClass="col-lg-2 col-md-2"></asp:Label>
-        <asp:TextBox ID="TextBox2" runat="server" CssClass="col-lg-3 col-md-2"></asp:TextBox>
-
+        <asp:Label ID="Label2" runat="server" Text="Nombres" CssClass="col-lg-2 col-md-2"></asp:Label>
+        <asp:TextBox ID="txt_nombres" runat="server" CssClass="col-lg-3 col-md-2"></asp:TextBox>
     </div>
     <br />
-      <div class="row">
-        <asp:Label ID="Label4" runat="server" Text="Nombre de la empresa"  CssClass="col-lg-2 col-md-2"></asp:Label>
-        <asp:TextBox ID="TextBox3" runat="server" CssClass="col-lg-3 col-md-2"></asp:TextBox>
-
+    <div class="row">
          <asp:Label ID="Label5" runat="server" Text="Dirección"  CssClass="col-lg-2 col-md-2"></asp:Label>
-        <asp:TextBox ID="TextBox4" runat="server" CssClass="col-lg-3 col-md-2"></asp:TextBox>
+        <asp:TextBox ID="txt_direccion" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+            <asp:Label ID="Label3" runat="server" Text="Email"  CssClass="col-lg-2 col-md-2"></asp:Label>
+        <asp:TextBox ID="txt_email" runat="server" CssClass="col-lg-3 col-md-3" TextMode="Email"></asp:TextBox>
     </div>
     <br />
       <div class="row">
         <asp:Label ID="Label6" runat="server" Text="Telefono"  CssClass="col-lg-2 col-md-2"></asp:Label>
-        <asp:TextBox ID="TextBox5" runat="server" CssClass="col-lg-3 col-md-2"></asp:TextBox>
-
-         <asp:Label ID="Label7" runat="server" Text="Email"  CssClass="col-lg-2 col-md-2"></asp:Label>
-        <asp:TextBox ID="TextBox6" runat="server" CssClass="col-lg-3 col-md-2"></asp:TextBox>
+        <asp:TextBox ID="txt_telefono" runat="server" CssClass="col-lg-3 col-md-3" TextMode="Phone"></asp:TextBox>
     </div>
     <br />
       <div class="row">
-        <asp:Label ID="Label8" runat="server" Text="Ciudad"  CssClass="col-lg-2 col-md-2"></asp:Label>
-          <asp:DropDownList ID="DropDownList1" runat="server" CssClass="col-lg-3 col-md-2"></asp:DropDownList>
-         <asp:Label ID="Label9" runat="server" Text="Tipo de industria"  CssClass="col-lg-2 col-md-2"></asp:Label>
-          <asp:DropDownList ID="DropDownList2" runat="server" CssClass="col-lg-3 col-md-2"></asp:DropDownList>
+        <asp:Label ID="Label8" runat="server" Text="Ciudad actual"  CssClass="col-lg-3 col-md-3"></asp:Label>
+         <asp:Label ID="lb_Ciudad" runat="server" Text="Ciudad"  CssClass="col-lg-2 col-md-2"></asp:Label>
+          <asp:DropDownList ID="drop_ciudad" runat="server" CssClass="col-lg-3 col-md-3" DataSourceID="dropCiudad" DataTextField="CIUDAD" DataValueField="ID_CIUDAD"></asp:DropDownList>
+          <asp:SqlDataSource ID="dropCiudad" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID_CIUDAD, CIUDAD FROM HELIX_CIUDAD"></asp:SqlDataSource>
     </div>
     <br />
-      <div class="row">
-          <asp:Label ID="Label10" runat="server" Text="Forma de pago" CssClass="col-lg-2 col-md-2"></asp:Label>
-          <asp:DropDownList ID="DropDownList3" runat="server" CssClass="col-lg-3 col-md-2"></asp:DropDownList>
+    <div class="row">
+        <asp:Label ID="Label9" runat="server" Text="Tipo de industria actual"  CssClass="col-lg-3 col-md-3"></asp:Label>
+         <asp:Label ID="lb_Industria" runat="server" Text="Industria"  CssClass="col-lg-2 col-md-2"></asp:Label>
+         <asp:DropDownList ID="drop_industria" runat="server" CssClass="col-lg-3 col-md-3" DataSourceID="dropIndustria" DataTextField="TIPO_INDUSTRIA" DataValueField="ID_TIPOINDUSTRIA"></asp:DropDownList>
+        <asp:SqlDataSource ID="dropIndustria" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID_TIPOINDUSTRIA, TIPO_INDUSTRIA FROM HELIX_TIPO_INDUSTRIA"></asp:SqlDataSource>
     </div>
+    <br />
     <br />
     <br />
     <div class="row">
-        <asp:Button ID="Button1" runat="server" Text="Editar Cliente" CssClass="col-lg-3 col-md-3" style="left:20%"/>
-        <asp:Button ID="Button2" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" />
+        <asp:Button ID="Bt_editar" runat="server" Text="Editar Cliente" CssClass="col-lg-3 col-md-3" style="left:20%" OnClick="Bt_editar_Click"/>
+        <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:40%" OnClick="Bt_cancelar_Click" />
     </div>
 </asp:Content>

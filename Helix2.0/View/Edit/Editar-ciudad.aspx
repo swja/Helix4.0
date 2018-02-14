@@ -11,6 +11,7 @@
             <asp:Label ID="Label3" runat="server" Text="Ciudad" CssClass="col-lg-2 col-md-2"></asp:Label>
             <br />
         </div>
+    <br />
     <div class="row">
         <asp:Label ID="Label4" runat="server" Text="Nuevo nombre de la Ciudad" CssClass="col-lg-3 col-md-3"></asp:Label>
             <asp:TextBox ID="txt_ciudad" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>

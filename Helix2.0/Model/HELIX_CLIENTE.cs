@@ -23,11 +23,10 @@ namespace Helix2._0.Model
         public int ID_CLIENTE { get; set; }
         public Nullable<int> ID_CIUDAD { get; set; }
         public Nullable<int> ID_TIPOINDUSTRIA { get; set; }
-        public string NOMBRE { get; set; }
-        public string APELLIDO { get; set; }
         public string DIRECCION { get; set; }
         public string TELEFONO { get; set; }
         public string EMAIL { get; set; }
+        public string NOMBRES { get; set; }
     
         public virtual HELIX_CIUDAD HELIX_CIUDAD { get; set; }
         public virtual HELIX_TIPO_INDUSTRIA HELIX_TIPO_INDUSTRIA { get; set; }

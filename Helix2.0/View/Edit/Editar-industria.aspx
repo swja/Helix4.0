@@ -6,13 +6,18 @@
           </div> 
     <br />
         <div class="row">
-           <asp:Label ID="Label2" runat="server" Text="Tipo de industria" CssClass="col-lg-2 col-md-2"></asp:Label>
-            <asp:TextBox ID="TextBox1" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+           <asp:Label ID="Label2" runat="server" Text="Nombre de la Industria a editar" CssClass="col-lg-3 col-md-3"></asp:Label>
+            <asp:Label ID="Label3" runat="server" Text="Industria" CssClass="col-lg-2 col-md-2"></asp:Label>
         </div>
     <br />
     <br />
+     <div class="row">
+        <asp:Label ID="Label4" runat="server" Text="Nuevo nombre de la Industria" CssClass="col-lg-3 col-md-3"></asp:Label>
+            <asp:TextBox ID="txt_Industria" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+    </div>
+    <br />
     <div class="row">
-        <asp:Button ID="Button1" runat="server" Text="Editar Tipo de industria" CssClass="col-lg-3 col-md-3" style="left:20%"/>
-        <asp:Button ID="Button2" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" />
+        <asp:Button ID="bt_editar" runat="server" Text="Editar Tipo de industria" CssClass="col-lg-3 col-md-3" style="left:20%" OnClick="Bt_editar_Click"/>
+        <asp:Button ID="Button2" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" OnClick="Button2_Click" />
     </div>
 </asp:Content>

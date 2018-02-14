@@ -13,5 +13,10 @@ namespace Helix2._0.View
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -162,9 +162,11 @@ button,
 input,
 select,
 textarea {
-  margin: 0;
   font-family: inherit;
   font-size: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
 }
 
 button,
@@ -860,7 +862,7 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-    top: -32px;
+    top: -41px;
     left: 27px;
     height: 25px;
     width: 688px;
