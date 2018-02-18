@@ -20,10 +20,5 @@ namespace Helix2._0.View
             Application["ciudad"] = Convert.ToString(GridCiudades.DataKeys[row.RowIndex].Values["Ciudad"]);
             Response.Redirect("/View/Edit/Editar-ciudad.aspx", true);
         }
-
-        protected void gvCiudad_RowCommands(object sender, GridViewCommandEventArgs e)
-        {
-
-        }
     }
 }

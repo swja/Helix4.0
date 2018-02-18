@@ -33,7 +33,7 @@ namespace Helix2._0.View.Edit
                 try
                 {
                     modificar.ExecuteNonQuery();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Registro ingresado correctamente.');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Registro actualizado correctamente.');", true);
                     Response.Redirect("/View/Ciudades.aspx", true);
                 }
                 catch (Exception ex)
