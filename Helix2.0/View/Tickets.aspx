@@ -12,7 +12,9 @@
       <h5 class="col-md-2 col-sm-2"> Texto de busqueda</h5>
       <asp:TextBox ID="TextBox1" runat="server" CssClass="col-md-3 col-sm-3" OnTextChanged="busqueda" AutoPostBack="True"></asp:TextBox>
        <h5 class="col-md-2 col-sm-2"> Filtro de flujos</h5>
-     <asp:DropDownList runat="server"  CssClass="col-md-3 col-sm-3"></asp:DropDownList>
+     <asp:DropDownList runat="server"  CssClass="col-md-2 col-sm-2" DataSourceID="flujos" DataTextField="NOMBRE_FLUJO" DataValueField="ID_FLUJO"></asp:DropDownList>
+          <asp:SqlDataSource ID="flujos" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID_FLUJO, NOMBRE_FLUJO FROM HELIX_FLUJO"></asp:SqlDataSource>
+          <asp:Button ID="Bt_nuevo" runat="server" Text="Nuevo ticket"   CssClass="col-md-3 col-sm-3" OnClick="Bt_nuevo_Click"/>
           </div>
       <br />
        

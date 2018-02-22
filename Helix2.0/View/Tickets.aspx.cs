@@ -50,5 +50,10 @@ namespace Helix2._0
                 }
             }
         }
+
+        protected void Bt_nuevo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/View/Add/Agregar-ticket.aspx", true);
+        }
     }
 }
