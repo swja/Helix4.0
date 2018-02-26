@@ -8,21 +8,22 @@
       </div> 
     <div class="row">
         <asp:Label CssClass="col-lg-2 col-md-2" runat="server">Nombre del ticket</asp:Label>
-        <asp:TextBox CssClass="col-lg-10 col-md-10" runat="server" style="width:100%"></asp:TextBox>
+        <asp:TextBox CssClass="col-lg-10 col-md-10" runat="server" style="width:67%; height:40px;" ID="txt_Nombre" TextMode="MultiLine"></asp:TextBox>
     </div>     
     <br />
         <div class="row">
         <asp:Label CssClass="col-lg-2 col-md-2" runat="server">Responsable</asp:Label>
-        <asp:TextBox runat="server" CssClass="col-lg-4 col-md-4"></asp:TextBox>
+        <asp:TextBox runat="server" CssClass="col-lg-3 col-md-3" ID="txt_Responsable"></asp:TextBox>
         <asp:Label CssClass="col-lg-2 col-md-2" runat="server">Flujo</asp:Label>
-        <asp:DropDownList runat="server" CssClass="col-lg-4 col-md-4"></asp:DropDownList>
+        <asp:DropDownList runat="server" CssClass="col-lg-3 col-md-3" ID="dl_Flujo" DataSourceID="Flujo" DataTextField="NOMBRE_FLUJO" DataValueField="ID_FLUJO" AutoPostBack="True" OnSelectedIndexChanged="cargar_Etapas"></asp:DropDownList>
+            <asp:SqlDataSource ID="Flujo" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID_FLUJO, NOMBRE_FLUJO FROM HELIX_FLUJO"></asp:SqlDataSource>
     </div>   
     <br />
      <div class="row">
         <asp:Label CssClass="col-lg-2 col-md-2" runat="server">Cliente</asp:Label>
-        <asp:TextBox runat="server" CssClass="col-lg-4 col-md-4"></asp:TextBox>
+        <asp:TextBox runat="server" CssClass="col-lg-3 col-md-3" ID="txt_Cliente"></asp:TextBox>
         <asp:Label CssClass="col-lg-2 col-md-2" runat="server">Estado</asp:Label>
-        <asp:DropDownList runat="server" CssClass="col-lg-4 col-md-4"></asp:DropDownList>
+        <asp:DropDownList runat="server" CssClass="col-lg-3 col-md-3" ID="dl_Etapa"></asp:DropDownList>
     </div>   
     <br />
      <div class="row">
@@ -31,13 +32,19 @@
          <br />
     </div>   
     <div class="row" style="padding-left:1%">
-        <asp:TextBox ID="TextBox1" runat="server" Height="200px" TextMode="MultiLine" Width="40%" CssClass="col-lg-6 col-md-6"></asp:TextBox>
+        <asp:TextBox ID="txt_Descripcion" runat="server" Height="200px" TextMode="MultiLine" Width="40%" CssClass="col-lg-6 col-md-6"></asp:TextBox>
         <div style="border: 1px solid #FFF;">
-            <asp:TextBox ID="TextBox3" runat="server" Height="50px" TextMode="MultiLine" Width="40%" style="left:5%" CssClass="col-lg-6 col-md-6"></asp:TextBox>
+            <asp:TextBox ID="txt_Comentario" runat="server" Height="50px" TextMode="MultiLine" Width="40%" style="left:5%" CssClass="col-lg-6 col-md-6"></asp:TextBox>
             <br />
-             <asp:Button ID="Button3" runat="server" Text="Agregar comentario" CssClass="col-lg-2 col-md-2" style="left:-12%; top:5%"/>
-            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+             <asp:Button ID="Bt_agregar_comentario" runat="server" Text="Agregar comentario" CssClass="col-lg-2 col-md-2" style="left:-12%; top:5%"/>
+            <asp:GridView ID="gvComentario" runat="server"></asp:GridView>
             </div>
+    </div>
+    <br />
+    <div class="row">
+        <asp:Label ID="Label4" runat="server" Text="Forma de pago" CssClass="col-lg-2 col-md-2"></asp:Label>
+        <asp:DropDownList ID="dl_Pago" runat="server" CssClass="col-lg-3 col-md-3" DataSourceID="Pago" DataTextField="FORMA_PAGO" DataValueField="ID_FORMAPAGO"></asp:DropDownList>
+        <asp:SqlDataSource ID="Pago" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID_FORMAPAGO, FORMA_PAGO FROM HELIX_FORMA_PAGO"></asp:SqlDataSource>
     </div>
     <br />
     <div class="row">
@@ -45,7 +52,7 @@
      <asp:Label ID="Label3" runat="server" Text="Fecha de cobro" CssClass="col-lg-2 col-md-2" style="left:8%"></asp:Label>
      </div>
     <div class="row">
-        <eo:DatePicker ID="DatePicker1" runat="server" CssClass="col-lg-1 col-md-1" style="left:4%" ClientIDMode="AutoID" ControlSkinID="None" DayCellHeight="15" DayCellWidth="31" DayHeaderFormat="Short" DisabledDates="" OtherMonthDayVisible="True" SelectedDates="" TitleFormat="MMMM, yyyy" TitleLeftArrowImageUrl="DefaultSubMenuIconRTL" TitleRightArrowImageUrl="DefaultSubMenuIcon" VisibleDate="2018-02-01">
+        <eo:DatePicker ID="fecha_Entrega" runat="server" CssClass="col-lg-1 col-md-1" style="left:4%" ClientIDMode="AutoID" ControlSkinID="None" DayCellHeight="15" DayCellWidth="31" DayHeaderFormat="Short" DisabledDates="" OtherMonthDayVisible="True" SelectedDates="" TitleFormat="MMMM, yyyy" TitleLeftArrowImageUrl="DefaultSubMenuIconRTL" TitleRightArrowImageUrl="DefaultSubMenuIcon" VisibleDate="2018-02-01">
             <calendarstyle csstext="background-color:white;border-bottom-color:Silver;border-bottom-style:solid;border-bottom-width:1px;border-left-color:Silver;border-left-style:solid;border-left-width:1px;border-right-color:Silver;border-right-style:solid;border-right-width:1px;border-top-color:Silver;border-top-style:solid;border-top-width:1px;color:#2C0B1E;padding-bottom:5px;padding-left:5px;padding-right:5px;padding-top:5px;" />
             <TitleStyle CssText="font-family:Verdana;font-size:8.75pt;padding-bottom:5px;padding-left:5px;padding-right:5px;padding-top:5px;" />
             <titlearrowstyle csstext="cursor: hand" />
@@ -67,7 +74,7 @@
                 </table>
             </FooterTemplate>
         </eo:DatePicker>
-        <eo:DatePicker ID="DatePicker2" runat="server" CssClass="col-lg-1 col-md-1" style="left:15%" ClientIDMode="AutoID" ControlSkinID="None" DayCellHeight="15" DayCellWidth="31" DayHeaderFormat="Short" DisabledDates="" OtherMonthDayVisible="True" SelectedDates="" TitleFormat="MMMM, yyyy" TitleLeftArrowImageUrl="DefaultSubMenuIconRTL" TitleRightArrowImageUrl="DefaultSubMenuIcon" VisibleDate="2018-02-01">
+        <eo:DatePicker ID="fecha_Factura" runat="server" CssClass="col-lg-1 col-md-1" style="left:15%" ClientIDMode="AutoID" ControlSkinID="None" DayCellHeight="15" DayCellWidth="31" DayHeaderFormat="Short" DisabledDates="" OtherMonthDayVisible="True" SelectedDates="" TitleFormat="MMMM, yyyy" TitleLeftArrowImageUrl="DefaultSubMenuIconRTL" TitleRightArrowImageUrl="DefaultSubMenuIcon" VisibleDate="2018-02-01">
             <calendarstyle csstext="background-color:white;border-bottom-color:Silver;border-bottom-style:solid;border-bottom-width:1px;border-left-color:Silver;border-left-style:solid;border-left-width:1px;border-right-color:Silver;border-right-style:solid;border-right-width:1px;border-top-color:Silver;border-top-style:solid;border-top-width:1px;color:#2C0B1E;padding-bottom:5px;padding-left:5px;padding-right:5px;padding-top:5px;" />
             <TitleStyle CssText="font-family:Verdana;font-size:8.75pt;padding-bottom:5px;padding-left:5px;padding-right:5px;padding-top:5px;" />
             <titlearrowstyle csstext="cursor: hand" />
@@ -93,7 +100,7 @@
     <br />
     <br />
     <div class="row">
-        <asp:Button ID="Button1" runat="server" Text="Editar Ticket" CssClass="col-lg-2 col-md-2" style="left:4%"/>
-        <asp:Button ID="Button2" runat="server" Text="Cancelar"  CssClass="col-lg-2 col-md-2" style="left:9%" />
+        <asp:Button ID="Bt_editar" runat="server" Text="Editar Ticket" CssClass="col-lg-2 col-md-2" style="left:4%"/>
+        <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-2 col-md-2" style="left:9%" />
     </div>
 </asp:Content>

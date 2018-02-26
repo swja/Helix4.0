@@ -19,7 +19,7 @@
     <br />
         <div class="row">
             <asp:Label ID="Label4" runat="server" Text="Email" CssClass="col-lg-2 col-md-2"></asp:Label>
-            <asp:TextBox ID="txt_email" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+            <asp:TextBox ID="txt_email" runat="server" CssClass="col-lg-3 col-md-3" TextMode="Email"></asp:TextBox>
              <asp:Label ID="Label5" runat="server" Text="Telefono" CssClass="col-lg-2 col-md-2"></asp:Label>
             <asp:TextBox ID="txt_telefono" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
         </div>
@@ -31,12 +31,11 @@
     <div class="row">
             <asp:Label ID="Label8" runat="server" Text="Nombre de Usuario" CssClass="col-lg-2 col-md-2"></asp:Label>
             <asp:TextBox ID="txt_usuario" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
-            <asp:Label ID="Label9" runat="server" Text="Contraseña" CssClass="col-lg-2 col-md-2"></asp:Label>
-            <asp:TextBox ID="txt_pass" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+            <asp:Label ID="Label9" runat="server" Text="Contraseña" CssClass="col-lg-2 col-md-2"  ></asp:Label>
+            <asp:TextBox ID="txt_pass" runat="server" CssClass="col-lg-3 col-md-3" placeholder="Actualizar contraseña..." ToolTip="Modifique este campo solo si desea actualizar su contraseña."></asp:TextBox>
         </div>
              <div class="row">
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo requerido" CssClass="col-lg-6 col-md-6" style="padding-left: 17%;" ControlToValidate="txt_usuario" ForeColor="#4AAF51" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Campo requerido" CssClass="col-lg-6 col-md-6" style="padding-left: 6%;" ControlToValidate="txt_pass" ForeColor="#4AAF51" SetFocusOnError="True"></asp:RequiredFieldValidator>
             </div>
     <br />
     <div class="row">

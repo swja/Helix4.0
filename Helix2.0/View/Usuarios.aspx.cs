@@ -9,7 +9,7 @@ namespace Helix2._0.View
 {
     public partial class Usuarios : System.Web.UI.Page
     {
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Bt_agregar_Click(object sender, EventArgs e)
         {
             Response.Redirect("/View/Add/Agregar-usuario.aspx", true);
         }

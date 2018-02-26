@@ -11,7 +11,7 @@
                <asp:TextBox ID="TextBox1" runat="server" CssClass="col-md-3 col-sm-3 col-lg-2"></asp:TextBox>
                <asp:Button ID="Button1" runat="server" CssClass="col-md-2 col-sm-2 col-lg-6" Text="Nuevo" Width="10%" style="left:33%" OnClick="Button1_Click" />     
       </div>
-      <asp:GridView ID="gvIndustria" runat="server" Width="100%" AutoGenerateColumns="False" DataKeyNames="#, Tipo de Industria" DataSourceID="Inudstria" OnSelectedIndexChanged="gvIndustria_SelectedIndexChanged">
+      <asp:GridView ID="gvIndustria" runat="server" Width="100%" AutoGenerateColumns="False" DataKeyNames="#, Tipo de Industria" DataSourceID="Inudstria" OnSelectedIndexChanged="gvIndustria_SelectedIndexChanged" CssClass="table table-responsive">
           <Columns>
               <asp:BoundField DataField="#" HeaderText="#" InsertVisible="False" ReadOnly="True" SortExpression="#" />
               <asp:BoundField DataField="Tipo de Industria" HeaderText="Tipo de Industria" SortExpression="Tipo de Industria" />

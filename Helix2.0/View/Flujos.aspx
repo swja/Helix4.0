@@ -12,7 +12,7 @@
                <asp:Button ID="Button1" runat="server" CssClass="col-md-2 col-sm-2 col-lg-6" Text="Nuevo" Width="10%" style="left:40%" OnClick="Button1_Click" />
       </div>
       <br />
-     <asp:GridView ID="gvFlujo" runat="server" AutoGenerateColumns="False" DataKeyNames="#,Nombre del Flujo,Descripción" DataSourceID="Flujo" OnSelectedIndexChanged="gvFlujo_SelectedIndexChanged" Width="100%">
+     <asp:GridView ID="gvFlujo" runat="server" AutoGenerateColumns="False" DataKeyNames="#,Nombre del Flujo,Descripción" DataSourceID="Flujo" OnSelectedIndexChanged="gvFlujo_SelectedIndexChanged" Width="100%" CssClass="table table-responsive">
          <Columns>
              <asp:BoundField DataField="#" HeaderText="#" InsertVisible="False" ReadOnly="True" SortExpression="#" />
              <asp:BoundField DataField="Nombre del Flujo" HeaderText="Nombre del Flujo" SortExpression="Nombre del Flujo" />

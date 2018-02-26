@@ -20,7 +20,7 @@
     <br />
         <div class="row">
             <asp:Label ID="Label4" runat="server" Text="Email" CssClass="col-lg-2 col-md-2"></asp:Label>
-            <asp:TextBox ID="txt_email" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+            <asp:TextBox ID="txt_email" runat="server" CssClass="col-lg-3 col-md-3" TextMode="Email"></asp:TextBox>
              <asp:Label ID="Label5" runat="server" Text="Telefono" CssClass="col-lg-2 col-md-2"></asp:Label>
             <asp:TextBox ID="txt_telefono" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
         </div>
@@ -31,7 +31,7 @@
     <br />
     <div class="row">
             <asp:Label ID="Label8" runat="server" Text="Nombre de Usuario" CssClass="col-lg-2 col-md-2"></asp:Label>
-            <asp:TextBox ID="txt_usuario" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+            <asp:TextBox ID="txt_usuario" runat="server" CssClass="col-lg-3 col-md-3" placeholder="Minimo 4 caracteres..."></asp:TextBox>
             <asp:Label ID="Label9" runat="server" Text="Contraseña" CssClass="col-lg-2 col-md-2"></asp:Label>
             <asp:TextBox ID="txt_pass" runat="server" CssClass="col-lg-3 col-md-3" TextMode="Password"></asp:TextBox>
         </div>
