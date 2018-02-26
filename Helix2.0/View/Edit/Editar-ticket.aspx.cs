@@ -24,7 +24,7 @@ namespace Helix2._0.View.Edit
         {
 
             identificador = Application["identidad"].ToString();
-            if (IsPostBack == false)
+            if (IsPostBack == false) 
             {
                 txt_Cliente.Text = Application["cliente"].ToString();
                 txt_Responsable.Text = Application["usuario"].ToString();
