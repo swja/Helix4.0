@@ -22,7 +22,6 @@ namespace Helix2._0.View.Edit
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
             identificador = Application["identidad"].ToString();
             if (IsPostBack == false) 
             {
