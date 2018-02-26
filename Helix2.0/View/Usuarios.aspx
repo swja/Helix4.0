@@ -9,7 +9,7 @@
       <div class="row">
            <h5 class="col-md-2 col-sm-2 col-lg-2">Filtro Usuarios </h5>
                <asp:TextBox ID="TextBox1" runat="server" CssClass="col-md-3 col-sm-3 col-lg-2"></asp:TextBox>
-               <asp:Button ID="Button1" runat="server" CssClass="col-md-2 col-sm-2 col-lg-6" Text="Nuevo" Width="10%" style="left:3%" OnClick="Button1_Click" />
+               <asp:Button ID="Button1" runat="server" CssClass="col-md-2 col-sm-2 col-lg-6" Text="Nuevo" Width="10%" style="left:3%" OnClick="Bt_agregar_Click" />
            
       </div>
       <br />

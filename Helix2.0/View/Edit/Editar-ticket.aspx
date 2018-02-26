@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Editar ticket" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Editar-ticket.aspx.cs" Inherits="Helix2._0.View.Edit.Editar_ticket" %>
 <%@ Register assembly="EO.Web" namespace="EO.Web" tagprefix="eo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <br />
      <div class="row" style="text-align:  center;">
         <asp:Label ID="Label1" runat="server" Text="Editar Ticket" CssClass="col-md-12 col-sm-12 col-xs-12 text-center" Font-Size="X-Large"></asp:Label>
          <br />
@@ -100,7 +101,7 @@
     <br />
     <br />
     <div class="row">
-        <asp:Button ID="Bt_editar" runat="server" Text="Editar Ticket" CssClass="col-lg-2 col-md-2" style="left:4%"/>
+        <asp:Button ID="Bt_editar" runat="server" Text="Editar Ticket" CssClass="col-lg-2 col-md-2" style="left:4%" OnClick="Bt_editar_Click1"/>
         <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-2 col-md-2" style="left:9%" />
     </div>
 </asp:Content>
