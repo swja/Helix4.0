@@ -13,7 +13,9 @@ namespace Helix2._0.View.Edit
     {
         public string identificador;
         public string flujo;
-        public String usuario;
+        public int id_Usuario;
+        public int id_Cliente;
+        public string fecha = DateTime.Now.ToString("dd/MM/yyyy");
         public class Conexion
         {
             public static SqlConnection ObtenerConexion()
@@ -24,10 +26,12 @@ namespace Helix2._0.View.Edit
         protected void Page_Load(object sender, EventArgs e)
         {
             identificador = Application["identidad"].ToString();
+            id_Usuario = Convert.ToInt32(Application["id_Usuario"]);
+            id_Cliente = Convert.ToInt32(Application["id_Cliente"]);
             if (IsPostBack == false) 
             {
                 //recojo el valor del nombre de usuario que etsa en sesion para ponerlo en los comentarios
-                usuario = Convert.ToString(Session["Nombres"]);
+                //no se debe recoger el nombre de usuario sino el ID, al igual que el ID del cliente
                 txt_Cliente.Text = Application["cliente"].ToString();
                 txt_Responsable.Text = Application["usuario"].ToString();
                 txt_Nombre.Text = Application["nombre"].ToString();
@@ -86,6 +90,33 @@ namespace Helix2._0.View.Edit
                     modificar.ExecuteNonQuery();
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Registro actualizado correctamente.');", true);
                     Response.Redirect("/View/Tickets.aspx", true);
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Ocurrio un error:')" + ex.Message, true);
+                    conexion.Close();
+                }
+                conexion.Close();
+            }
+        }
+
+        protected void Bt_agregar_comentario_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conexion = Conexion.ObtenerConexion())
+            {
+                string query = "INSERT INTO HELIX_COMENTARIO (ID_CLIENTE,ID_USUARIO,ID_TICKET,COMENTARIO,FECHA_COMENTARIO) VALUES (@cliente,@usuario,@ticket,@comentario,@fechaC)";
+                SqlCommand insertar = new SqlCommand(query, conexion);
+                insertar.Parameters.AddWithValue("@cliente", id_Cliente);
+                insertar.Parameters.AddWithValue("@usuario", id_Usuario);
+                insertar.Parameters.AddWithValue("@comentario", txt_Comentario.Text);
+                insertar.Parameters.AddWithValue("@ticket", Convert.ToInt32(identificador));
+                insertar.Parameters.AddWithValue("@fechaC", Convert.ToDateTime(fecha));
+                conexion.Open();
+                try
+                {
+                    insertar.ExecuteNonQuery();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Comentario ingresado correctamente.');", true);
+                    conexion.Close();
                 }
                 catch (Exception ex)
                 {

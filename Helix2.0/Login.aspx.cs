@@ -45,7 +45,8 @@ namespace Helix2._0
                     {
                         Session["Perfil"] = Convert.ToString(Reader.GetValue(1));
                         Session["Nombres"] = Convert.ToString(Reader.GetValue(2));
-                        Session["Id"] = Convert.ToString(Reader.GetValue(3));
+                        //para ingresar el comentario la persona que ingresa no la que esta asignada
+                        Session["Id"] = Convert.ToInt32(Reader.GetValue(3));
                         Response.Redirect("/View/Tickets.aspx", true);
                     }
                 }

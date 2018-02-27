@@ -37,8 +37,17 @@
         <div style="border: 1px solid #FFF;">
             <asp:TextBox ID="txt_Comentario" runat="server" Height="50px" TextMode="MultiLine" Width="40%" style="left:5%" CssClass="col-lg-6 col-md-6"></asp:TextBox>
             <br />
-             <asp:Button ID="Bt_agregar_comentario" runat="server" Text="Agregar comentario" CssClass="col-lg-2 col-md-2" style="left:-12%; top:5%"/>
-            <asp:GridView ID="gvComentario" runat="server"></asp:GridView>
+             <asp:Button ID="Bt_agregar_comentario" runat="server" Text="Agregar comentario" CssClass="col-lg-2 col-md-2" style="left:-12%; top:5%" OnClick="Bt_agregar_comentario_Click"/>
+            <div style="padding-left:45%">
+            <asp:GridView ID="gvComentario" runat="server" AutoGenerateColumns="False" DataSourceID="Comentario">
+                <Columns>
+                    <asp:BoundField DataField="ID_COMENTARIO" HeaderText="ID_COMENTARIO" SortExpression="ID_COMENTARIO" InsertVisible="False" ReadOnly="True" />
+                    <asp:BoundField DataField="COMENTARIO" HeaderText="COMENTARIO" SortExpression="COMENTARIO" />
+                    <asp:BoundField DataField="FECHA_COMENTARIO" HeaderText="FECHA_COMENTARIO" SortExpression="FECHA_COMENTARIO" />
+                </Columns>
+            </asp:GridView>
+                </div>
+            <asp:SqlDataSource ID="Comentario" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT [ID_COMENTARIO], [COMENTARIO], [FECHA_COMENTARIO] FROM [HELIX_COMENTARIO]"></asp:SqlDataSource>
             </div>
     </div>
     <br />

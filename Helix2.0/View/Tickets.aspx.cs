@@ -51,6 +51,8 @@ namespace Helix2._0
             Application["pago"] = Convert.ToString(gvTickets.DataKeys[row.RowIndex].Values["ID_FORMAPAGO"]);
             Application["fechaE"] = Convert.ToDateTime(gvTickets.DataKeys[row.RowIndex].Values["Fecha de Entrega"]);
             Application["fechaF"] = Convert.ToDateTime(gvTickets.DataKeys[row.RowIndex].Values["Fecha de Facturación"]);
+            Application["id_Cliente"] = Convert.ToInt32(gvTickets.DataKeys[row.RowIndex].Values["ID_CLIENTE"]);
+            Application["id_Usuario"] = Convert.ToInt32(gvTickets.DataKeys[row.RowIndex].Values["ID_USUARIO"]);
             Response.Redirect("/View/Edit/Editar-ticket.aspx", true);
         }
     }
