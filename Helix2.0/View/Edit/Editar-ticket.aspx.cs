@@ -11,7 +11,7 @@ namespace Helix2._0.View.Edit
 {
     public partial class Editar_ticket : System.Web.UI.Page
     {
-        public string identificador;
+        public int identificador;
         public string flujo;
         public int id_Usuario;
         public int id_Cliente;
@@ -23,10 +23,23 @@ namespace Helix2._0.View.Edit
                 return new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["HelixConnectionString"].ConnectionString);
             }
         }
+        protected void carga_Comentarios()
+        {
+            using (SqlConnection conexion = Conexion.ObtenerConexion())
+            {
+                string query = "SELECT ID_COMENTARIO AS #, COMENTARIO AS 'Comentario', FECHA_COMENTARIO AS 'Fecha', CONCAT(HELIX_USUARIO.NOMBRE, ' ', HELIX_USUARIO.APELLIDO) AS 'Usuario' FROM HELIX_COMENTARIO INNER JOIN HELIX_USUARIO ON HELIX_COMENTARIO.ID_USUARIO = HELIX_USUARIO.ID_USUARIO WHERE ID_TICKET = '" +identificador + "'";
+                SqlCommand cmd = new SqlCommand(query, conexion);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                gvComentario.DataSource = dt;
+                gvComentario.DataBind();
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            identificador = Application["identidad"].ToString();
-            id_Usuario = Convert.ToInt32(Application["id_Usuario"]);
+            identificador = Convert.ToInt32(Application["identidad"]);
+            id_Usuario = Convert.ToInt32(Session["id"]);
             id_Cliente = Convert.ToInt32(Application["id_Cliente"]);
             if (IsPostBack == false) 
             {
@@ -54,6 +67,7 @@ namespace Helix2._0.View.Edit
                             dl_Etapa.DataBind();
                             dl_Etapa.SelectedValue = Application["etapa"].ToString();
                         }
+                carga_Comentarios();
             }
         }
         protected void cargar_Etapas(object sender, EventArgs e)
@@ -83,7 +97,7 @@ namespace Helix2._0.View.Edit
                 modificar.Parameters.AddWithValue("@fechaE", fecha_Entrega.SelectedDate);
                 modificar.Parameters.AddWithValue("@fechaF", fecha_Factura.SelectedDate);
                 modificar.Parameters.AddWithValue("@pago", dl_Pago.SelectedValue);
-                modificar.Parameters.AddWithValue("@id", Convert.ToInt32(identificador));
+                modificar.Parameters.AddWithValue("@id", identificador);
                 conexion.Open();
                 try
                 {
@@ -109,7 +123,7 @@ namespace Helix2._0.View.Edit
                 insertar.Parameters.AddWithValue("@cliente", id_Cliente);
                 insertar.Parameters.AddWithValue("@usuario", id_Usuario);
                 insertar.Parameters.AddWithValue("@comentario", txt_Comentario.Text);
-                insertar.Parameters.AddWithValue("@ticket", Convert.ToInt32(identificador));
+                insertar.Parameters.AddWithValue("@ticket", identificador);
                 insertar.Parameters.AddWithValue("@fechaC", Convert.ToDateTime(fecha));
                 conexion.Open();
                 try
@@ -117,6 +131,8 @@ namespace Helix2._0.View.Edit
                     insertar.ExecuteNonQuery();
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Comentario ingresado correctamente.');", true);
                     conexion.Close();
+                    txt_Comentario.Text = "";
+                    carga_Comentarios();
                 }
                 catch (Exception ex)
                 {
@@ -125,6 +141,7 @@ namespace Helix2._0.View.Edit
                 }
                 conexion.Close();
             }
+
         }
     }
 }

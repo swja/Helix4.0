@@ -39,15 +39,8 @@
             <br />
              <asp:Button ID="Bt_agregar_comentario" runat="server" Text="Agregar comentario" CssClass="col-lg-2 col-md-2" style="left:-12%; top:5%" OnClick="Bt_agregar_comentario_Click"/>
             <div style="padding-left:45%">
-            <asp:GridView ID="gvComentario" runat="server" AutoGenerateColumns="False" DataSourceID="Comentario">
-                <Columns>
-                    <asp:BoundField DataField="ID_COMENTARIO" HeaderText="ID_COMENTARIO" SortExpression="ID_COMENTARIO" InsertVisible="False" ReadOnly="True" />
-                    <asp:BoundField DataField="COMENTARIO" HeaderText="COMENTARIO" SortExpression="COMENTARIO" />
-                    <asp:BoundField DataField="FECHA_COMENTARIO" HeaderText="FECHA_COMENTARIO" SortExpression="FECHA_COMENTARIO" />
-                </Columns>
-            </asp:GridView>
+                <asp:GridView ID="gvComentario" runat="server"></asp:GridView>
                 </div>
-            <asp:SqlDataSource ID="Comentario" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT [ID_COMENTARIO], [COMENTARIO], [FECHA_COMENTARIO] FROM [HELIX_COMENTARIO]"></asp:SqlDataSource>
             </div>
     </div>
     <br />
@@ -111,6 +104,14 @@
     <br />
     <div class="row">
         <asp:Button ID="Bt_editar" runat="server" Text="Editar Ticket" CssClass="col-lg-2 col-md-2" style="left:4%" OnClick="Bt_editar_Click1"/>
-        <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-2 col-md-2" style="left:9%" />
+        <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-2 col-md-2" style="left:9%" OnClientClick="javascript:return volver();" />
     </div>
+        <script type="text/javascript">
+<!--
+function volver() {
+    window.location.href = "../Tickets.aspx";
+    return false;
+}
+//-->
+</script>
 </asp:Content>

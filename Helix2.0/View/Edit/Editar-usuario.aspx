@@ -58,7 +58,15 @@
     <br />
     <div class="row">
         <asp:Button ID="Bt_editar" runat="server" Text="Editar Usuario" CssClass="col-lg-3 col-md-3" style="left:20%" OnClick="Bt_editar_Click"/>
-        <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" OnClick="Bt_cancelar_Click" />
+        <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" OnClick="Bt_cancelar_Click" OnClientClick="javascript:return volver();" />
     </div>
      </div>
+    <script type="text/javascript">
+<!--
+function volver() {
+    window.location.href = "../Usuarios.aspx";
+    return false;
+}
+//-->
+</script>
 </asp:Content>
