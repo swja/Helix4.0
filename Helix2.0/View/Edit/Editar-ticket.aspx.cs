@@ -23,7 +23,7 @@ namespace Helix2._0.View.Edit
                 return new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["HelixConnectionString"].ConnectionString);
             }
         }
-        protected void carga_Comentarios()
+        /*protected void carga_Comentarios()
         {
             using (SqlConnection conexion = Conexion.ObtenerConexion())
             {
@@ -35,10 +35,11 @@ namespace Helix2._0.View.Edit
                 gvComentario.DataSource = dt;
                 gvComentario.DataBind();
             }
-        }
+        }*/
         protected void Page_Load(object sender, EventArgs e)
         {
             identificador = Convert.ToInt32(Application["identidad"]);
+            Label5.Text = Convert.ToString(identificador);
             id_Usuario = Convert.ToInt32(Session["id"]);
             id_Cliente = Convert.ToInt32(Application["id_Cliente"]);
             if (IsPostBack == false) 
@@ -67,7 +68,8 @@ namespace Helix2._0.View.Edit
                             dl_Etapa.DataBind();
                             dl_Etapa.SelectedValue = Application["etapa"].ToString();
                         }
-                carga_Comentarios();
+               // carga_Comentarios();
+
             }
         }
         protected void cargar_Etapas(object sender, EventArgs e)
@@ -132,7 +134,7 @@ namespace Helix2._0.View.Edit
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Comentario ingresado correctamente.');", true);
                     conexion.Close();
                     txt_Comentario.Text = "";
-                    carga_Comentarios();
+                    gvComentario.DataBind();
                 }
                 catch (Exception ex)
                 {

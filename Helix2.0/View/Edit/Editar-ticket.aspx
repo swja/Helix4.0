@@ -39,7 +39,21 @@
             <br />
              <asp:Button ID="Bt_agregar_comentario" runat="server" Text="Agregar comentario" CssClass="col-lg-2 col-md-2" style="left:-12%; top:5%" OnClick="Bt_agregar_comentario_Click"/>
             <div style="padding-left:45%">
-                <asp:GridView ID="gvComentario" runat="server"></asp:GridView>
+                <asp:GridView ID="gvComentario" runat="server" AutoGenerateColumns="False" DataKeyNames="#" DataSourceID="Comentario" CssClass="table-responsive">
+                    <Columns>
+                        <asp:BoundField DataField="#" HeaderText="#" InsertVisible="False" ReadOnly="True" SortExpression="#" />
+                        <asp:BoundField DataField="Comentario" HeaderText="Comentario" SortExpression="Comentario" />
+                        <asp:BoundField DataField="Fecha" DataFormatString="{0:d}" HeaderText="Fecha" SortExpression="Fecha" />
+                        <asp:BoundField DataField="Usuario" HeaderText="Usuario" ReadOnly="True" SortExpression="Usuario" />
+                    </Columns>
+                </asp:GridView>
+
+                <asp:SqlDataSource ID="Comentario" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID_COMENTARIO AS #, COMENTARIO AS 'Comentario', FECHA_COMENTARIO AS 'Fecha', CONCAT(HELIX_USUARIO.NOMBRE, ' ', HELIX_USUARIO.APELLIDO) AS 'Usuario' FROM HELIX_COMENTARIO INNER JOIN HELIX_USUARIO ON HELIX_COMENTARIO.ID_USUARIO = HELIX_USUARIO.ID_USUARIO WHERE ID_TICKET = @TICKET">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="Label5" Name="TICKET" PropertyName="Text" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+
                 </div>
             </div>
     </div>
@@ -105,6 +119,7 @@
     <div class="row">
         <asp:Button ID="Bt_editar" runat="server" Text="Editar Ticket" CssClass="col-lg-2 col-md-2" style="left:4%" OnClick="Bt_editar_Click1"/>
         <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-2 col-md-2" style="left:9%" OnClientClick="javascript:return volver();" />
+        <asp:Label ID="Label5" runat="server" Text="Label" Visible="false"></asp:Label>
     </div>
         <script type="text/javascript">
 <!--
