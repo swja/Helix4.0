@@ -40,6 +40,15 @@ namespace Helix2._0.View.Edit {
         protected global::System.Web.UI.WebControls.TextBox txt_Ciudad;
         
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
         /// bt_editar control.
         /// </summary>
         /// <remarks>

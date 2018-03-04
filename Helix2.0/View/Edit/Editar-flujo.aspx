@@ -9,14 +9,15 @@
         <div class="row">
            <asp:Label ID="Label2" runat="server" Text="Nombre del flujo" CssClass="col-lg-2 col-md-2"></asp:Label>
             <asp:TextBox ID="txt_nombre" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo requerido" ForeColor="#339933" ControlToValidate="txt_nombre" CssClass="col-lg-6 col-md-6"></asp:RequiredFieldValidator>
         </div>
 <br />
     <div class="row">
            <asp:Label ID="Label3" runat="server" Text="Descripción del flujo" CssClass="col-lg-2 col-md-2"></asp:Label>
         </div>
     <br />
-    <br />
     <asp:TextBox ID="txt_descripcion" runat="server" Height="159px" TextMode="MultiLine" Width="75%" CssClass="col-lg-12 col-md-12"></asp:TextBox>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo requerido" ForeColor="#339933" ControlToValidate="txt_descripcion" CssClass="col-lg-6 col-md-6"></asp:RequiredFieldValidator>
     <br />
     <br />
     <br />

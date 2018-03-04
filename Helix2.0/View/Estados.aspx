@@ -13,20 +13,28 @@
       </div>
     <br />
       <br />
-     <asp:GridView ID="gvEstados" runat="server" AutoGenerateColumns="False" DataKeyNames="#,Flujo Maestro,Nombre de la Etapa,Descripción" DataSourceID="Estado" OnSelectedIndexChanged="gvEstados_SelectedIndexChanged" Width="100%" CssClass="table table-responsive">
+     <asp:GridView ID="gvEstados" runat="server" AutoGenerateColumns="False" DataKeyNames="#,Flujo Maestro,Nombre de la Etapa,Descripción,ID_FLUJO" DataSourceID="Estado" OnSelectedIndexChanged="gvEstados_SelectedIndexChanged" Width="100%" CssClass="table table-responsive" AllowPaging="True" AllowSorting="True">
          <Columns>
              <asp:BoundField DataField="#" HeaderText="#" InsertVisible="False" ReadOnly="True" SortExpression="#" />
              <asp:BoundField DataField="Flujo Maestro" HeaderText="Flujo Maestro" SortExpression="Flujo Maestro" />
              <asp:BoundField DataField="Nombre de la Etapa" HeaderText="Nombre de la Etapa" SortExpression="Nombre de la Etapa" />
              <asp:BoundField DataField="Descripción" HeaderText="Descripción" SortExpression="Descripción" />
+             <asp:BoundField DataField="ID_FLUJO" HeaderText="ID_FLUJO" SortExpression="ID_FLUJO" Visible="False" />
              <asp:TemplateField ShowHeader="False">
                  <ItemTemplate>
-                     <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Select" Text="Select" />
+                     <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Select" Text="Seleccionar" />
                  </ItemTemplate>
              </asp:TemplateField>
          </Columns>
      </asp:GridView>
-         <asp:SqlDataSource ID="Estado" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID_ETAPAFLUJO AS #, HELIX_FLUJO.NOMBRE_FLUJO AS 'Flujo Maestro' , NOMBRE_ETAPA AS 'Nombre de la Etapa', DESCRIPCION_ETAPA as'Descripción' FROM [dbo].[HELIX_ETAPA_FLUJO]
-INNER JOIN HELIX_FLUJO ON HELIX_ETAPA_FLUJO.ID_FLUJO = HELIX_FLUJO.ID_FLUJO"></asp:SqlDataSource>
+         <asp:SqlDataSource ID="Estado" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT
+	base.ID_ETAPAFLUJO AS #, 
+	Flujo.NOMBRE_FLUJO AS 'Flujo Maestro',
+	base.NOMBRE_ETAPA AS 'Nombre de la Etapa',
+	base.DESCRIPCION_ETAPA AS 'Descripción',
+	base.ID_FLUJO
+FROM
+	HELIX_ETAPA_FLUJO as base
+INNER JOIN HELIX_FLUJO as Flujo ON Flujo.ID_FLUJO = Base.ID_FLUJO"></asp:SqlDataSource>
       <br />
 </asp:Content>

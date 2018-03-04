@@ -23,12 +23,9 @@ namespace Helix2._0.View.Edit
             identificador = Application["identidad"].ToString();
             if (IsPostBack == false)
             {
-                string nombre = Application["nombre"].ToString();
-                string descripcion = Application["descripcion"].ToString();
-                string flujo = Application["flujo"].ToString();
-                txt_descripcion.Text = descripcion;
-                txt_nombre.Text = nombre;
-                lb_flujo.Text = flujo;
+                txt_nombre.Text = Application["nombre"].ToString();
+                txt_descripcion.Text = Application["descripcion"].ToString();
+                Dl_flujo.SelectedValue = Application["flujo"].ToString();
             }
         }
         protected void bt_cancelar_Click(object sender, EventArgs e)

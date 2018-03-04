@@ -11,7 +11,7 @@
             <asp:TextBox ID="txt_nombre" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
              <asp:Label ID="Label3" runat="server" Text="Apellido" CssClass="col-lg-2 col-md-2"></asp:Label>
             <asp:TextBox ID="txt_apellido" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
-        </div>
+        </div> 
             <div class="row">
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo requerido" CssClass="col-lg-6 col-md-6" style="padding-left: 17%;" ControlToValidate="txt_nombre" ForeColor="#4AAF51" SetFocusOnError="True"></asp:RequiredFieldValidator>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo requerido" CssClass="col-lg-6 col-md-6" style="padding-left: 6%;" ControlToValidate="txt_apellido" ForeColor="#4AAF51" SetFocusOnError="True"></asp:RequiredFieldValidator>
@@ -60,6 +60,8 @@
         <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" OnClick="Bt_cancelar_Click" OnClientClick="javascript:return volver();" />
     </div>
      </div>
+     <br />
+                           
     <script type="text/javascript">
 <!--
 function volver() {

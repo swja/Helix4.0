@@ -7,8 +7,8 @@
     <br />
      <div class="row">
             <asp:Label ID="Label3" runat="server" Text="Flujo maestro" CssClass="col-lg-2 col-md-2"></asp:Label>
-            <asp:DropDownList ID="Dl_flujos" runat="server" CssClass="col-lg-2 col-md-2" DataSourceID="Flujos" DataTextField="DESCRIPCION_FLUJO" DataValueField="ID_FLUJO"></asp:DropDownList>
-            <asp:SqlDataSource ID="Flujos" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID_FLUJO, DESCRIPCION_FLUJO FROM HELIX_FLUJO"></asp:SqlDataSource>
+            <asp:DropDownList ID="Dl_flujos" runat="server" CssClass="col-lg-2 col-md-2" DataSourceID="Flujos" DataTextField="NOMBRE_FLUJO" DataValueField="ID_FLUJO"></asp:DropDownList>
+            <asp:SqlDataSource ID="Flujos" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT [ID_FLUJO], [NOMBRE_FLUJO] FROM [HELIX_FLUJO]"></asp:SqlDataSource>
     </div>
     <br />
         <div class="row">

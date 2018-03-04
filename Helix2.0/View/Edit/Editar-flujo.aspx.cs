@@ -24,10 +24,8 @@ namespace Helix2._0.View.Edit
             identificador = Application["identidad"].ToString();
            if (IsPostBack == false)
             {
-                string nombre = Application["nombre"].ToString();
-                string descripcion = Application["descripcion"].ToString();
-                txt_descripcion.Text = descripcion;
-                txt_nombre.Text = nombre;
+                txt_nombre.Text = Application["nombre"].ToString();
+                txt_descripcion.Text = Application["descripcion"].ToString();
             }
 
             using (SqlConnection conexion = Conexion.ObtenerConexion())

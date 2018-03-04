@@ -23,10 +23,10 @@ namespace Helix2._0.View.Edit
             identificador = Application["identidad"].ToString();
             if (IsPostBack == false)
             {
-                txt_nombres.Text = Application["nombres"].ToString();
-                txt_direccion.Text = Application["direccion"].ToString();
-                txt_email.Text = Application["email"].ToString();
-                txt_telefono.Text = Application["telefono"].ToString();
+                txt_Nombres.Text = Application["nombres"].ToString();
+                txt_Direccion.Text = Application["direccion"].ToString();
+                txt_Email.Text = Application["email"].ToString();
+                txt_Telefono.Text = Application["telefono"].ToString();
                 dl_Ciudad.SelectedValue = Application["ciudad"].ToString();
                 dl_Industria.SelectedValue = Application["industria"].ToString();
             }
@@ -45,10 +45,10 @@ namespace Helix2._0.View.Edit
                 modificar.Parameters.AddWithValue("@id", Convert.ToInt32(identificador));
                 modificar.Parameters.AddWithValue("@ciudad", dl_Ciudad.SelectedValue);
                 modificar.Parameters.AddWithValue("@industria", dl_Industria.SelectedValue);
-                modificar.Parameters.AddWithValue("@nombres", txt_nombres.Text);
-                modificar.Parameters.AddWithValue("@direccion", txt_direccion.Text);
-                modificar.Parameters.AddWithValue("@telefono", txt_telefono.Text);
-                modificar.Parameters.AddWithValue("@email", txt_email.Text);
+                modificar.Parameters.AddWithValue("@nombres", txt_Nombres.Text);
+                modificar.Parameters.AddWithValue("@direccion", txt_Direccion.Text);
+                modificar.Parameters.AddWithValue("@telefono", txt_Telefono.Text);
+                modificar.Parameters.AddWithValue("@email", txt_Email.Text);
                 conexion.Open();
                 try
                 {

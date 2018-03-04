@@ -9,6 +9,7 @@
         <div class="row">
            <asp:Label ID="Label2" runat="server" Text="Forma de Pago a editar" CssClass="col-lg-2 col-md-2"></asp:Label>
             <asp:TextBox ID="txt_Pago" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo requerido" ForeColor="#339933" ControlToValidate="txt_Pago" CssClass="col-lg-6 col-md-6"></asp:RequiredFieldValidator>
         </div>
     <br />
     <br />

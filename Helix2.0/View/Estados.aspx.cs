@@ -20,7 +20,7 @@ namespace Helix2._0.View
             Application["identidad"] = Convert.ToInt32(gvEstados.DataKeys[row.RowIndex].Values["#"]);
             Application["nombre"] = Convert.ToString(gvEstados.DataKeys[row.RowIndex].Values["Nombre de la Etapa"]);
             Application["descripcion"] = Convert.ToString(gvEstados.DataKeys[row.RowIndex].Values["Descripción"]);
-            Application["flujo"] = Convert.ToString(gvEstados.DataKeys[row.RowIndex].Values["Flujo Maestro"]);
+            Application["flujo"] = Convert.ToString(gvEstados.DataKeys[row.RowIndex].Values["ID_FLUJO"]);
             Response.Redirect("/View/Edit/Editar-estado.aspx", true);
         }
     }

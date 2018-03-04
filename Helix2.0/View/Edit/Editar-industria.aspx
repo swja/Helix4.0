@@ -7,9 +7,11 @@
     <br />
     <br />
      <div class="row">
-        <asp:Label ID="Label4" runat="server" Text="Industria a editar" CssClass="col-lg-3 col-md-3"></asp:Label>
+        <asp:Label ID="Label4" runat="server" Text="Industria a editar" CssClass="col-lg-2 col-md-2"></asp:Label>
             <asp:TextBox ID="txt_Industria" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo requerido" ForeColor="#339933" ControlToValidate="txt_Industria" CssClass="col-lg-6 col-md-6"></asp:RequiredFieldValidator>
     </div>
+    <br />
     <br />
     <div class="row">
         <asp:Button ID="bt_editar" runat="server" Text="Editar Tipo de industria" CssClass="col-lg-3 col-md-3" style="left:20%" OnClick="Bt_editar_Click"/>

@@ -10,19 +10,22 @@
     <div class="row">
         <asp:Label CssClass="col-lg-2 col-md-2" runat="server">Nombre del ticket</asp:Label>
         <asp:TextBox CssClass="col-lg-10 col-md-10" runat="server" style="width:67%; height:40px;" ID="txt_Nombre" TextMode="MultiLine"></asp:TextBox>
-    </div>     
+    </div>   
+      <div class="row">
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo requerido" CssClass="col-lg-6 col-md-6" ControlToValidate="txt_Nombre" style="left:18%;" ForeColor="#00CC66"></asp:RequiredFieldValidator>
+            </div>
     <br />
         <div class="row">
         <asp:Label CssClass="col-lg-2 col-md-2" runat="server">Responsable</asp:Label>
-        <asp:TextBox runat="server" CssClass="col-lg-3 col-md-3" ID="txt_Responsable"></asp:TextBox>
+        <asp:TextBox runat="server" CssClass="col-lg-3 col-md-3" ID="txt_Responsable" Enabled="False"></asp:TextBox>
         <asp:Label CssClass="col-lg-2 col-md-2" runat="server">Flujo</asp:Label>
         <asp:DropDownList runat="server" CssClass="col-lg-3 col-md-3" ID="dl_Flujo" DataSourceID="Flujo" DataTextField="NOMBRE_FLUJO" DataValueField="ID_FLUJO" AutoPostBack="True" OnSelectedIndexChanged="cargar_Etapas"></asp:DropDownList>
             <asp:SqlDataSource ID="Flujo" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID_FLUJO, NOMBRE_FLUJO FROM HELIX_FLUJO"></asp:SqlDataSource>
-    </div>   
+    </div> 
     <br />
      <div class="row">
         <asp:Label CssClass="col-lg-2 col-md-2" runat="server">Cliente</asp:Label>
-        <asp:TextBox runat="server" CssClass="col-lg-3 col-md-3" ID="txt_Cliente"></asp:TextBox>
+        <asp:TextBox runat="server" CssClass="col-lg-3 col-md-3" ID="txt_Cliente" Enabled="False"></asp:TextBox>
         <asp:Label CssClass="col-lg-2 col-md-2" runat="server">Estado</asp:Label>
         <asp:DropDownList runat="server" CssClass="col-lg-3 col-md-3" ID="dl_Etapa"></asp:DropDownList>
     </div>   
@@ -33,12 +36,12 @@
          <br />
     </div>   
     <div class="row" style="padding-left:1%">
-        <asp:TextBox ID="txt_Descripcion" runat="server" Height="200px" TextMode="MultiLine" Width="40%" CssClass="col-lg-6 col-md-6"></asp:TextBox>
+        <asp:TextBox ID="txt_Descripcion" runat="server" Height="470px" TextMode="MultiLine" Width="40%" CssClass="col-lg-6 col-md-6"></asp:TextBox>
         <div style="border: 1px solid #FFF;">
             <asp:TextBox ID="txt_Comentario" runat="server" Height="50px" TextMode="MultiLine" Width="40%" style="left:5%" CssClass="col-lg-6 col-md-6"></asp:TextBox>
             <br />
-             <asp:Button ID="Bt_agregar_comentario" runat="server" Text="Agregar comentario" CssClass="col-lg-2 col-md-2" style="left:-12%; top:5%" OnClick="Bt_agregar_comentario_Click"/>
-            <div style="padding-left:45%">
+             <asp:Button ID="Bt_agregar_comentario" runat="server" Text="Agregar comentario" CssClass="col-lg-2 col-md-2" style="left:-13%; top:1%" OnClick="Bt_agregar_comentario_Click"/>
+            <div style="padding-left:45%;">
                   <div id="comentario"class="table-responsive">
                 <asp:GridView ID="gvComentario" runat="server" AutoGenerateColumns="False" DataKeyNames="#" DataSourceID="Comentario" class="table" Width="16px">
                     <Columns>
@@ -58,6 +61,9 @@
                 </div>
             </div>
     </div>
+     <div class="row">
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Campo requerido" CssClass="col-lg-6 col-md-6" ControlToValidate="txt_Descripcion" ForeColor="#00CC66"></asp:RequiredFieldValidator>
+            </div>
     <br />
     <div class="row">
         <asp:Label ID="Label4" runat="server" Text="Forma de pago" CssClass="col-lg-2 col-md-2"></asp:Label>
@@ -130,4 +136,5 @@ function volver() {
 }
 //-->
 </script>
+      <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Campo requerido" CssClass="col-lg-6 col-md-6" ControlToValidate="txt_Comentario" style="top:-92vh; left:45%" ForeColor="#00CC66"></asp:RequiredFieldValidator>
 </asp:Content>

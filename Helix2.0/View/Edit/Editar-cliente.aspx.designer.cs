@@ -31,13 +31,22 @@ namespace Helix2._0.View.Edit {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// txt_nombres control.
+        /// txt_Nombres control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_nombres;
+        protected global::System.Web.UI.WebControls.TextBox txt_Nombres;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// Label5 control.
@@ -49,13 +58,13 @@ namespace Helix2._0.View.Edit {
         protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
-        /// txt_direccion control.
+        /// txt_Direccion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_direccion;
+        protected global::System.Web.UI.WebControls.TextBox txt_Direccion;
         
         /// <summary>
         /// Label3 control.
@@ -67,13 +76,31 @@ namespace Helix2._0.View.Edit {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// txt_email control.
+        /// txt_Email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_email;
+        protected global::System.Web.UI.WebControls.TextBox txt_Email;
+        
+        /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        
+        /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
         /// Label6 control.
@@ -85,13 +112,22 @@ namespace Helix2._0.View.Edit {
         protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
-        /// txt_telefono control.
+        /// txt_Telefono control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_telefono;
+        protected global::System.Web.UI.WebControls.TextBox txt_Telefono;
+        
+        /// <summary>
+        /// RequiredFieldValidator4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
         
         /// <summary>
         /// Label8 control.

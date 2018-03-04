@@ -8,19 +8,24 @@
     <br />
     <div class="row">
         <asp:Label ID="Label2" runat="server" Text="Nombres" CssClass="col-lg-2 col-md-2"></asp:Label>
-        <asp:TextBox ID="txt_nombres" runat="server" CssClass="col-lg-3 col-md-4"></asp:TextBox>
+        <asp:TextBox ID="txt_Nombres" runat="server" CssClass="col-lg-3 col-md-4"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo requerido" ControlToValidate="txt_nombres" ForeColor="#339933" CssClass="col-lg-6 col-md-6"></asp:RequiredFieldValidator>
     </div>
     <br />
     <div class="row">
          <asp:Label ID="Label5" runat="server" Text="Dirección"  CssClass="col-lg-2 col-md-2"></asp:Label>
-        <asp:TextBox ID="txt_direccion" runat="server" CssClass="col-lg-3 col-md-4"></asp:TextBox>
+        <asp:TextBox ID="txt_Direccion" runat="server" CssClass="col-lg-3 col-md-4"></asp:TextBox>
             <asp:Label ID="Label3" runat="server" Text="Email"  CssClass="col-lg-2 col-md-2"></asp:Label>
-        <asp:TextBox ID="txt_email" runat="server" CssClass="col-lg-3 col-md-3" TextMode="Email" style="left:0;"></asp:TextBox>
+        <asp:TextBox ID="txt_Email" runat="server" CssClass="col-lg-3 col-md-3" TextMode="Email" style="left:0;"></asp:TextBox>
     </div>
-    <br />
+    <div class="row">
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo requerido" ControlToValidate="txt_direccion" ForeColor="#339933" CssClass="col*lg-6 col-md-6" style="left:18%"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Campo requerido" ForeColor="#339933" ControlToValidate="txt_email" CssClass="col-md-6 col-lg-6" style="left:6%"></asp:RequiredFieldValidator>
+    </div>
       <div class="row">
         <asp:Label ID="Label6" runat="server" Text="Telefono"  CssClass="col-lg-2 col-md-2"></asp:Label>
-        <asp:TextBox ID="txt_telefono" runat="server" CssClass="col-lg-3 col-md-4" TextMode="Phone"></asp:TextBox>
+        <asp:TextBox ID="txt_Telefono" runat="server" CssClass="col-lg-3 col-md-4" TextMode="Phone"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Campo requerido" ForeColor="#339933" ControlToValidate="txt_telefono" CssClass="col-lg-6 col-md-6"></asp:RequiredFieldValidator>
     </div>
     <br />
       <div class="row">
