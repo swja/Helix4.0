@@ -36,6 +36,14 @@
     <br />
     <div class="row">
         <asp:Button ID="Bt_editar" runat="server" Text="Editar Flujo" CssClass="col-lg-3 col-md-3" style="left:1%" OnClick="Bt_editar_Click"/>
-        <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" OnClick="Bt_cancelar_Click" />
+        <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" OnClick="Bt_cancelar_Click" OnClientClick="javascript:return volver();" />
     </div>
+                <script type="text/javascript">
+<!--
+function volver() {
+    window.location.href = "../Flujos.aspx";
+    return false;
+}
+//-->
+</script>
 </asp:Content>

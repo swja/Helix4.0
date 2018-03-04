@@ -23,7 +23,7 @@ namespace Helix2._0.View
             Application["cargo"] = Convert.ToString(gvUsuarios.DataKeys[row.RowIndex].Values["Cargo"]);
             Application["email"] = Convert.ToString(gvUsuarios.DataKeys[row.RowIndex].Values["Email"]);
             Application["usuario"] = Convert.ToString(gvUsuarios.DataKeys[row.RowIndex].Values["Nombre de Usuario"]);
-            Application["rol"] = Convert.ToString(gvUsuarios.DataKeys[row.RowIndex].Values["Rol"]);
+            Application["rol"] = Convert.ToString(gvUsuarios.DataKeys[row.RowIndex].Values["ID_ROL"]);
             Application["telefono"] = Convert.ToString(gvUsuarios.DataKeys[row.RowIndex].Values["Telefono"]);
             Application["password"] = Convert.ToString(gvUsuarios.DataKeys[row.RowIndex].Values["Contraseña"]);
             Response.Redirect("/View/Edit/Editar-usuario.aspx", true);

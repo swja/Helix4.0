@@ -97,6 +97,14 @@
     <br />
     <div class="row">
         <asp:Button ID="Bt_agregar" runat="server" Text="Agregar Ticket" CssClass="col-lg-2 col-md-2" style="left:20%" OnClick="Bt_agregar_Click"/>
-        <asp:Button ID="Bt_Cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-2 col-md-2" style="left:36%" />
+        <asp:Button ID="Bt_Cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-2 col-md-2" style="left:36%" OnClientClick="javascript:return volver();" />
     </div>
+            <script type="text/javascript">
+<!--
+function volver() {
+    window.location.href = "../Tickets.aspx";
+    return false;
+}
+//-->
+</script>
 </asp:Content>

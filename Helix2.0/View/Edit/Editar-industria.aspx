@@ -5,19 +5,22 @@
       <asp:Label ID="Label1" runat="server" Text="Editar Tipo de Industria" CssClass="col-md-12 col-sm-12 col-xs-12 text-center" Font-Size="X-Large"></asp:Label>
           </div> 
     <br />
-        <div class="row">
-           <asp:Label ID="Label2" runat="server" Text="Nombre de la Industria a editar" CssClass="col-lg-3 col-md-3"></asp:Label>
-            <asp:Label ID="Label3" runat="server" Text="Industria" CssClass="col-lg-2 col-md-2"></asp:Label>
-        </div>
-    <br />
     <br />
      <div class="row">
-        <asp:Label ID="Label4" runat="server" Text="Nuevo nombre de la Industria" CssClass="col-lg-3 col-md-3"></asp:Label>
+        <asp:Label ID="Label4" runat="server" Text="Industria a editar" CssClass="col-lg-3 col-md-3"></asp:Label>
             <asp:TextBox ID="txt_Industria" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
     </div>
     <br />
     <div class="row">
         <asp:Button ID="bt_editar" runat="server" Text="Editar Tipo de industria" CssClass="col-lg-3 col-md-3" style="left:20%" OnClick="Bt_editar_Click"/>
-        <asp:Button ID="Button2" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" OnClick="Button2_Click" />
+        <asp:Button ID="Button2" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" OnClick="Button2_Click" OnClientClick="javascript:return volver();" />
     </div>
+                <script type="text/javascript">
+<!--
+function volver() {
+    window.location.href = "../Industrias.aspx";
+    return false;
+}
+//-->
+</script>
 </asp:Content>

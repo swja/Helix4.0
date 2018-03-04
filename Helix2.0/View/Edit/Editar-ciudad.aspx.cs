@@ -17,8 +17,10 @@ namespace Helix2._0.View.Edit
         protected void Page_Load(object sender, EventArgs e)
         {
             identificador = Application["identidad"].ToString();
-            string ciudad = Application["ciudad"].ToString();
-            Label3.Text = ciudad;
+            if (IsPostBack == false)
+            {
+                txt_Ciudad.Text = Application["ciudad"].ToString();
+            }
         }
 
         protected void Bt_editar_Click(object sender, EventArgs e)
@@ -27,7 +29,7 @@ namespace Helix2._0.View.Edit
             {
                 string query = "UPDATE HELIX_CIUDAD SET CIUDAD = @ciudad WHERE ID_CIUDAD = @id";
                 SqlCommand modificar = new SqlCommand(query, conexion);
-                modificar.Parameters.AddWithValue("@ciudad", txt_ciudad.Text);
+                modificar.Parameters.AddWithValue("@ciudad", txt_Ciudad.Text);
                 modificar.Parameters.AddWithValue("@id", Convert.ToInt32(identificador));
                 conexion.Open();
                 try
@@ -47,7 +49,7 @@ namespace Helix2._0.View.Edit
 
         protected void bt_cancelar_Click(object sender, EventArgs e)
         {
-            txt_ciudad.Text = "";
+            txt_Ciudad.Text = "";
             Response.Redirect("/View/Ciudades.aspx", true);
         }
     }

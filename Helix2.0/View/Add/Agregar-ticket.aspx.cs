@@ -21,6 +21,7 @@ namespace Helix2._0.View.Add
         protected void Page_Load(object sender, EventArgs e)
         {
             dl_Estado.Items.Insert(0, " - Primero seleccione un Flujo - ");
+            dl_Cliente.Items.Insert(0, " - Selección de Flujos - ");
         }
 
         protected void Bt_agregar_Click(object sender, EventArgs e)

@@ -23,19 +23,6 @@ namespace Helix2._0.View.Edit
                 return new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["HelixConnectionString"].ConnectionString);
             }
         }
-        /*protected void carga_Comentarios()
-        {
-            using (SqlConnection conexion = Conexion.ObtenerConexion())
-            {
-                string query = "SELECT ID_COMENTARIO AS #, COMENTARIO AS 'Comentario', FECHA_COMENTARIO AS 'Fecha', CONCAT(HELIX_USUARIO.NOMBRE, ' ', HELIX_USUARIO.APELLIDO) AS 'Usuario' FROM HELIX_COMENTARIO INNER JOIN HELIX_USUARIO ON HELIX_COMENTARIO.ID_USUARIO = HELIX_USUARIO.ID_USUARIO WHERE ID_TICKET = '" +identificador + "'";
-                SqlCommand cmd = new SqlCommand(query, conexion);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                gvComentario.DataSource = dt;
-                gvComentario.DataBind();
-            }
-        }*/
         protected void Page_Load(object sender, EventArgs e)
         {
             identificador = Convert.ToInt32(Application["identidad"]);
@@ -68,8 +55,6 @@ namespace Helix2._0.View.Edit
                             dl_Etapa.DataBind();
                             dl_Etapa.SelectedValue = Application["etapa"].ToString();
                         }
-               // carga_Comentarios();
-
             }
         }
         protected void cargar_Etapas(object sender, EventArgs e)

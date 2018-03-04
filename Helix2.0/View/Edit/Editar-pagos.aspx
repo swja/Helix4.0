@@ -5,20 +5,23 @@
       <asp:Label ID="Label1" runat="server" Text="Editar Forma de Pago" CssClass="col-md-12 col-sm-12 col-xs-12 text-center" Font-Size="X-Large"></asp:Label>
           </div> 
     <br />
-     <div class="row">
-           <asp:Label ID="Label3" runat="server" Text="Nombre de la Forma de Pago a editar" CssClass="col-lg-4 col-md-4"></asp:Label>
-            <asp:Label ID="Label4" runat="server" Text="Pago" CssClass="col-lg-2 col-md-2"></asp:Label>
-            <br />
-        </div>
     <br />
         <div class="row">
-           <asp:Label ID="Label2" runat="server" Text="Nueva Forma de Pago" CssClass="col-lg-4 col-md-4"></asp:Label>
+           <asp:Label ID="Label2" runat="server" Text="Forma de Pago a editar" CssClass="col-lg-2 col-md-2"></asp:Label>
             <asp:TextBox ID="txt_Pago" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
         </div>
     <br />
     <br />
     <div class="row">
         <asp:Button ID="Bt_editar" runat="server" Text="Editar Forma de Pago" CssClass="col-lg-3 col-md-3" style="left:20%" OnClick="Bt_editar_Click"/>
-        <asp:Button ID="Button2" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" OnClick="Button2_Click" />
+        <asp:Button ID="Button2" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" OnClick="Button2_Click" OnClientClick="javascript:return volver();" />
     </div>
+                <script type="text/javascript">
+<!--
+function volver() {
+    window.location.href = "../Pagos.aspx";
+    return false;
+}
+//-->
+</script>
 </asp:Content>

@@ -21,8 +21,10 @@ namespace Helix2._0.View.Edit
         protected void Page_Load(object sender, EventArgs e)
         {
             identificador = Application["identidad"].ToString();
-            string pago = Application["pago"].ToString();
-            Label4.Text = pago;
+            if(IsPostBack == false)
+            {
+                txt_Pago.Text = Application["pago"].ToString();
+            }
         }
 
         protected void Bt_editar_Click(object sender, EventArgs e)

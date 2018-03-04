@@ -43,7 +43,7 @@ namespace Helix2._0.View.Edit
                 txt_cargo.Text = Application["cargo"].ToString();
                 txt_email.Text = Application["email"].ToString();
                 txt_usuario.Text = Application["usuario"].ToString();
-                Label10.Text = Application["rol"].ToString();
+                dl_Cargo.SelectedValue = Application["rol"].ToString();
                 txt_telefono.Text = Application["telefono"].ToString();
             } 
         }

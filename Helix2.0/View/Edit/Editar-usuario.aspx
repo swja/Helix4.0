@@ -32,7 +32,7 @@
             <asp:Label ID="Label8" runat="server" Text="Nombre de Usuario" CssClass="col-lg-2 col-md-2"></asp:Label>
             <asp:TextBox ID="txt_usuario" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
             <asp:Label ID="Label9" runat="server" Text="Contraseña" CssClass="col-lg-2 col-md-2"  ></asp:Label>
-            <asp:TextBox ID="txt_pass" runat="server" CssClass="col-lg-3 col-md-3" placeholder="Actualizar contraseña..." ToolTip="Modifique este campo solo si desea actualizar su contraseña."></asp:TextBox>
+            <asp:TextBox ID="txt_pass" runat="server" CssClass="col-lg-3 col-md-3" placeholder="Actualizar contraseña..." ToolTip="Modifique este campo solo si desea actualizar su contraseña." TextMode="Password"></asp:TextBox>
         </div>
              <div class="row">
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo requerido" CssClass="col-lg-6 col-md-6" style="padding-left: 17%;" ControlToValidate="txt_usuario" ForeColor="#4AAF51" SetFocusOnError="True"></asp:RequiredFieldValidator>
@@ -42,7 +42,6 @@
             <asp:Label ID="Label6" runat="server" Text="Cargo empresarial" CssClass="col-lg-2 col-md-2"></asp:Label>
             <asp:TextBox ID="txt_cargo" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
             <asp:Label ID="Label7" runat="server" Text="Rol de usuario" CssClass="col-lg-2 col-md-2"></asp:Label>
-        <asp:Label ID="Label10" runat="server" Text="Rol de usuario" CssClass="col-lg-2 col-md-2"></asp:Label>
             <asp:DropDownList ID="dl_Cargo" runat="server" CssClass="col-lg-3 col-md-3" DataSourceID="Usuario" DataTextField="ROL" DataValueField="ID_ROL" placeholder="Seleccione...">
             </asp:DropDownList>
             <asp:SqlDataSource ID="Usuario" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT [ROL], [ID_ROL] FROM [HELIX_ROL]"></asp:SqlDataSource>

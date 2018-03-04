@@ -17,8 +17,10 @@ namespace Helix2._0.View.Edit
         protected void Page_Load(object sender, EventArgs e)
         {
             identificador = Application["identidad"].ToString();
-            string industria = Application["industria"].ToString();
-            Label3.Text = industria;
+            if (IsPostBack == false)
+            {
+                txt_Industria.Text = Application["industria"].ToString();
+            }
         }
 
         protected void Button2_Click(object sender, EventArgs e)

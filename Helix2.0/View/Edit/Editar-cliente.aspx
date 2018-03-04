@@ -24,16 +24,14 @@
     </div>
     <br />
       <div class="row">
-        <asp:Label ID="Label8" runat="server" Text="Ciudad actual"  CssClass="col-lg-3 col-md-3"></asp:Label>
-         <asp:Label ID="lb_Ciudad" runat="server" Text="Ciudad"  CssClass="col-lg-2 col-md-4"></asp:Label>
-          <asp:DropDownList ID="drop_ciudad" runat="server" CssClass="col-lg-3 col-md-3" DataSourceID="dropCiudad" DataTextField="CIUDAD" DataValueField="ID_CIUDAD"></asp:DropDownList>
+        <asp:Label ID="Label8" runat="server" Text="Ciudad"  CssClass="col-lg-2 col-md-2"></asp:Label>
+          <asp:DropDownList ID="dl_Ciudad" runat="server" CssClass="col-lg-3 col-md-3" DataSourceID="dropCiudad" DataTextField="CIUDAD" DataValueField="ID_CIUDAD"></asp:DropDownList>
           <asp:SqlDataSource ID="dropCiudad" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID_CIUDAD, CIUDAD FROM HELIX_CIUDAD"></asp:SqlDataSource>
     </div>
     <br />
     <div class="row">
-        <asp:Label ID="Label9" runat="server" Text="Tipo de industria actual"  CssClass="col-lg-3 col-md-3"></asp:Label>
-         <asp:Label ID="lb_Industria" runat="server" Text="Industria"  CssClass="col-lg-2 col-md-4 "></asp:Label>
-         <asp:DropDownList ID="drop_industria" runat="server" CssClass="col-lg-3 col-md-3" DataSourceID="dropIndustria" DataTextField="TIPO_INDUSTRIA" DataValueField="ID_TIPOINDUSTRIA"></asp:DropDownList>
+        <asp:Label ID="Label9" runat="server" Text="Tipo de industria"  CssClass="col-lg-2 col-md-2"></asp:Label>
+         <asp:DropDownList ID="dl_Industria" runat="server" CssClass="col-lg-3 col-md-3" DataSourceID="dropIndustria" DataTextField="TIPO_INDUSTRIA" DataValueField="ID_TIPOINDUSTRIA"></asp:DropDownList>
         <asp:SqlDataSource ID="dropIndustria" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID_TIPOINDUSTRIA, TIPO_INDUSTRIA FROM HELIX_TIPO_INDUSTRIA"></asp:SqlDataSource>
     </div>
     <br />
@@ -41,6 +39,14 @@
     <br />
     <div class="row">
         <asp:Button ID="Bt_editar" runat="server" Text="Editar Cliente" CssClass="col-lg-3 col-md-3" style="left:20%" OnClick="Bt_editar_Click"/>
-        <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:40%" OnClick="Bt_cancelar_Click" />
+        <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:40%" OnClick="Bt_cancelar_Click" OnClientClick="javascript:return volver();" />
     </div>
+            <script type="text/javascript">
+<!--
+function volver() {
+    window.location.href = "../Clientes.aspx";
+    return false;
+}
+//-->
+</script>
 </asp:Content>

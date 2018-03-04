@@ -1591,9 +1591,9 @@ table th[class*="col-"] {
   border-color: #f8e5be;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1920px) {
   .table-responsive {
-    width: 100%;
+    width: 73%;
     margin-bottom: 15px;
     overflow-x: scroll;
     overflow-y: hidden;

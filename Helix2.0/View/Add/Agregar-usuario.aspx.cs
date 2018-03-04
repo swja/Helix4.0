@@ -13,6 +13,10 @@ namespace Helix2._0.View.Add
     public partial class Agregar_Usuario : System.Web.UI.Page
     {
         string password;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
         public class Encriptar
         {
             public static string GetMD5(string str)

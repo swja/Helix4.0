@@ -59,7 +59,15 @@
     <br />
     <div class="row">
         <asp:Button ID="Bt_agregar" runat="server" Text="Agregar Usuario" CssClass="col-lg-3 col-md-3" style="left:20%" OnClick="Bt_agregar_Click"/>
-        <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" OnClientClick="/View/Usuarios.aspx" OnClick="Bt_cancelar_Click1" />
+        <asp:Button ID="Bt_cancelar" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" OnClientClick="javascript:return volver();" OnClick="Bt_cancelar_Click1" />
     </div>
 </div>
+                <script type="text/javascript">
+<!--
+function volver() {
+    window.location.href = "../Usuarios.aspx";
+    return false;
+}
+//-->
+</script>
 </asp:Content>

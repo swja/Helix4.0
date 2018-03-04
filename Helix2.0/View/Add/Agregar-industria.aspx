@@ -13,6 +13,14 @@
     <br />
     <div class="row">
         <asp:Button ID="bt_AgregarIndustria" runat="server" Text="Agregar Tipo de industria" CssClass="col-lg-3 col-md-3" style="left:20%" OnClick="Bt_agregarIndustria_Click"/>
-        <asp:Button ID="Button2" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" OnClick="Button2_Click" />
+        <asp:Button ID="Button2" runat="server" Text="Cancelar"  CssClass="col-lg-3 col-md-3" style="left:36%" OnClick="Button2_Click" OnClientClick="javascript:return volver();"/>
     </div>
+                <script type="text/javascript">
+<!--
+function volver() {
+    window.location.href = "../Industrias.aspx";
+    return false;
+}
+//-->
+</script>
 </asp:Content>

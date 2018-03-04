@@ -217,7 +217,7 @@
     <Content Include="View\Add\Agregar-estado.aspx" />
     <Content Include="View\Add\Agregar-flujo.aspx" />
     <Content Include="View\Add\Agregar-industria.aspx" />
-    <Content Include="View\Add\Agregar-pagos.aspx" />
+    <Content Include="View\Add\Agregar-pago.aspx" />
     <Content Include="View\Add\Agregar-ticket.aspx" />
     <Content Include="View\Add\Agregar-usuario.aspx" />
     <Content Include="View\Ciudades.aspx" />
@@ -426,12 +426,12 @@
     <Compile Include="View\Add\Agregar-industria.aspx.designer.cs">
       <DependentUpon>Agregar-industria.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Add\Agregar-pagos.aspx.cs">
-      <DependentUpon>Agregar-pagos.aspx</DependentUpon>
+    <Compile Include="View\Add\Agregar-pago.aspx.cs">
+      <DependentUpon>Agregar-pago.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Add\Agregar-pagos.aspx.designer.cs">
-      <DependentUpon>Agregar-pagos.aspx</DependentUpon>
+    <Compile Include="View\Add\Agregar-pago.aspx.designer.cs">
+      <DependentUpon>Agregar-pago.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Add\Agregar-ticket.aspx.cs">
       <DependentUpon>Agregar-ticket.aspx</DependentUpon>

@@ -20,17 +20,16 @@ namespace Helix2._0.View.Edit
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            identificador = Request.QueryString["id"];
+            identificador = Application["identidad"].ToString();
             if (IsPostBack == false)
             {
-                txt_nombres.Text = Request.QueryString["nom"];
-                txt_direccion.Text = Request.QueryString["dir"];
-                txt_email.Text = Request.QueryString["mail"];
-                txt_telefono.Text = Request.QueryString["tele"];
-                lb_Ciudad.Text = Request.QueryString["ciu"];
-                lb_Industria.Text = Request.QueryString["indus"];
+                txt_nombres.Text = Application["nombres"].ToString();
+                txt_direccion.Text = Application["direccion"].ToString();
+                txt_email.Text = Application["email"].ToString();
+                txt_telefono.Text = Application["telefono"].ToString();
+                dl_Ciudad.SelectedValue = Application["ciudad"].ToString();
+                dl_Industria.SelectedValue = Application["industria"].ToString();
             }
-
         }
         protected void Bt_cancelar_Click(object sender, EventArgs e)
         {
@@ -44,8 +43,8 @@ namespace Helix2._0.View.Edit
                 string query = "UPDATE HELIX_CLIENTE SET ID_CIUDAD = @ciudad,ID_TIPOINDUSTRIA = @industria,NOMBRES = @nombres,DIRECCION = @direccion,TELEFONO = @telefono,EMAIL = @email WHERE ID_CLIENTE = @id";
                 SqlCommand modificar = new SqlCommand(query, conexion);
                 modificar.Parameters.AddWithValue("@id", Convert.ToInt32(identificador));
-                modificar.Parameters.AddWithValue("@ciudad", drop_ciudad.SelectedValue);
-                modificar.Parameters.AddWithValue("@industria", drop_industria.SelectedValue);
+                modificar.Parameters.AddWithValue("@ciudad", dl_Ciudad.SelectedValue);
+                modificar.Parameters.AddWithValue("@industria", dl_Industria.SelectedValue);
                 modificar.Parameters.AddWithValue("@nombres", txt_nombres.Text);
                 modificar.Parameters.AddWithValue("@direccion", txt_direccion.Text);
                 modificar.Parameters.AddWithValue("@telefono", txt_telefono.Text);
