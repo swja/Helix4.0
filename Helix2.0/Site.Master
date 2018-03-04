@@ -56,7 +56,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" id="menu">
                         <li><a runat="server" href="~/View/Tickets">Tickets</a></li>
-                        <li><a runat="server" href="~/View/Usuarios">Usuarios</a></li>
+                        <li><a runat="server" href="~/View/Usuarios" id="Usuarios">Usuarios</a></li>
                         <li><a runat="server" href="~/View/Clientes">Clientes</a>
                             <ul>
                                 <li><a runat="server" href="~/View/Ciudades">Ciudades</a></li>
