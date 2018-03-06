@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Editar Formas de Pago" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Editar-pagos.aspx.cs" Inherits="Helix2._0.View.Edit.Editar_pagos" %>
+﻿<%@ Page Title="Editar Formas de Pago" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Editar-pago.aspx.cs" Inherits="Helix2._0.View.Edit.Editar_pagos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <br />
     <div class="row" style="text-align:  center;">

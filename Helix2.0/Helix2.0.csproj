@@ -228,7 +228,7 @@
     <Content Include="View\Edit\Editar-estado.aspx" />
     <Content Include="View\Edit\Editar-flujo.aspx" />
     <Content Include="View\Edit\Editar-industria.aspx" />
-    <Content Include="View\Edit\Editar-pagos.aspx" />
+    <Content Include="View\Edit\Editar-pago.aspx" />
     <Content Include="View\Edit\Editar-ticket.aspx" />
     <Content Include="View\Edit\Editar-usuario.aspx" />
     <Content Include="View\Estados.aspx" />
@@ -497,12 +497,12 @@
     <Compile Include="View\Edit\Editar-industria.aspx.designer.cs">
       <DependentUpon>Editar-industria.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Edit\Editar-pagos.aspx.cs">
-      <DependentUpon>Editar-pagos.aspx</DependentUpon>
+    <Compile Include="View\Edit\Editar-pago.aspx.cs">
+      <DependentUpon>Editar-pago.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Edit\Editar-pagos.aspx.designer.cs">
-      <DependentUpon>Editar-pagos.aspx</DependentUpon>
+    <Compile Include="View\Edit\Editar-pago.aspx.designer.cs">
+      <DependentUpon>Editar-pago.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Edit\Editar-ticket.aspx.cs">
       <DependentUpon>Editar-ticket.aspx</DependentUpon>

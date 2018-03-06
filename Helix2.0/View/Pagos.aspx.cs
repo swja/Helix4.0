@@ -11,7 +11,7 @@ namespace Helix2._0.View
     {
     protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/View/Add/Agregar-pagos.aspx", true);
+            Response.Redirect("/View/Add/Agregar-pago.aspx", true);
         }
 
         protected void gvPagos_SelectedIndexChanged(object sender, EventArgs e)
@@ -19,7 +19,7 @@ namespace Helix2._0.View
             GridViewRow row = gvPagos.SelectedRow;
             Application["identidad"] = Convert.ToInt32(gvPagos.DataKeys[row.RowIndex].Values["#"]);
             Application["pago"] = Convert.ToString(gvPagos.DataKeys[row.RowIndex].Values["Forma de Pago"]);
-            Response.Redirect("/View/Edit/Editar-pagos.aspx", true);
+            Response.Redirect("/View/Edit/Editar-pago.aspx", true);
         }
     }
 }
