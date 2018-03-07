@@ -136,5 +136,4 @@ function volver() {
 }
 //-->
 </script>
-      <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Campo requerido" CssClass="col-lg-6 col-md-6" ControlToValidate="txt_Comentario" style="top:-92vh; left:45%" ForeColor="#00CC66"></asp:RequiredFieldValidator>
-</asp:Content>
+      </asp:Content>
