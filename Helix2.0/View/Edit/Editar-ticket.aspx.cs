@@ -111,7 +111,7 @@ namespace Helix2._0.View.Edit
                 insertar.Parameters.AddWithValue("@usuario", id_Usuario);
                 insertar.Parameters.AddWithValue("@comentario", txt_Comentario.Text);
                 insertar.Parameters.AddWithValue("@ticket", identificador);
-                insertar.Parameters.AddWithValue("@fechaC", Convert.ToDateTime(fecha));
+                insertar.Parameters.AddWithValue("@fechaC", DateTime.ParseExact(fecha, "dd/MM/yyyy",null));
                 conexion.Open();
                 try
                 {
