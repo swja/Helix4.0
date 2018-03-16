@@ -207,6 +207,7 @@
       <DependentUpon>Helix.edmx</DependentUpon>
       <LastGenOutput>Helix.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\HelixSistema - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\SistemaHelix - Web Deploy.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
