@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Globalization;
 
 namespace Helix2._0.View.Edit
 {
@@ -111,7 +108,7 @@ namespace Helix2._0.View.Edit
                 insertar.Parameters.AddWithValue("@usuario", id_Usuario);
                 insertar.Parameters.AddWithValue("@comentario", txt_Comentario.Text);
                 insertar.Parameters.AddWithValue("@ticket", identificador);
-                insertar.Parameters.AddWithValue("@fechaC", DateTime.ParseExact(fecha, "dd/MM/yyyy",null));
+                insertar.Parameters.AddWithValue("@fechaC", DateTime.ParseExact(fecha, "dd/MM/yyyy",CultureInfo.CreateSpecificCulture("ec-EC")));
                 conexion.Open();
                 try
                 {
