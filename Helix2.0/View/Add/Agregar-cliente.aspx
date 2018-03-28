@@ -2,25 +2,38 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <br />
     <div class="row" style="text-align:  center;">
-      <asp:Label ID="Label1" runat="server" Text="Agregar Cliente" CssClass="col-lg-10 col-md-10 col-sm-12 col-xs-12 text-center" Font-Size="X-Large"></asp:Label>
+      <asp:Label ID="Label1" runat="server" Text="Agregar Cliente"  CssClass="col-md-12 col-sm-12 col-xs-12 text-center" Font-Size="X-Large"></asp:Label>
           </div> 
     <br />
     <br />
     <div class="row">
         <asp:Label ID="Label2" runat="server" Text="Nombres" CssClass="col-lg-2 col-md-2"></asp:Label>
         <asp:TextBox ID="txt_nombre" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+         <asp:Label ID="Label3" runat="server" Text="Apellidos" CssClass="col-lg-2 col-md-2"></asp:Label>
+        <asp:TextBox ID="txt_apellido" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+    </div>
+    <div class="row">
+        <asp:RequiredFieldValidator ID="nombre_Validador" runat="server" CssClass="col-lg-6 col-md-6" style="padding-left: 17%;" ErrorMessage="Campo requerido" ControlToValidate="txt_nombre" ForeColor="#4AAF51" SetFocusOnError="True"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="apellido_Validador" runat="server" CssClass="col-lg-6 col-md-6" style="padding-left: 6%;" ErrorMessage ="Campo requerido" ControlToValidate="txt_apellido" ForeColor="#4AAF51" SetFocusOnError="True"></asp:RequiredFieldValidator>
     </div>
     <br />
       <div class="row">
          <asp:Label ID="Label5" runat="server" Text="Dirección"  CssClass="col-lg-2 col-md-2"></asp:Label>
         <asp:TextBox ID="txt_direccion" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
             <asp:Label ID="Label7" runat="server" Text="Email"  CssClass="col-lg-2 col-md-2"></asp:Label>
-        <asp:TextBox ID="txt_email" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+        <asp:TextBox ID="txt_email" runat="server" CssClass="col-lg-3 col-md-3" TextMode="Email"></asp:TextBox>
+    </div>
+    <div class="row">
+        <asp:RequiredFieldValidator ID="direccion_Validador" runat="server" CssClass="col-lg-6 col-md-6" style="padding-left: 17%;" ErrorMessage="Campo requerido" ControlToValidate="txt_direccion" ForeColor="#4AAF51" SetFocusOnError="True"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="email_Validador" runat="server" CssClass="col-lg-6 col-md-6" style="padding-left: 6%;" ErrorMessage ="Campo requerido" ControlToValidate="txt_email" ForeColor="#4AAF51" SetFocusOnError="True"></asp:RequiredFieldValidator>
     </div>
     <br />
       <div class="row">
         <asp:Label ID="Label6" runat="server" Text="Telefono"  CssClass="col-lg-2 col-md-2"></asp:Label>
         <asp:TextBox ID="txt_telefono" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+    </div>
+    <div class="row">
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="col-lg-6 col-md-6" style="padding-left: 17%;" ErrorMessage="Campo requerido" ControlToValidate="txt_telefono" ForeColor="#4AAF51" SetFocusOnError="True"></asp:RequiredFieldValidator>
     </div>
     <br />
       <div class="row">

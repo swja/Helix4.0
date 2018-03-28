@@ -19,6 +19,7 @@ namespace Helix2._0.View
             GridViewRow row = gvClientes.SelectedRow;
             Application["identidad"] = Convert.ToInt32(gvClientes.DataKeys[row.RowIndex].Values["#"]);
             Application["nombres"] = Convert.ToString(gvClientes.DataKeys[row.RowIndex].Values["Nombres"]);
+            Application["apellidos"] = Convert.ToString(gvClientes.DataKeys[row.RowIndex].Values["Apellidos"]);
             Application["direccion"] = Convert.ToString(gvClientes.DataKeys[row.RowIndex].Values["Dirección"]);
             Application["telefono"] = Convert.ToString(gvClientes.DataKeys[row.RowIndex].Values["Telefono"]);
             Application["email"] = Convert.ToString(gvClientes.DataKeys[row.RowIndex].Values["Email"]);

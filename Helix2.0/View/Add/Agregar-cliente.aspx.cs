@@ -17,9 +17,10 @@ namespace Helix2._0.View.Add
         {
             using (SqlConnection conexion = Conexion.ObtenerConexion())
             {
-                string query = "INSERT INTO HELIX_CLIENTE (ID_CIUDAD,ID_TIPOINDUSTRIA,NOMBRES,DIRECCION,TELEFONO,EMAIL) VALUES (@id_Ciudad,@id_Industria,@nombres,@direccion,@telefono,@email)";
+                string query = "INSERT INTO HELIX_CLIENTE (ID_CIUDAD,ID_TIPOINDUSTRIA,NOMBRES,APELLIDOS,DIRECCION,TELEFONO,EMAIL) VALUES (@id_Ciudad,@id_Industria,@nombres,@apellidos,@direccion,@telefono,@email)";
                 SqlCommand insertar = new SqlCommand(query, conexion);
                 insertar.Parameters.AddWithValue("@nombres", txt_nombre.Text);
+                insertar.Parameters.AddWithValue("@apellidos", txt_apellido.Text);
                 insertar.Parameters.AddWithValue("@direccion", txt_direccion.Text);
                 insertar.Parameters.AddWithValue("@telefono", txt_telefono.Text);
                 insertar.Parameters.AddWithValue("@email", txt_email.Text);
@@ -53,6 +54,7 @@ namespace Helix2._0.View.Add
             txt_email.Text = "";
             txt_nombre.Text = "";
             txt_telefono.Text = "";
+            txt_apellido.Text = "";
         }
     }
 }
