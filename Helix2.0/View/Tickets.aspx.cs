@@ -14,7 +14,7 @@ namespace Helix2._0
         {
             foreach(GridViewRow row in gvTickets.Rows)
             {
-                fecha = row.Cells[7].Text;
+                fecha = row.Cells[8].Text;
             }
         }
         public class Conexion
