@@ -23,8 +23,8 @@
     <br />
      <div class="row">
         <asp:Label CssClass="col-lg-2 col-md-2" runat="server">Cliente</asp:Label>
-        <asp:DropDownList runat="server" CssClass="col-lg-4 col-md-4" ID="dl_Cliente" DataSourceID="Cliente" DataTextField="NOMBRES" DataValueField="ID_CLIENTE"></asp:DropDownList>
-         <asp:SqlDataSource ID="Cliente" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID_CLIENTE, NOMBRES FROM HELIX_CLIENTE"></asp:SqlDataSource>
+        <asp:DropDownList runat="server" CssClass="col-lg-4 col-md-4" ID="dl_Cliente" DataSourceID="Cliente" DataTextField="CLIENTE" DataValueField="ID_CLIENTE"></asp:DropDownList>
+         <asp:SqlDataSource ID="Cliente" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="select HELIX_CLIENTE.ID_CLIENTE, CONCAT(HELIX_CLIENTE.NOMBRES, ' ', HELIX_CLIENTE.APELLIDOS) AS CLIENTE FROM HELIX_CLIENTE"></asp:SqlDataSource>
         <asp:Label CssClass="col-lg-1 col-md-1" runat="server">Estado</asp:Label>
         <asp:DropDownList runat="server" CssClass="col-lg-4 col-md-4" ID="dl_Estado"></asp:DropDownList>
     </div>   

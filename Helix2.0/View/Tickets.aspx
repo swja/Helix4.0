@@ -16,26 +16,26 @@
           <asp:SqlDataSource ID="flujos" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT [ID_FLUJO], [NOMBRE_FLUJO] FROM [HELIX_FLUJO]"></asp:SqlDataSource>
           <asp:Button ID="Bt_nuevo" runat="server" Text="Nuevo ticket"   CssClass="col-md-2 col-sm-2" OnClick="Bt_nuevo_Click" style="left:15%;"/>
           </div>
-        <asp:GridView ID="gvTickets" runat="server" AutoGenerateColumns="False" DataKeyNames="#,ID_CLIENTE,ID_USUARIO,Nombre Ticket,Descripción,Etapa,Flujo,Cliente,Usuario Asignado,Forma de Pago,Fecha de Entrega,Fecha de Facturación,ID_FLUJO,ID_FORMAPAGO,ID_ETAPAFLUJO" DataSourceID="Ticket" AllowPaging="True" Width="100%" CssClass="table table-responsive" OnSelectedIndexChanged="gvTickets_SelectedIndexChanged">
+        <asp:GridView ID="gvTickets" runat="server" AutoGenerateColumns="False" DataKeyNames="#,ID_CLIENTE,Nombre Ticket,Descripción,Etapa,Flujo,Cliente,Usuario Asignado,Forma de Pago,Fecha de Entrega,Fecha de Facturación,ID_FLUJO,ID_FORMAPAGO,ID_ETAPAFLUJO,ID_USUARIO" DataSourceID="Ticket" AllowPaging="True" Width="100%" CssClass="table table-responsive" OnSelectedIndexChanged="gvTickets_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="#" HeaderText="#" ReadOnly="True" SortExpression="#" InsertVisible="False" />
                 <asp:BoundField DataField="Nombre Ticket" HeaderText="Nombre Ticket" SortExpression="Nombre Ticket" />
                 <asp:BoundField DataField="Descripción" HeaderText="Descripción" SortExpression="Descripción" />
-                <asp:BoundField DataField="Flujo" HeaderText="Flujo" SortExpression="Flujo" />
                 <asp:BoundField DataField="Etapa" HeaderText="Etapa" SortExpression="Etapa" />
-                <asp:BoundField DataField="Cliente" HeaderText="Cliente" SortExpression="Cliente" />
+                <asp:BoundField DataField="Flujo" HeaderText="Flujo" SortExpression="Flujo" />
+                <asp:BoundField DataField="Cliente" HeaderText="Cliente" SortExpression="Cliente" ReadOnly="True" />
                 <asp:BoundField DataField="Usuario Asignado" HeaderText="Usuario Asignado" SortExpression="Usuario Asignado" ReadOnly="True" />
-                <asp:BoundField DataField="Forma de Pago" HeaderText="Pago" SortExpression="Forma de Pago" />
+                <asp:BoundField DataField="Forma de Pago" HeaderText="Forma de Pago" SortExpression="Forma de Pago" />
                 <asp:BoundField DataField="Fecha de Entrega" HeaderText="Fecha de Entrega" SortExpression="Fecha de Entrega" DataFormatString="{0:d}" />
                 <asp:BoundField DataField="Fecha de Facturación" HeaderText="Fecha de Facturación" SortExpression="Fecha de Facturación" DataFormatString="{0:d}" />
                 <asp:BoundField DataField="ID_CLIENTE" HeaderText="ID_CLIENTE" ReadOnly="True" SortExpression="ID_CLIENTE" Visible="False" />
                 <asp:BoundField DataField="ID_FLUJO" HeaderText="ID_FLUJO" SortExpression="ID_FLUJO" Visible="False" />
                 <asp:BoundField DataField="ID_FORMAPAGO" HeaderText="ID_FORMAPAGO" SortExpression="ID_FORMAPAGO" Visible="False" />
                 <asp:BoundField DataField="ID_ETAPAFLUJO" HeaderText="ID_ETAPAFLUJO" SortExpression="ID_ETAPAFLUJO" Visible="False" />
-                <asp:BoundField DataField="ID_USUARIO" HeaderText="ID_USUARIO" ReadOnly="True" SortExpression="ID_USUARIO" Visible="False" />
+                <asp:BoundField DataField="ID_USUARIO" HeaderText="ID_USUARIO" SortExpression="ID_USUARIO" Visible="False" />
                 <asp:TemplateField ShowHeader="False">
                     <ItemTemplate>
-                        <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Select" Text="Seleccionar" />
+                        <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Select" Text="Select" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -48,7 +48,7 @@
 	base.NOMBRE_TICKET AS 'Nombre Ticket',
 	base.DESCRIPCION_TICKET AS 'Descripción',
 	Etapa.NOMBRE_ETAPA AS 'Etapa',Flujo.NOMBRE_FLUJO AS 'Flujo',
-	Cliente.NOMBRES AS 'Cliente',
+	CONCAT (Cliente.NOMBRES, ' ',Cliente.APELLIDOS) AS 'Cliente',
 	CONCAT ( Usuario.NOMBRE, ' ', Usuario.APELLIDO ) AS 'Usuario Asignado',
 	Pago.FORMA_PAGO AS 'Forma de Pago',
 	base.FECHA_ENTREGA AS 'Fecha de Entrega',
@@ -64,6 +64,7 @@ FROM
 	INNER JOIN HELIX_USUARIO AS Usuario ON base.ID_USUARIO = Usuario.ID_USUARIO
 	INNER JOIN HELIX_FLUJO AS Flujo ON base.ID_FLUJO = Flujo.ID_FLUJO
 	INNER JOIN HELIX_ETAPA_FLUJO AS Etapa ON base.ID_ETAPAFLUJO = Etapa.ID_ETAPAFLUJO
-	INNER JOIN HELIX_FORMA_PAGO AS Pago ON base.ID_FORMAPAGO = Pago.ID_FORMAPAGO"></asp:SqlDataSource>
+	INNER JOIN HELIX_FORMA_PAGO AS Pago ON base.ID_FORMAPAGO = Pago.ID_FORMAPAGO
+          ORDER BY Cliente.APELLIDOS ASC"></asp:SqlDataSource>
   
 </asp:Content>

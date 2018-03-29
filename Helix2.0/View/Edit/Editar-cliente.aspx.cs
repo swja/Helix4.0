@@ -24,6 +24,7 @@ namespace Helix2._0.View.Edit
             if (IsPostBack == false)
             {
                 txt_Nombres.Text = Application["nombres"].ToString();
+                txt_apellido.Text = Application["apellidos"].ToString();
                 txt_Direccion.Text = Application["direccion"].ToString();
                 txt_Email.Text = Application["email"].ToString();
                 txt_Telefono.Text = Application["telefono"].ToString();
@@ -40,12 +41,13 @@ namespace Helix2._0.View.Edit
         {
             using (SqlConnection conexion = Conexion.ObtenerConexion())
             {
-                string query = "UPDATE HELIX_CLIENTE SET ID_CIUDAD = @ciudad,ID_TIPOINDUSTRIA = @industria,NOMBRES = @nombres,DIRECCION = @direccion,TELEFONO = @telefono,EMAIL = @email WHERE ID_CLIENTE = @id";
+                string query = "UPDATE HELIX_CLIENTE SET ID_CIUDAD = @ciudad,ID_TIPOINDUSTRIA = @industria,NOMBRES = @nombres,APELLIDOS = @apellidos,DIRECCION = @direccion,TELEFONO = @telefono,EMAIL = @email WHERE ID_CLIENTE = @id";
                 SqlCommand modificar = new SqlCommand(query, conexion);
                 modificar.Parameters.AddWithValue("@id", Convert.ToInt32(identificador));
                 modificar.Parameters.AddWithValue("@ciudad", dl_Ciudad.SelectedValue);
                 modificar.Parameters.AddWithValue("@industria", dl_Industria.SelectedValue);
                 modificar.Parameters.AddWithValue("@nombres", txt_Nombres.Text);
+                modificar.Parameters.AddWithValue("@apellidos", txt_apellido.Text);
                 modificar.Parameters.AddWithValue("@direccion", txt_Direccion.Text);
                 modificar.Parameters.AddWithValue("@telefono", txt_Telefono.Text);
                 modificar.Parameters.AddWithValue("@email", txt_Email.Text);

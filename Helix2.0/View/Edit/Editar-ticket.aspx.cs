@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
 using System.Globalization;
+using System.Web.UI.WebControls;
 
 namespace Helix2._0.View.Edit
 {
@@ -13,6 +14,7 @@ namespace Helix2._0.View.Edit
         public int id_Usuario;
         public int id_Cliente;
         public string fecha = DateTime.Now.ToString("dd/MM/yyyy");
+        public string ruta_Adjunto;
         public class Conexion
         {
             public static SqlConnection ObtenerConexion()
@@ -100,32 +102,76 @@ namespace Helix2._0.View.Edit
 
         protected void Bt_agregar_comentario_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conexion = Conexion.ObtenerConexion())
+            Boolean fileOK = false;
+            String path = Server.MapPath("~/Uploads/");
+            if (Adjunto.HasFile)
             {
-                string query = "INSERT INTO HELIX_COMENTARIO (ID_CLIENTE,ID_USUARIO,ID_TICKET,COMENTARIO,FECHA_COMENTARIO) VALUES (@cliente,@usuario,@ticket,@comentario,@fechaC)";
-                SqlCommand insertar = new SqlCommand(query, conexion);
-                insertar.Parameters.AddWithValue("@cliente", id_Cliente);
-                insertar.Parameters.AddWithValue("@usuario", id_Usuario);
-                insertar.Parameters.AddWithValue("@comentario", txt_Comentario.Text);
-                insertar.Parameters.AddWithValue("@ticket", identificador);
-                insertar.Parameters.AddWithValue("@fechaC", DateTime.ParseExact(fecha, "dd/MM/yyyy",CultureInfo.CreateSpecificCulture("ec-EC")));
-                conexion.Open();
+                String fileExtension = System.IO.Path.GetExtension(Adjunto.FileName).ToLower();
+                String[] allowedExtensions =
+                    {".docx", ".doc", ".pdf", ".xlsx"};
+                for (int i = 0; i < allowedExtensions.Length; i++)
+                {
+                    if (fileExtension == allowedExtensions[i])
+                    {
+                        fileOK = true;
+                    }
+                }
+            }
+
+            if (fileOK)
+            {
                 try
                 {
-                    insertar.ExecuteNonQuery();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Comentario ingresado correctamente.');", true);
-                    conexion.Close();
-                    txt_Comentario.Text = "";
-                    gvComentario.DataBind();
+                    Adjunto.PostedFile.SaveAs(path
+                        + Adjunto.FileName);
+                    ruta_Adjunto = path + Adjunto.FileName;
                 }
                 catch (Exception ex)
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Ocurrio un error:')" + ex.Message, true);
-                    conexion.Close();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('No s epudo cargar el archivo.');", true);
                 }
-                conexion.Close();
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Formato de archivo no permitido.');", true);
+            }
+                using (SqlConnection conexion = Conexion.ObtenerConexion())
+                {
+                    string query = "INSERT INTO HELIX_COMENTARIO (ID_CLIENTE,ID_USUARIO,ID_TICKET,COMENTARIO,FECHA_COMENTARIO,ADJUNTO) VALUES (@cliente,@usuario,@ticket,@comentario,@fechaC,@adjunto)";
+                    SqlCommand insertar = new SqlCommand(query, conexion);
+                    insertar.Parameters.AddWithValue("@cliente", id_Cliente);
+                    insertar.Parameters.AddWithValue("@usuario", id_Usuario);
+                    insertar.Parameters.AddWithValue("@comentario", txt_Comentario.Text);
+                    insertar.Parameters.AddWithValue("@ticket", identificador);
+                    insertar.Parameters.AddWithValue("@fechaC", DateTime.ParseExact(fecha, "dd/MM/yyyy",CultureInfo.CreateSpecificCulture("ec-EC")));
+                    insertar.Parameters.AddWithValue("@adjunto", ruta_Adjunto);
+                    conexion.Open();
+                    try
+                    {
+                        insertar.ExecuteNonQuery();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Comentario ingresado correctamente.');", true);
+                        conexion.Close();
+                        txt_Comentario.Text = "";
+                        gvComentario.DataBind();
+                    }
+                    catch (Exception ex)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Ocurrio un error:')" + ex.Message, true);
+                        conexion.Close();
+                    }
+                    conexion.Close();
             }
 
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            GridViewRow row = gvComentario.SelectedRow;
+            try
+            {
+                System.Diagnostics.Process.Start(Convert.ToString(gvComentario.DataKeys[row.RowIndex].Values["Adjunto"]));
+            }
+            catch { }
         }
     }
 }

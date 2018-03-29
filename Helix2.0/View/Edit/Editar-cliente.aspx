@@ -9,7 +9,12 @@
     <div class="row">
         <asp:Label ID="Label2" runat="server" Text="Nombres" CssClass="col-lg-2 col-md-2"></asp:Label>
         <asp:TextBox ID="txt_Nombres" runat="server" CssClass="col-lg-3 col-md-4"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo requerido" ControlToValidate="txt_nombres" ForeColor="#339933" CssClass="col-lg-6 col-md-6"></asp:RequiredFieldValidator>
+        <asp:Label ID="Label4" runat="server" Text="Apellidos" CssClass="col-lg-2 col-md-2"></asp:Label>
+        <asp:TextBox ID="txt_apellido" runat="server" CssClass="col-lg-3 col-md-3"></asp:TextBox>
+    </div>
+    <div>
+        <asp:RequiredFieldValidator ID="nombre_Validador" runat="server" CssClass="col-lg-6 col-md-6" style="padding-left: 17%;" ErrorMessage="Campo requerido" ControlToValidate="txt_Nombres" ForeColor="#4AAF51" SetFocusOnError="True"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="apellido_Validador" runat="server" CssClass="col-lg-6 col-md-6" style="padding-left: 6%;" ErrorMessage ="Campo requerido" ControlToValidate="txt_apellido" ForeColor="#4AAF51" SetFocusOnError="True"></asp:RequiredFieldValidator>
     </div>
     <br />
     <div class="row">

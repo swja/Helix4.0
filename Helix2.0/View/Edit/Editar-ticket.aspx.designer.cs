@@ -83,7 +83,7 @@ namespace Helix2._0.View.Edit {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_Comentario;
-        
+
         /// <summary>
         /// Bt_agregar_comentario control.
         /// </summary>
@@ -91,6 +91,8 @@ namespace Helix2._0.View.Edit {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+        /// 
+        protected global::System.Web.UI.WebControls.FileUpload Adjunto;
         protected global::System.Web.UI.WebControls.Button Bt_agregar_comentario;
         
         /// <summary>

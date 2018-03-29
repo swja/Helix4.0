@@ -39,20 +39,38 @@
         <asp:TextBox ID="txt_Descripcion" runat="server" Height="470px" TextMode="MultiLine" Width="40%" CssClass="col-lg-6 col-md-6"></asp:TextBox>
         <div style="border: 1px solid #FFF;">
             <asp:TextBox ID="txt_Comentario" runat="server" Height="50px" TextMode="MultiLine" Width="40%" style="left:5%" CssClass="col-lg-6 col-md-6"></asp:TextBox>
+            <asp:FileUpload ID="Adjunto" runat="server" CssClass="col-md-6 col-lg-6" style="z-index:99" />
             <br />
-             <asp:Button ID="Bt_agregar_comentario" runat="server" Text="Agregar comentario" CssClass="col-lg-2 col-md-2" style="left:-13%; top:1%" OnClick="Bt_agregar_comentario_Click"/>
+             <asp:Button ID="Bt_agregar_comentario" runat="server" Text="Agregar comentario" CssClass="col-lg-2 col-md-2" style="left:5%; top:1%" OnClick="Bt_agregar_comentario_Click"/>
             <div style="padding-left:45%;">
                   <div id="comentario"class="table-responsive">
-                <asp:GridView ID="gvComentario" runat="server" AutoGenerateColumns="False" DataKeyNames="#" DataSourceID="Comentario" class="table" Width="16px">
+                <asp:GridView ID="gvComentario" runat="server" AutoGenerateColumns="False" DataKeyNames="#,Adjunto" DataSourceID="Comentario" class="table" Width="16px">
                     <Columns>
                         <asp:BoundField DataField="#" HeaderText="#" InsertVisible="False" ReadOnly="True" SortExpression="#" />
                         <asp:BoundField DataField="Comentario" HeaderText="Comentario" SortExpression="Comentario" />
-                        <asp:BoundField DataField="Fecha" DataFormatString="{0:d}" HeaderText="Fecha" SortExpression="Fecha" />
                         <asp:BoundField DataField="Usuario" HeaderText="Usuario" ReadOnly="True" SortExpression="Usuario" />
+                        <asp:BoundField DataField="ADJUNTO" HeaderText="Adjunto" SortExpression="ADJUNTO" Visible="False" />
+                        <asp:BoundField DataField="Fecha" DataFormatString="{0:d}" HeaderText="Fecha" SortExpression="Fecha" />
+                        <asp:TemplateField ShowHeader="False">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Select" OnClick="LinkButton1_Click" Text="Adjunto"></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
                       </div>
-                <asp:SqlDataSource ID="Comentario" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT ID_COMENTARIO AS #, COMENTARIO AS 'Comentario', FECHA_COMENTARIO AS 'Fecha', CONCAT(HELIX_USUARIO.NOMBRE, ' ', HELIX_USUARIO.APELLIDO) AS 'Usuario' FROM HELIX_COMENTARIO INNER JOIN HELIX_USUARIO ON HELIX_COMENTARIO.ID_USUARIO = HELIX_USUARIO.ID_USUARIO WHERE ID_TICKET = @TICKET">
+                <asp:SqlDataSource ID="Comentario" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT
+	ID_COMENTARIO AS #, COMENTARIO AS 'Comentario',
+	FECHA_COMENTARIO AS 'Fecha',
+	CONCAT (
+		HELIX_USUARIO.NOMBRE,
+		' ',
+		HELIX_USUARIO.APELLIDO
+	) AS 'Usuario',
+                 HELIX_COMENTARIO.ADJUNTO
+FROM
+	HELIX_COMENTARIO
+INNER JOIN HELIX_USUARIO ON HELIX_COMENTARIO.ID_USUARIO = HELIX_USUARIO.ID_USUARIO WHERE ID_TICKET = @TICKET">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="Label5" Name="TICKET" PropertyName="Text" />
                     </SelectParameters>
