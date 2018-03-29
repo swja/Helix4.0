@@ -3,14 +3,19 @@ using System.Web.UI;
 using System.Data.SqlClient;
 using System.Data;
 using System.Web.UI.WebControls;
+using System.Globalization;
 
 namespace Helix2._0
 {
     public partial class _Default : Page
     {
+        public string fecha;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            foreach(GridViewRow row in gvTickets.Rows)
+            {
+                fecha = row.Cells[7].Text;
+            }
         }
         public class Conexion
         {
