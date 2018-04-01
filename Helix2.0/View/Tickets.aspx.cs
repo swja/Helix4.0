@@ -4,17 +4,33 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Web.UI.WebControls;
 using System.Globalization;
+using System.Drawing;
 
 namespace Helix2._0
 {
     public partial class _Default : Page
     {
-        public string fecha;
+        public DateTime fecha_Ticket;
         protected void Page_Load(object sender, EventArgs e)
         {
             foreach(GridViewRow row in gvTickets.Rows)
             {
-                fecha = row.Cells[8].Text;
+                fecha_Ticket = DateTime.Parse(row.Cells[8].Text);
+                if (fecha_Ticket.Day <= 3)
+                {
+                    row.Cells[8].BackColor = Color.Beige;
+                }
+                else
+                {
+                    if (fecha_Ticket.Day <= 20)
+                    {
+                        row.Cells[8].BackColor = Color.GhostWhite;
+                    }
+                    else
+                    {
+                        row.Cells[8].BackColor = Color.LightPink;
+                    }
+                }
             }
         }
         public class Conexion
