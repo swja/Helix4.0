@@ -11,7 +11,7 @@ namespace Helix2._0.View.Edit
     {
         public int identificador;
         public string flujo;
-        public string ID;
+        public string ID_flujo;
         public int id_Usuario;
         public int id_Cliente;
         public string fecha = DateTime.Now.ToString("dd/MM/yyyy");
@@ -27,7 +27,7 @@ namespace Helix2._0.View.Edit
         {
             identificador = Convert.ToInt32(Application["identidad"]);
             Label5.Text = Convert.ToString(identificador);
-            ID = Application["flujo"].ToString();
+            ID_flujo = Application["flujo"].ToString();
             id_Usuario = Convert.ToInt32(Session["id"]);
             id_Cliente = Convert.ToInt32(Application["id_Cliente"]);
             if (IsPostBack == false) 
@@ -132,7 +132,7 @@ namespace Helix2._0.View.Edit
                 }
                 catch (Exception ex)
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('No s epudo cargar el archivo.');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('No se pudo cargar el archivo.');" +ex.Message, true);
                 }
             }
             else
@@ -185,7 +185,7 @@ namespace Helix2._0.View.Edit
 
         protected void verificar_Etapa()
         {
-            int id_flujo = Convert.ToInt32(ID);
+            int id_flujo = Convert.ToInt32(ID_flujo);
             int etapa = Convert.ToInt32(dl_Etapa.SelectedValue);
                 using (SqlConnection conexion = Conexion.ObtenerConexion())
                 {
