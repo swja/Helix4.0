@@ -11,6 +11,7 @@ namespace Helix2._0.View.Edit
     {
         public int identificador;
         public string flujo;
+        public string ID;
         public int id_Usuario;
         public int id_Cliente;
         public string fecha = DateTime.Now.ToString("dd/MM/yyyy");
@@ -26,6 +27,7 @@ namespace Helix2._0.View.Edit
         {
             identificador = Convert.ToInt32(Application["identidad"]);
             Label5.Text = Convert.ToString(identificador);
+            ID = Application["flujo"].ToString();
             id_Usuario = Convert.ToInt32(Session["id"]);
             id_Cliente = Convert.ToInt32(Application["id_Cliente"]);
             if (IsPostBack == false) 
@@ -53,6 +55,7 @@ namespace Helix2._0.View.Edit
                             dl_Etapa.DataValueField = "ID_ETAPAFLUJO";
                             dl_Etapa.DataBind();
                             dl_Etapa.SelectedValue = Application["etapa"].ToString();
+                            verificar_Etapa();
                         }
             }
         }
@@ -69,6 +72,7 @@ namespace Helix2._0.View.Edit
                 dl_Etapa.DataTextField = "NOMBRE_ETAPA";
                 dl_Etapa.DataValueField = "ID_ETAPAFLUJO";
                 dl_Etapa.DataBind();
+                verificar_Etapa();
             }
         }
         protected void Bt_editar_Click1(object sender, EventArgs e)
@@ -172,6 +176,29 @@ namespace Helix2._0.View.Edit
                 System.Diagnostics.Process.Start(Convert.ToString(gvComentario.DataKeys[row.RowIndex].Values["Adjunto"]));
             }
             catch { }
+        }
+
+        protected void dl_Etapa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            verificar_Etapa();
+        }
+
+        protected void verificar_Etapa()
+        {
+            int id_flujo = Convert.ToInt32(ID);
+            int etapa = Convert.ToInt32(dl_Etapa.SelectedValue);
+                using (SqlConnection conexion = Conexion.ObtenerConexion())
+                {
+                    string query = "SELECT ID_ETAPAFLUJO, NOMBRE_ETAPA FROM HELIX_ETAPA_FLUJO WHERE ID_FLUJO =" + id_flujo + "ORDER BY ID_ETAPAFLUJO OFFSET "+ (etapa - 1) + " ROWS FETCH NEXT 2 ROWS ONLY ";
+                    SqlCommand etapas = new SqlCommand(query, conexion);
+                    SqlDataAdapter sDa = new SqlDataAdapter(etapas);
+                    DataSet ds = new DataSet();
+                    sDa.Fill(ds);
+                    dl_Etapa.DataSource = ds;
+                    dl_Etapa.DataTextField = "NOMBRE_ETAPA";
+                    dl_Etapa.DataValueField = "ID_ETAPAFLUJO";
+                    dl_Etapa.DataBind();
+                }
         }
     }
 }

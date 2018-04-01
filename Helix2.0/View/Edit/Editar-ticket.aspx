@@ -27,7 +27,7 @@
         <asp:Label CssClass="col-lg-2 col-md-2" runat="server">Cliente</asp:Label>
         <asp:TextBox runat="server" CssClass="col-lg-3 col-md-3" ID="txt_Cliente" Enabled="False"></asp:TextBox>
         <asp:Label CssClass="col-lg-2 col-md-2" runat="server">Estado</asp:Label>
-        <asp:DropDownList runat="server" CssClass="col-lg-3 col-md-3" ID="dl_Etapa"></asp:DropDownList>
+        <asp:DropDownList runat="server" CssClass="col-lg-3 col-md-3" ID="dl_Etapa" AutoPostBack="True" OnSelectedIndexChanged="dl_Etapa_SelectedIndexChanged"></asp:DropDownList>
     </div>   
     <br />
      <div class="row">
