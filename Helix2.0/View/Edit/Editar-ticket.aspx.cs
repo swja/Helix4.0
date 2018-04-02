@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Globalization;
 using System.Web.UI.WebControls;
 
+
 namespace Helix2._0.View.Edit
 {
     public partial class Editar_ticket : System.Web.UI.Page
@@ -16,6 +17,7 @@ namespace Helix2._0.View.Edit
         public int id_Cliente;
         public string fecha = DateTime.Now.ToString("dd/MM/yyyy");
         public string ruta_Adjunto;
+        public string link;
         public class Conexion
         {
             public static SqlConnection ObtenerConexion()
@@ -166,17 +168,6 @@ namespace Helix2._0.View.Edit
             }
 
         }
-
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            GridViewRow row = gvComentario.SelectedRow;
-            try
-            {
-                System.Diagnostics.Process.Start(Convert.ToString(gvComentario.DataKeys[row.RowIndex].Values["Adjunto"]));
-            }
-            catch { }
-        }
-
         protected void dl_Etapa_SelectedIndexChanged(object sender, EventArgs e)
         {
             verificar_Etapa();
@@ -198,6 +189,27 @@ namespace Helix2._0.View.Edit
                     dl_Etapa.DataValueField = "ID_ETAPAFLUJO";
                     dl_Etapa.DataBind();
                 }
+        }
+
+        protected void gvComentario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = gvComentario.SelectedRow;
+            link = Convert.ToString(gvComentario.DataKeys[row.RowIndex].Values["Adjunto"]);
+            string[] file = link.Split(new string[] { "Uploads" }, StringSplitOptions.None);
+            string enlace = file[0];
+            string nombre_Archivo = file[1];
+            // Limpiamos la salida
+            Response.Clear();
+            // Con esto le decimos al browser que la salida sera descargable
+            Response.ContentType = "application/octet-stream";
+            // esta linea es opcional, en donde podemos cambiar el nombre del fichero a descargar (para que sea diferente al original)
+            Response.AddHeader("Content-Disposition", "attachment; filename=" + nombre_Archivo + "");
+            // Escribimos el fichero a enviar 
+            Response.WriteFile(link);
+            // volcamos el stream 
+            Response.Flush();
+            // Enviamos todo el encabezado ahora
+            Response.End();
         }
     }
 }

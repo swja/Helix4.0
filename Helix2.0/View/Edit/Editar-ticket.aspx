@@ -44,18 +44,14 @@
              <asp:Button ID="Bt_agregar_comentario" runat="server" Text="Agregar comentario" CssClass="col-lg-2 col-md-2" style="left:5%; top:1%" OnClick="Bt_agregar_comentario_Click"/>
             <div style="padding-left:45%;">
                   <div id="comentario"class="table-responsive">
-                <asp:GridView ID="gvComentario" runat="server" AutoGenerateColumns="False" DataKeyNames="#,Adjunto" DataSourceID="Comentario" class="table" Width="16px">
+                <asp:GridView ID="gvComentario" runat="server" AutoGenerateColumns="False" DataKeyNames="#,Adjunto" DataSourceID="Comentario" class="table" Width="16px" OnSelectedIndexChanged="gvComentario_SelectedIndexChanged">
                     <Columns>
                         <asp:BoundField DataField="#" HeaderText="#" InsertVisible="False" ReadOnly="True" SortExpression="#" />
                         <asp:BoundField DataField="Comentario" HeaderText="Comentario" SortExpression="Comentario" />
                         <asp:BoundField DataField="Usuario" HeaderText="Usuario" ReadOnly="True" SortExpression="Usuario" />
                         <asp:BoundField DataField="ADJUNTO" HeaderText="Adjunto" SortExpression="ADJUNTO" Visible="False" />
                         <asp:BoundField DataField="Fecha" DataFormatString="{0:d}" HeaderText="Fecha" SortExpression="Fecha" />
-                        <asp:TemplateField ShowHeader="False">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Select" OnClick="LinkButton1_Click" Text="Adjunto"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+                        <asp:CommandField ButtonType="Button" SelectText="Descargar adjunto" ShowSelectButton="True" />
                     </Columns>
                 </asp:GridView>
                       </div>
