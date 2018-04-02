@@ -107,7 +107,7 @@ namespace Helix2._0.View.Edit
         protected void Bt_agregar_comentario_Click(object sender, EventArgs e)
         {
             Boolean fileOK = false;
-            String path = Server.MapPath("~/Uploads/");
+            string path = Server.MapPath("~/Uploads/");
             if (Adjunto.HasFile)
             {
                 String fileExtension = System.IO.Path.GetExtension(Adjunto.FileName).ToLower();
@@ -126,8 +126,7 @@ namespace Helix2._0.View.Edit
             {
                 try
                 {
-                    Adjunto.PostedFile.SaveAs(path
-                        + Adjunto.FileName);
+                    Adjunto.SaveAs(path + Adjunto.FileName);
                     ruta_Adjunto = path + Adjunto.FileName;
                 }
                 catch (Exception ex)
