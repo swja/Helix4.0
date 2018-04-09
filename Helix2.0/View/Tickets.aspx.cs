@@ -16,19 +16,19 @@ namespace Helix2._0
             foreach(GridViewRow row in gvTickets.Rows)
             {
                 fecha_Ticket = DateTime.Parse(row.Cells[8].Text);
-                if (fecha_Ticket.Day <= 3)
+                if (fecha_Ticket <= DateTime.Today)
                 {
-                    row.Cells[8].BackColor = Color.Beige;
+                    row.Cells[8].BackColor = Color.LightPink;
                 }
                 else
                 {
-                    if (fecha_Ticket.Day <= 20)
+                    if (fecha_Ticket <= DateTime.Today.AddDays(3))
                     {
-                        row.Cells[8].BackColor = Color.GhostWhite;
+                        row.Cells[8].BackColor = Color.Beige;
                     }
                     else
                     {
-                        row.Cells[8].BackColor = Color.LightPink;
+                        row.Cells[8].BackColor = Color.GhostWhite;
                     }
                 }
             }
@@ -40,25 +40,10 @@ namespace Helix2._0
                 return new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["HelixConnectionString"].ConnectionString);
             }
         }
-        protected void busqueda(object sender, EventArgs e)
-        {
-            using (SqlConnection conexion = Conexion.ObtenerConexion())
-            {
-                string query = "select * from helix.usuario where nombre ='" + txt_Busqueda.Text+"'";
-                SqlCommand cmd = new SqlCommand(query, conexion);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                gvTickets.DataSource = dt;
-                gvTickets.DataBind();
-            }
-        }
-
         protected void Bt_nuevo_Click(object sender, EventArgs e)
         {
             Response.Redirect("/View/Add/Agregar-ticket.aspx", true);
         }
-
         protected void gvTickets_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = gvTickets.SelectedRow;
@@ -75,6 +60,39 @@ namespace Helix2._0
             Application["id_Cliente"] = Convert.ToInt32(gvTickets.DataKeys[row.RowIndex].Values["ID_CLIENTE"]);
             Application["id_Usuario"] = Convert.ToInt32(gvTickets.DataKeys[row.RowIndex].Values["ID_USUARIO"]);
             Response.Redirect("/View/Edit/Editar-ticket.aspx", true);
+        }
+        protected void txt_Busqueda_AutoPostBack(object sender, EventArgs e)
+        {
+            if(txt_Busqueda.Text == "")
+            {
+                gvTickets.Visible = true;
+                gvBusqueda.Visible = false;
+            }
+            else
+            {
+                consulta.Text = txt_Busqueda.Text + "%";
+                gvTickets.Visible = false;
+                gvBusqueda.Visible = true;
+                foreach (GridViewRow row in gvBusqueda.Rows)
+                {
+                    fecha_Ticket = DateTime.Parse(row.Cells[8].Text);
+                    if (fecha_Ticket <= DateTime.Today)
+                    {
+                        row.Cells[8].BackColor = Color.LightPink;
+                    }
+                    else
+                    {
+                        if (fecha_Ticket <= DateTime.Today.AddDays(3))
+                        {
+                            row.Cells[8].BackColor = Color.Beige;
+                        }
+                        else
+                        {
+                            row.Cells[8].BackColor = Color.GhostWhite;
+                        }
+                    }
+                }
+            }
         }
     }
 }
