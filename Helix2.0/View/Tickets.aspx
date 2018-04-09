@@ -42,6 +42,14 @@
             <PagerSettings FirstPageText="Inicio" Mode="NextPrevious" NextPageText="Siguiente" PreviousPageText="Anterior" />
             <PagerStyle HorizontalAlign="Center" />
       </asp:GridView>
+
+    <div class="alert-dismissable">
+        <div class="row notificaciones">
+            <div class ="mas4 col-lg-4 col-md-4 col-sm-12 text-center">Tiempo para cumplimiento > a 3 dias</div>
+            <div class="menos3 col-lg-4 col-md-4 col-sm-12 text-center">Tiempo para cumplimiento <= a 3 dias</div>
+            <div class="caducado col-lg-4 col-md-4 col-sm-12 text-center">Tiempo para cumplimiento caducado</div>
+        </div>
+    </div>
   
       <asp:SqlDataSource ID="Ticket" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT
 	base.ID_TICKET AS #,

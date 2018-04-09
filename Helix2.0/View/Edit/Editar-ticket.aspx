@@ -44,9 +44,9 @@
              <asp:Button ID="Bt_agregar_comentario" runat="server" Text="Agregar comentario" CssClass="col-lg-2 col-md-2" style="left:5%; top:1%" OnClick="Bt_agregar_comentario_Click"/>
             <div style="padding-left:45%;">
                   <div id="comentario"class="table-responsive">
-                <asp:GridView ID="gvComentario" runat="server" AutoGenerateColumns="False" DataKeyNames="#,Adjunto" DataSourceID="Comentario" class="table" Width="16px" OnSelectedIndexChanged="gvComentario_SelectedIndexChanged">
+                <asp:GridView ID="gvComentario" runat="server" AutoGenerateColumns="False" DataKeyNames="#,Adjunto" DataSourceID="Comentario" class="table table-responsive" Width="100%" BorderColor="#ebebe4" OnSelectedIndexChanged="gvComentario_SelectedIndexChanged">
                     <Columns>
-                        <asp:BoundField DataField="#" HeaderText="#" InsertVisible="False" ReadOnly="True" SortExpression="#" />
+                        <asp:BoundField DataField="#" HeaderText="#" InsertVisible="False" ReadOnly="True" SortExpression="#" Visible="false"/>
                         <asp:BoundField DataField="Comentario" HeaderText="Comentario" SortExpression="Comentario" />
                         <asp:BoundField DataField="Usuario" HeaderText="Usuario" ReadOnly="True" SortExpression="Usuario" />
                         <asp:BoundField DataField="ADJUNTO" HeaderText="Adjunto" SortExpression="ADJUNTO" Visible="False" />

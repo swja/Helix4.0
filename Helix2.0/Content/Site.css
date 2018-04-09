@@ -22,7 +22,28 @@ select {
     padding: 0.5%;
 }
 
+.mas4 {
+    background-color: #f8f8ff;
+    border-style: solid;
+    border-width:1px;
+}
 
+.menos3 {
+    background-color: #f5f5dc;
+    border-style: solid;
+    border-left: none;
+    border-width: 1px;
+}
+
+.caducado {
+    background-color: lightpink;
+    border-style: solid;
+    border-left: none;
+    border-width: 1px;
+}
+.notificaciones{
+    padding-top:5%;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {

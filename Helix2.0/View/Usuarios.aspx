@@ -13,7 +13,7 @@
            
       </div>
       <br />
-       <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateColumns="False" Width="100%" DataKeyNames="#,Nombre,Apellido,Email,Nombre de Usuario,Contraseña,Cargo,Telefono,ID_ROL" DataSourceID="Usuario" OnSelectedIndexChanged="gvUsuarios_SelectedIndexChanged" CssClass="table table-responsive" AllowPaging="True" AllowSorting="True">
+       <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateColumns="False" Width="100%" DataKeyNames="#,Nombre,Apellido,Email,Nombre de Usuario,Contraseña,Cargo,Telefono,ID_ROL" DataSourceID="Usuario" OnSelectedIndexChanged="gvUsuarios_SelectedIndexChanged" CssClass="table table-responsive" AllowPaging="True">
             <Columns>
                 <asp:BoundField DataField="#" HeaderText="#" SortExpression="#" InsertVisible="False" ReadOnly="True" />
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
