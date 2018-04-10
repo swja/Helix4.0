@@ -94,5 +94,23 @@ namespace Helix2._0
                 }
             }
         }
+
+        protected void gvBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = gvBusqueda.SelectedRow;
+            Application["identidad"] = Convert.ToInt32(gvBusqueda.DataKeys[row.RowIndex].Values["#"]);
+            Application["cliente"] = Convert.ToString(gvBusqueda.DataKeys[row.RowIndex].Values["Cliente"]);
+            Application["usuario"] = Convert.ToString(gvBusqueda.DataKeys[row.RowIndex].Values["Usuario Asignado"]);
+            Application["nombre"] = Convert.ToString(gvBusqueda.DataKeys[row.RowIndex].Values["Nombre Ticket"]);
+            Application["descripción"] = Convert.ToString(gvBusqueda.DataKeys[row.RowIndex].Values["Descripción"]);
+            Application["flujo"] = Convert.ToString(gvBusqueda.DataKeys[row.RowIndex].Values["ID_FLUJO"]);
+            Application["etapa"] = Convert.ToString(gvBusqueda.DataKeys[row.RowIndex].Values["ID_ETAPAFLUJO"]);
+            Application["pago"] = Convert.ToString(gvBusqueda.DataKeys[row.RowIndex].Values["ID_FORMAPAGO"]);
+            Application["fechaE"] = Convert.ToDateTime(gvBusqueda.DataKeys[row.RowIndex].Values["Fecha de Entrega"]);
+            Application["fechaF"] = Convert.ToDateTime(gvBusqueda.DataKeys[row.RowIndex].Values["Fecha de Facturación"]);
+            Application["id_Cliente"] = Convert.ToInt32(gvBusqueda.DataKeys[row.RowIndex].Values["ID_CLIENTE"]);
+            Application["id_Usuario"] = Convert.ToInt32(gvBusqueda.DataKeys[row.RowIndex].Values["ID_USUARIO"]);
+            Response.Redirect("/View/Edit/Editar-ticket.aspx", true);
+        }
     }
 }

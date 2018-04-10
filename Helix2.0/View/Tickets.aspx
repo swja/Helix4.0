@@ -35,14 +35,14 @@
                 <asp:BoundField DataField="ID_USUARIO" HeaderText="ID_USUARIO" SortExpression="ID_USUARIO" Visible="False" />
                 <asp:TemplateField ShowHeader="False">
                     <ItemTemplate>
-                        <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Select" Text="Select" />
+                        <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Select" Text="Seleccionar" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
             <PagerSettings FirstPageText="Inicio" Mode="NextPrevious" NextPageText="Siguiente" PreviousPageText="Anterior" />
             <PagerStyle HorizontalAlign="Center" />
       </asp:GridView>
-     <asp:GridView ID="gvBusqueda" runat="server" AutoGenerateColumns="False" DataKeyNames="#,ID_CLIENTE" DataSourceID="Busqueda" AllowPaging="True" Width="100%" CssClass="table table-responsive" OnSelectedIndexChanged="gvTickets_SelectedIndexChanged" Visible="False">
+     <asp:GridView ID="gvBusqueda" runat="server" AutoGenerateColumns="False" DataKeyNames="#,ID_CLIENTE,Nombre Ticket,Descripción,Etapa,Flujo,Cliente,Usuario Asignado,Forma de Pago,Fecha de Entrega,Fecha de Facturación,ID_FLUJO,ID_FORMAPAGO,ID_ETAPAFLUJO,ID_USUARIO" DataSourceID="Busqueda" AllowPaging="True" Width="100%" CssClass="table table-responsive" OnSelectedIndexChanged="gvBusqueda_SelectedIndexChanged" Visible="False">
             <Columns>
                 <asp:BoundField DataField="#" HeaderText="#" ReadOnly="True" SortExpression="#" InsertVisible="False" />
                 <asp:BoundField DataField="Nombre Ticket" HeaderText="Nombre Ticket" SortExpression="Nombre Ticket" />
@@ -61,7 +61,7 @@
                 <asp:BoundField DataField="ID_USUARIO" HeaderText="ID_USUARIO" SortExpression="ID_USUARIO" Visible="False" />
                 <asp:TemplateField ShowHeader="False">
                     <ItemTemplate>
-                        <asp:Button ID="Button1" runat="server" CausesValidation="false" CommandName="" Text="Seleccionar" />
+                        <asp:Button ID="Button1" runat="server" CausesValidation="false" CommandName="Select" Text="Seleccionar" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

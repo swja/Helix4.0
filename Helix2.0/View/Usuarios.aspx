@@ -13,29 +13,27 @@
            
       </div>
       <br />
-       <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateColumns="False" Width="100%" DataKeyNames="#,Nombre,Apellido,Email,Nombre de Usuario,Contraseña,Cargo,Telefono,ID_ROL" DataSourceID="Usuario" OnSelectedIndexChanged="gvUsuarios_SelectedIndexChanged" CssClass="table table-responsive" AllowPaging="True">
+       <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateColumns="False" Width="100%" DataKeyNames="#,Nombre,Apellido,Cargo,Nombre de Usuario,Contraseña,Telefono,ID_ROL,Email" DataSourceID="Usuario" OnSelectedIndexChanged="gvUsuarios_SelectedIndexChanged" CssClass="table table-responsive" AllowPaging="True">
             <Columns>
-                <asp:BoundField DataField="#" HeaderText="#" SortExpression="#" InsertVisible="False" ReadOnly="True" />
-                <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
-                <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
+                <asp:BoundField DataField="#" HeaderText="#" SortExpression="#" InsertVisible="False" ReadOnly="True" Visible="False" />
+                <asp:BoundField DataField="Usuario" HeaderText="Usuario" SortExpression="Usuario" ReadOnly="True" />
+                <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" Visible="False" />
+                <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" Visible="False" />
                 <asp:BoundField DataField="Cargo" HeaderText="Cargo" SortExpression="Cargo" />
                 <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                 <asp:BoundField DataField="Nombre de Usuario" HeaderText="Nombre de Usuario" SortExpression="Nombre de Usuario" />
-                <asp:BoundField DataField="Contraseña" HeaderText="Contraseña" SortExpression="Contraseña" />
-                <asp:BoundField DataField="Rol" HeaderText="Rol" SortExpression="Rol" />
-                 <asp:BoundField DataField="Telefono" HeaderText="Telefono" SortExpression="Telefono" />
+                <asp:BoundField DataField="Contraseña" HeaderText="Contraseña" SortExpression="Contraseña" Visible="False" />
+                 <asp:BoundField DataField="Rol" HeaderText="Rol" SortExpression="Rol" />
+                <asp:BoundField DataField="Telefono" HeaderText="Telefono" SortExpression="Telefono" />
                 <asp:BoundField DataField="ID_ROL" HeaderText="ID_ROL" SortExpression="ID_ROL" Visible="False" />
-                <asp:TemplateField ShowHeader="False">
-                    <ItemTemplate>
-                        <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Select" Text="Seleccionar" />
-                    </ItemTemplate>
-                </asp:TemplateField>
+                <asp:CommandField ButtonType="Button" SelectText="Seleccionar" ShowSelectButton="True" />
             </Columns>
             <RowStyle HorizontalAlign="Center" VerticalAlign="Middle" />
       </asp:GridView>
     <asp:SqlDataSource ID="Usuario" runat="server" ConnectionString="<%$ ConnectionStrings:HelixConnectionString %>" SelectCommand="SELECT
 	base.ID_USUARIO AS #, 
-	base.NOMBRE AS 'Nombre',
+	CONCAT(base.NOMBRE,' ',base.APELLIDO) AS Usuario,
+    base.NOMBRE AS 'Nombre',
 	base.APELLIDO AS 'Apellido',
 	base.CARGO AS 'Cargo',
 	base.MAIL AS 'Email',
