@@ -85,6 +85,24 @@ namespace Helix2._0 {
         protected global::System.Web.UI.WebControls.SqlDataSource Busqueda;
         
         /// <summary>
+        /// gv_Flujos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_Flujos;
+        
+        /// <summary>
+        /// DropList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource DropList;
+        
+        /// <summary>
         /// Ticket control.
         /// </summary>
         /// <remarks>

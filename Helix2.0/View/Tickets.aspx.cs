@@ -67,6 +67,7 @@ namespace Helix2._0
             {
                 gvTickets.Visible = true;
                 gvBusqueda.Visible = false;
+                gv_Flujos.Visible = false;
             }
             else
             {
@@ -111,6 +112,59 @@ namespace Helix2._0
             Application["id_Cliente"] = Convert.ToInt32(gvBusqueda.DataKeys[row.RowIndex].Values["ID_CLIENTE"]);
             Application["id_Usuario"] = Convert.ToInt32(gvBusqueda.DataKeys[row.RowIndex].Values["ID_USUARIO"]);
             Response.Redirect("/View/Edit/Editar-ticket.aspx", true);
+        }
+
+        protected void gvFlujo(object sender, EventArgs e)
+        {
+            GridViewRow row = gv_Flujos.SelectedRow;
+            Application["identidad"] = Convert.ToInt32(gv_Flujos.DataKeys[row.RowIndex].Values["#"]);
+            Application["cliente"] = Convert.ToString(gv_Flujos.DataKeys[row.RowIndex].Values["Cliente"]);
+            Application["usuario"] = Convert.ToString(gv_Flujos.DataKeys[row.RowIndex].Values["Usuario Asignado"]);
+            Application["nombre"] = Convert.ToString(gv_Flujos.DataKeys[row.RowIndex].Values["Nombre Ticket"]);
+            Application["descripción"] = Convert.ToString(gv_Flujos.DataKeys[row.RowIndex].Values["Descripción"]);
+            Application["flujo"] = Convert.ToString(gv_Flujos.DataKeys[row.RowIndex].Values["ID_FLUJO"]);
+            Application["etapa"] = Convert.ToString(gv_Flujos.DataKeys[row.RowIndex].Values["ID_ETAPAFLUJO"]);
+            Application["pago"] = Convert.ToString(gv_Flujos.DataKeys[row.RowIndex].Values["ID_FORMAPAGO"]);
+            Application["fechaE"] = Convert.ToDateTime(gv_Flujos.DataKeys[row.RowIndex].Values["Fecha de Entrega"]);
+            Application["fechaF"] = Convert.ToDateTime(gv_Flujos.DataKeys[row.RowIndex].Values["Fecha de Facturación"]);
+            Application["id_Cliente"] = Convert.ToInt32(gv_Flujos.DataKeys[row.RowIndex].Values["ID_CLIENTE"]);
+            Application["id_Usuario"] = Convert.ToInt32(gv_Flujos.DataKeys[row.RowIndex].Values["ID_USUARIO"]);
+            Response.Redirect("/View/Edit/Editar-ticket.aspx", true);
+        }
+
+        protected void dl_Flujo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (gv_Flujos.SelectedValue == "1")
+            {
+                gvTickets.Visible = true;
+                gvBusqueda.Visible = false;
+                gv_Flujos.Visible = false;
+            }
+            else
+            {
+                gvTickets.Visible = false;
+                gvBusqueda.Visible = false;
+                gv_Flujos.Visible = true;
+                foreach (GridViewRow row in gv_Flujos.Rows)
+                {
+                    fecha_Ticket = DateTime.Parse(row.Cells[8].Text);
+                    if (fecha_Ticket <= DateTime.Today)
+                    {
+                        row.Cells[8].BackColor = Color.LightPink;
+                    }
+                    else
+                    {
+                        if (fecha_Ticket <= DateTime.Today.AddDays(3))
+                        {
+                            row.Cells[8].BackColor = Color.Beige;
+                        }
+                        else
+                        {
+                            row.Cells[8].BackColor = Color.GhostWhite;
+                        }
+                    }
+                }
+            }
         }
     }
 }
