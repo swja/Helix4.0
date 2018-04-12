@@ -20,5 +20,28 @@ namespace Helix2._0.View
             Application["ciudad"] = Convert.ToString(GridCiudades.DataKeys[row.RowIndex].Values["Ciudad"]);
             Response.Redirect("/View/Edit/Editar-ciudad.aspx", true);
         }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (TextBox1.Text == "")
+            {
+                GridCiudades.Visible = true;
+                GridView1.Visible = false;
+            }
+            else
+            {
+                Label2.Text = TextBox1.Text + "%";
+                GridCiudades.Visible = false;
+                GridView1.Visible = true;
+            }
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = GridView1.SelectedRow;
+            Application["identidad"] = Convert.ToInt32(GridView1.DataKeys[row.RowIndex].Values["#"]);
+            Application["ciudad"] = Convert.ToString(GridView1.DataKeys[row.RowIndex].Values["Ciudad"]);
+            Response.Redirect("/View/Edit/Editar-ciudad.aspx", true);
+        }
     }
 }

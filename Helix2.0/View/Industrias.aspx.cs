@@ -21,5 +21,28 @@ namespace Helix2._0.View
             Application["industria"] = Convert.ToString(gvIndustria.DataKeys[row.RowIndex].Values["Tipo de Industria"]);
             Response.Redirect("/View/Edit/Editar-industria.aspx", true);
         }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = GridView1.SelectedRow;
+            Application["identidad"] = Convert.ToInt32(GridView1.DataKeys[row.RowIndex].Values["#"]);
+            Application["industria"] = Convert.ToString(GridView1.DataKeys[row.RowIndex].Values["Tipo de Industria"]);
+            Response.Redirect("/View/Edit/Editar-industria.aspx", true);
+        }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (TextBox1.Text == "")
+            {
+                gvIndustria.Visible = true;
+                GridView1.Visible = false;
+            }
+            else
+            {
+                Label2.Text = TextBox1.Text + "%";
+                gvIndustria.Visible = false;
+                GridView1.Visible = true;
+            }
+        }
     }
 }

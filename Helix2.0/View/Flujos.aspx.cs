@@ -22,5 +22,29 @@ namespace Helix2._0.View
             Application["descripcion"] = Convert.ToString(gvFlujo.DataKeys[row.RowIndex].Values["Descripción"]);
             Response.Redirect("/View/Edit/Editar-flujo.aspx", true);
         }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (TextBox1.Text == "")
+            {
+                gvFlujo.Visible = true;
+                GridView1.Visible = false;
+            }
+            else
+            {
+                Label18.Text = TextBox1.Text + "%";
+                gvFlujo.Visible = false;
+                GridView1.Visible = true;
+            }
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = GridView1.SelectedRow;
+            Application["identidad"] = Convert.ToInt32(GridView1.DataKeys[row.RowIndex].Values["#"]);
+            Application["nombre"] = Convert.ToString(GridView1.DataKeys[row.RowIndex].Values["Nombre del Flujo"]);
+            Application["descripcion"] = Convert.ToString(GridView1.DataKeys[row.RowIndex].Values["Descripción"]);
+            Response.Redirect("/View/Edit/Editar-flujo.aspx", true);
+        }
     }
 }
